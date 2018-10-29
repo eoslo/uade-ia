@@ -39,6 +39,10 @@ class ClientService {
             console.log("[+] Successfully deleted user with id:" + id);
         })
     }
+
+    getAllUpdates(employees){
+        console.log(employees);
+    };
 }
 
 module.exports = ClientService;

@@ -15,13 +15,25 @@ class clientController {
     }
 
     deleteClient(req, callback){
-        return this.clientService.deleteClient(req.body.id, function(err){
+        return this.clientService.deleteClient(req.body.id, function (err){
             if (err) {
                 console.error(err);
             }
         })
     }
 
+    getAllUpdates(req, callback){
+        var employees = this.getEmployees(req.params.id, function (err){
+            if (err) {
+                console.log(err);
+            }
+        });
+        return this.clientService.getAllUpdates(employees, function (err){
+            if (err) {
+                console.error(err);
+            }
+        })
+    }
 }
 
 module.exports = clientController;

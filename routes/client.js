@@ -31,8 +31,10 @@ router.put('/', function(req, res, next){
     });
 });
 
-router.get('/updates', function(req, res, next) {
-    clientController.
+router.get('/:id/updates', function(req, res, next) {
+    clientController.getAllUpdates(req, function (err) {
+
+    });
 });
 
 module.exports = router;
