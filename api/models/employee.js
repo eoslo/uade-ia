@@ -1,39 +1,29 @@
-'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-var clientSchema = new Schema({
+var employeeSchema = new Schema({
     name: {
         type: String,
-        required: 'Kindly enter the name of the client'
-    },
-    person_type: {
-        type: String,
-        default: null
+        required: 'Kindly enter the name of the employee'
     },
     address: {
         type: String,
         default: null
     },
-    cuit: {
+    birth_date: {
         type: String,
         default: null
     },
-    iva: {
-        type: Number,
-        default: 0.21
-    },
-    gross_income: {
-        type: Number,
+    dni: {
+        type: String,
         default: null
-    },
+    }
     creation_date: {
         type: Date,
         default: Date.now
     },
     doc: {
-        type: String,
+        type: String
         default: null
     },
     status: {
@@ -45,4 +35,4 @@ var clientSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('client', clientSchema);
+module.exports = mongoose.model('employee', employeeSchema);
