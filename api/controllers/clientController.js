@@ -22,6 +22,15 @@ class clientController {
         })
     }
 
+    getEmployees(req, callback){
+        return this.clientService.getEmployees(req.params.id, function (err, employees) {
+            if(err){
+                console.error(err);
+            }
+            return callback(err, employees);
+        })
+    }
+
     getAllUpdates(req, callback){
         var employees = this.getEmployees(req.params.id, function (err){
             if (err) {
