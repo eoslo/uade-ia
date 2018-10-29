@@ -2278,7 +2278,7 @@ section {
     right: 34px;
     width: 30px;
     height: 30px;
-    background: #ff4b5a;
+    background: #E32727;
     text-align: center;
     line-height: 30px;
     font-size: 14px;
@@ -3941,6 +3941,7 @@ section {
     border: 1px solid #e5e5e5;
     background: #fff;
     padding-top: 44px;
+    margin: 44px 0;
 }
 
 .user-data .title-3 {
