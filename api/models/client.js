@@ -32,10 +32,6 @@ var clientSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    doc: {
-        type: String,
-        default: null
-    },
     status: {
         type: [{
             type: String,
