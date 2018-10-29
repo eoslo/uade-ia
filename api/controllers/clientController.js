@@ -1,4 +1,4 @@
-var ClientService = require('../models/client');
+var ClientService = require('../services/clientService');
 
 class clientController {
     constructor(){
