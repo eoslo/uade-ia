@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
 router.delete('/', function(req, res, next) {
     clientController.deleteClient(id, function (err) {
         if (err) {
-            res.send(err)
+            res.status(500);
+            res.send({error:err})
         } else {
             res.send('[+] Client Successfully Deleted!')
         }
@@ -24,7 +25,8 @@ router.delete('/', function(req, res, next) {
 router.put('/', function(req, res, next){
     clientController.updateClient(req, function (err) {
         if (err) {
-            res.send(err);
+            res.status(500);
+            res.send({error:err})
         } else {
             res.send('[+] Client Successfully Updated!')
         }
@@ -35,7 +37,7 @@ router.get('/:id/employees', function (req, res, next) {
     clientController.getEmployees(req, function (err, employees) {
         if(err){
             res.status(500);
-            res.send({})
+            res.send({error:err})
         }
         res.status(200);
         res.send(employees);
@@ -49,7 +51,11 @@ router.get('/:id/updates', function(req, res, next) {
 });
 
 router.get('/:username', function(req, res, next) {
-    clientController.getClientId(req, function (clientId) {
+    clientController.getClientId(req, function (err, clientId) {
+        if(err){
+            res.send(500);
+            res.send({error:err})
+        }
         if(clientId){
             res.send({client_id:clientId});
         }
