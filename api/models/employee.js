@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var updateSchema = require('update');
-var salarySchema = require('salary');
+var updateSchema = require('../models/update');
+var salarySchema = require('../models/salary');
 
 var employeeSchema = new Schema({
     name: {
@@ -35,14 +35,8 @@ var employeeSchema = new Schema({
         type: Number,
         default: null
     },
-    updates: {
-      type: [updateSchema],
-      default: undefined
-    },
-    salaries: {
-      type: [salarySchema],
-      default: undefined
-    },
+    updates: [updateSchema.schema],
+    salaries: [salarySchema.schema],
     creation_date: {
         type: Date,
         default: Date.now
