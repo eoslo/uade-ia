@@ -16,8 +16,8 @@ passport.use('local.signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true
-}, function (req, name, password, done) {
-    Client.findOne({'username': name}, function (err, client) {
+}, function (req, username, password, done) {
+    Client.findOne({'username': username}, function (err, client) {
         if(err){
             return done(err);
         }
@@ -25,8 +25,14 @@ passport.use('local.signup', new LocalStrategy({
             return done(null, false, {message:'Cliente ya existente.'});
         }
         var newClient = new Client();
-        newClient.name = name;
+        newClient.username = username;
         newClient.password = password;
+        newClient.name = req.body.name;
+        newClient.person_type = req.body.person_type;
+        newClient.address = req.body.address;
+        newClient.cuit = req.body.cuit;
+        newClient.iva = req.body.iva;
+        newClient.gross_income = req.body.gross_income;
         newClient.save(function (err, result) {
             if(err){
                 return done(err);

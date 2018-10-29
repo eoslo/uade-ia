@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.set("debug", true);
+var employeeSchema = require('employee.js')
 
 var clientSchema = new Schema({
     username: {
@@ -37,6 +37,10 @@ var clientSchema = new Schema({
     gross_income: {
         type: Number,
         default: null
+    },
+    employees: {
+        type: [employeeSchema],
+        default: omitUndefined
     },
     creation_date: {
         type: Date,

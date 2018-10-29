@@ -33,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vendor', express.static(__dirname + '/public/vendor'));
+app.use('/js', express.static(__dirname + '/public/js'));
 
 app.use('/', indexRouter);
 app.use('/client', clientRouter);
