@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var updateSchema = require('update.js');
+var salarySchema = require('salary.js');
 
 var employeeSchema = new Schema({
     name: {
@@ -17,6 +19,29 @@ var employeeSchema = new Schema({
     dni: {
         type: String,
         default: null
+    },
+    payroll_type: {
+      type: [{
+          type: String,
+          enum: ['monthly', 'per hour']
+      }],
+      default: ['monthly']
+    },
+    gross_salary: {
+        type: Number,
+        default: null
+    },
+    salary_per_hour: {
+        type: Number,
+        default: null
+    },
+    updates: {
+      type: [updateSchema],
+      default: undefined
+    },
+    salaries: {
+      type: [salarySchema],
+      default: undefined
     },
     creation_date: {
         type: Date,

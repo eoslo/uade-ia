@@ -1,8 +1,12 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+body .page-wrapper {
+    overflow: auto;
 }
 
-a {
-  color: #00B7FF;
+.page-wrapper .container.login {
+    background-color: #e5e5e5;
+    max-width: none;
+}
+.page-wrapper .container.login .login-wrap {
+    padding-bottom: 50px;
 }
