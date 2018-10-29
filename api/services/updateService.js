@@ -1,5 +1,5 @@
 var Employee = require('../models/employee');
-var Update = require('../models/Update');
+var Update = require('../models/update');
 
 
 class UpdateService {
@@ -23,18 +23,8 @@ class UpdateService {
 
 
     deleteUpdate(id, callback){
-        Employee.findOneAndUpdate(
-            { updates : {$elemMatch: { _id : id } } },
-            { updates : {$elemMatch: { _id : id } } }, function (err, employee) {
-                if(err){
-                    return callback(err);
-                }
-                if(!employee){
-                    return callback("Empleado no existente.");
-                }
-                return callback(err, update);
-        });
+
     }
 }
 
-module.exports = EmployeeService;
+module.exports = UpdateService;
