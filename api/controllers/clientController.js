@@ -32,16 +32,17 @@ class clientController {
     }
 
     getAllUpdates(req, callback){
-        var employees = this.getEmployees(req.params.id, function (err){
+        this.getEmployees(req, function (err, employees){
             if (err) {
                 console.log(err);
             }
+            return this.clientService.getAllUpdates(employees, function (err){
+                if (err) {
+                    console.error(err);
+                }
+            })
         });
-        return this.clientService.getAllUpdates(employees, function (err){
-            if (err) {
-                console.error(err);
-            }
-        })
+
     }
 }
 
