@@ -1,7 +1,6 @@
-'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+mongoose.set("debug", true);
 
 var clientSchema = new Schema({
     name: {
