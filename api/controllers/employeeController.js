@@ -14,6 +14,16 @@ class employeeController {
                 return callback(err, employee);
             })
     }
+
+    modifyEmployee(req, callback){
+        return this.employeeService.modifyEmployee(req.body.employee_id, req.body.address,
+            req.body.payroll_type, req.body.gross_salary, req.body.salary_per_hour, function (err, employee) {
+                if(err){
+                    console.error(err);
+                }
+                return callback(err, employee)
+            })
+    }
 }
 
 
