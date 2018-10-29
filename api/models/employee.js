@@ -39,11 +39,8 @@ var employeeSchema = new Schema({
         default: Date.now
     },
     status: {
-        type: [{
-            type: String,
-            enum: ['active', 'inactive']
-        }],
-        default: ['active']
+        type: String,
+        default: "active"
     }
 });
 
