@@ -40,9 +40,8 @@ class ClientService {
         })
     }
 
-
     getEmployees(id, callback){
-        Client.findOne({ _id: clientId }).populate('employees').
+        Client.findOne({ _id: id }).populate('employees').
         exec(function (err, client) {
             if (err){
                 return callback(err);
@@ -50,7 +49,7 @@ class ClientService {
             return callback(err, client.employees);
         });
     }
-    
+
     getAllUpdates(employees){
         console.log(employees);
     };
