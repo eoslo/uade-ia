@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', loggedIn ,function (req, res, next) {
     res.render('index', { title: 'Express' });
 });
 
@@ -19,6 +19,13 @@ router.post('/signup', notLoggedIn, passport.authenticate('local.signup', {
 
 function notLoggedIn(req, res, next) {
     if(!req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/login');
+}
+
+function loggedIn(req, res, next) {
+    if(req.isAuthenticated()){
         return next();
     }
     res.redirect('/login');
