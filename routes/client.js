@@ -48,4 +48,12 @@ router.get('/:id/updates', function(req, res, next) {
     });
 });
 
+router.get('/:username', function(req, res, next) {
+    clientController.getClientId(req, function (clientId) {
+        if(clientId){
+            res.send({client_id:clientId});
+        }
+    });
+});
+
 module.exports = router;

@@ -69,6 +69,21 @@ class ClientService {
         });
         return updates;
     }
+
+    getClientId(username, password, callback){
+        Client.findOne({ username: username }, function (err, client) {
+            if(err){
+                return callback(err);
+            }
+            if(!client){
+                return callback("No existe ese cliente.");
+            }
+            if (client.password.equals(password)){
+                return callback(err, client.id);
+            }
+            return callback("Autenticacion no valida.")
+        })
+    }
 }
 
 module.exports = ClientService;
