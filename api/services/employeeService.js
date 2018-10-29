@@ -28,7 +28,7 @@ class EmployeeService {
         });
     }
 
-    modifyEmployee(id, address, payroll_type, gross_salary, salary_per_hour, callback){
+    deleteEmployee(id, address, payroll_type, gross_salary, salary_per_hour, callback){
         Employee.findById(id, function (err, employee) {
             if(err){
                 return callback(err);
