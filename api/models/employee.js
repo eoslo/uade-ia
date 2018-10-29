@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var updateSchema = require('update.js');
+var updateSchema = require('../models/update');
 
 var employeeSchema = new Schema({
     name: {
@@ -34,10 +34,7 @@ var employeeSchema = new Schema({
         type: Number,
         default: null
     },
-    updates: {
-      type: [updateSchema],
-      default: undefined
-    },
+    updates: [updateSchema],
     creation_date: {
         type: Date,
         default: Date.now

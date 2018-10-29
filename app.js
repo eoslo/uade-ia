@@ -7,9 +7,10 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
-
+var payrollJob = require('./api/jobs/payroll');
 var indexRouter = require('./routes/index');
 var clientRouter = require('./routes/client');
+var employeeRouter = require('./routes/employee');
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use('/vendor', express.static(__dirname + '/public/vendor'));
 
 app.use('/', indexRouter);
 app.use('/client', clientRouter);
+app.use('/employee', employeeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -61,5 +63,5 @@ var db = mongoose.connection;
 
 //Bind connection to error event (to track Database connection errors)
 db.on('error', console.error.bind(console, 'MongoDB Connection Error:'));
-
+payrollJob;
 module.exports = app;
