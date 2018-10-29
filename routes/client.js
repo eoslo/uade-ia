@@ -40,10 +40,12 @@ router.get('/:id/employees', function (req, res, next) {
         res.status(200);
         res.send(employees);
     })
-})
+});
 
-// router.get('/updates', function(req, res, next) {
-//     clientController.
-// });
+router.get('/:id/updates', function(req, res, next) {
+    clientController.getAllUpdates(req, function (err) {
+
+    });
+});
 
 module.exports = router;

@@ -11,7 +11,6 @@ var payrollJob = require('./api/jobs/payroll');
 var indexRouter = require('./routes/index');
 var clientRouter = require('./routes/client');
 var employeeRouter = require('./routes/employee');
-var clientService = require("./api/services/clientService");
 
 var app = express();
 
@@ -40,6 +39,7 @@ app.use('/', indexRouter);
 app.use('/client', clientRouter);
 app.use('/employee', employeeRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
@@ -66,11 +66,4 @@ var db = mongoose.connection;
 //Bind connection to error event (to track Database connection errors)
 db.on('error', console.error.bind(console, 'MongoDB Connection Error:'));
 payrollJob;
-var cs = new clientService();
-cs.updateClient('5bd76c7310af940a64756ebd', 'lautarin>luis', null, null, null, null, null, null, function(err, res) {
-    if (err) {
-        console.log(err);
-    }
-    console.log("[+] Client Successfully updated!")
-});
 module.exports = app;

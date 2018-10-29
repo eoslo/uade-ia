@@ -40,6 +40,7 @@ class ClientService {
         })
     }
 
+<<<<<<< HEAD
     getEmployees(id, callback){
         Client.findOne({ _id: clientId }).populate('employees').
         exec(function (err, client) {
@@ -49,6 +50,11 @@ class ClientService {
             return callback(err, client.employees);
         });;
     }
+=======
+    getAllUpdates(employees){
+        console.log(employees);
+    };
+>>>>>>> d92f1deaaac35b229b8b265ba9d6447328a078b3
 }
 
 module.exports = ClientService;
