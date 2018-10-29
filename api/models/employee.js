@@ -21,11 +21,8 @@ var employeeSchema = new Schema({
         default: null
     },
     payroll_type: {
-      type: [{
-          type: String,
-          enum: ['monthly', 'per hour']
-      }],
-      default: ['monthly']
+        type: String,
+        default: null
     },
     gross_salary: {
         type: Number,
@@ -42,11 +39,8 @@ var employeeSchema = new Schema({
         default: Date.now
     },
     status: {
-        type: [{
-            type: String,
-            enum: ['active', 'inactive']
-        }],
-        default: ['active']
+        type: String,
+        default: "active"
     }
 });
 

@@ -37,8 +37,6 @@ app.use('/vendor', express.static(__dirname + '/public/vendor'));
 app.use('/js', express.static(__dirname + '/public/js'));
 
 app.use('/', indexRouter);
-app.use('/client', clientRouter);
-app.use('/employee', employeeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
