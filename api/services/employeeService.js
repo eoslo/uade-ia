@@ -1,9 +1,10 @@
 var Employee = require('../models/employee');
+var Client = require('../models/client');
 
 
 class EmployeeController {
 
-    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, callback) {
+    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, clientId, callback) {
         var employee = new Employee();
         employee.name = name;
         employee.address = address;
@@ -14,9 +15,16 @@ class EmployeeController {
         employee.salary_per_hour = salaray_per_hour;
         employee.save(function (err) {
             if(err){
-                return callback(err);
+                return callback(err, null);
             }
-            return callback(err, employee);
+
+            console.log(employee)
+
+            Client.findOneAndUpdate(
+                { _id: clientId },
+                { $push: { employees: employee._id } }, function (err, client) {
+                    return callback(err, employee);
+            });
         });
     }
 }
