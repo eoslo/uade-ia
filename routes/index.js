@@ -20,7 +20,14 @@ router.post('/signup', notLoggedIn, passport.authenticate('local.signup'), funct
 });
 
 router.post('/signin', notLoggedIn, passport.authenticate('local.signin'), function(req, res) {
-    res.redirect('/');
+    if(loggedIn()){
+        res.status(200);
+        res.send({});
+    }
+    else{
+        res.status(404);
+        res.send({});
+    }
 });
 
 function notLoggedIn(req, res, next) {
