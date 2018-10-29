@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -37,5 +38,18 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//Setting up MongoDB Database Connection
+var mongoDB = 'mongodb://testing:uadeia2018@ds145043.mlab.com:45043/uade-ia';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+
+//Get Mongoose to use the global promise library
+mongoose.Promise = global.Promise;
+
+//Getting the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to track Database connection errors)
+db.on('error', console.error.bind(console, 'MongoDB Connection Error:'));
 
 module.exports = app;
