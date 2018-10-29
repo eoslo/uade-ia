@@ -28,25 +28,6 @@ class EmployeeService {
         });
     }
 
-    deleteEmployee(id, address, payroll_type, gross_salary, salary_per_hour, callback){
-        Employee.findById(id, function (err, employee) {
-            if(err){
-                return callback(err);
-            }
-            if(employee){
-                employee.update({ address: address ,payroll_type: payroll_type , gross_salary: gross_salary , salary_per_hour: salary_per_hour }, function (err, raw) {
-                    if(err){
-                        return callback(err);
-                    }
-                    else{
-                        console.log(raw);
-                        return callback(err, employee);
-                    }
-                });
-            }
-        })
-    }
-
     modifyEmployee(id, address, payroll_type, gross_salary, salary_per_hour, callback){
         Employee.findById(id, function (err, employee) {
             if(err){
@@ -58,7 +39,24 @@ class EmployeeService {
                         return callback(err);
                     }
                     else{
-                        console.log(raw);
+                        return callback(err, employee);
+                    }
+                });
+            }
+        })
+    }
+
+    deleteEmployee(id, callback){
+        Employee.findById(id, function (err, employee) {
+            if(err){
+                return callback(err);
+            }
+            if(employee){
+                employee.update({ status: "inactive" }, function (err, raw) {
+                    if(err){
+                        return callback(err);
+                    }
+                    else{
                         return callback(err, employee);
                     }
                 });
