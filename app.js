@@ -3,13 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
 var clientRouter = require('./routes/client');
 
 var app = express();
+
+//Setting up MongoDB Database Connection
+var mongoDB = 'mongodb://testing:uadeia2018@ds145043.mlab.com:45043/uade-ia';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+require('./config/passport');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,11 +26,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret:'mysupersecretkey', resave:false, saveUnitiliazed:false}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vendor', express.static(__dirname + '/public/vendor'));
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
 app.use('/client', clientRouter);
 
 // catch 404 and forward to error handler
@@ -42,9 +52,6 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-//Setting up MongoDB Database Connection
-var mongoDB = 'mongodb://testing:uadeia2018@ds145043.mlab.com:45043/uade-ia';
-mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 //Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;

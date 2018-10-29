@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var clientMock = require('../mock/clientMock')
+var clientMock = require('../mock/clientMock');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
