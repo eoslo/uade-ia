@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.set("debug", true);
+var employeeSchema = require('employee.js')
 
 var clientSchema = new Schema({
     username: {
@@ -16,8 +16,11 @@ var clientSchema = new Schema({
         required: 'Kindly enter the name of the client'
     },
     person_type: {
-        type: String,
-        default: null
+        type: [{
+            type: String,
+            enum: ['physical', 'legal entity']
+        }],
+        default: ['physical']
     },
     address: {
         type: String,
@@ -34,6 +37,10 @@ var clientSchema = new Schema({
     gross_income: {
         type: Number,
         default: null
+    },
+    employees: {
+        type: [employeeSchema],
+        default: omitUndefined
     },
     creation_date: {
         type: Date,
