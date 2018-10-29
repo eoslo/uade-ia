@@ -15,11 +15,20 @@ router.get('/register', notLoggedIn, function (req, res, next) {
     res.render('register');
 });
 
-router.post('/signup', notLoggedIn, passport.authenticate('local.signup', {
-    successRedirect: '/',
-    failureRedirect: '/signup',
-    failureFlash: true
-}));
+router.post('/signup', notLoggedIn, passport.authenticate('local.signup'), function(req, res) {
+    res.redirect('/login');
+});
+
+router.post('/signin', notLoggedIn, passport.authenticate('local.signin'), function(req, res) {
+    if(loggedIn()){
+        res.status(200);
+        res.send({});
+    }
+    else{
+        res.status(404);
+        res.send({});
+    }
+});
 
 function notLoggedIn(req, res, next) {
     if(!req.isAuthenticated()){

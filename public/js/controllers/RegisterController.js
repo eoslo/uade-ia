@@ -19,12 +19,6 @@ angular.module('PaychecksApp')
             method: 'POST',
             url: $rootScope.serverEndpoint + 'signup',
             data: $scope.form
-        })
-        .then(function(response) {
-            console.log(response);
-        })
-        .catch(function(error) {
-            console.log(error);
         });
     };
 }])
