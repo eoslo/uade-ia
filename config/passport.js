@@ -22,7 +22,7 @@ passport.use('local.signup', new LocalStrategy({
             return done(err);
         }
         if(client){
-            return done(null, false, {message:'Client already exists.'});
+            return done(null, false, {message:'Cliente ya existente.'});
         }
         var newClient = new Client();
         newClient.name = name;
@@ -33,5 +33,21 @@ passport.use('local.signup', new LocalStrategy({
             }
             return done(null, newClient);
         })
+    })
+}));
+
+passport.use('local.signin', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+}, function (req, name, password, done) {
+    Client.findOne({'username': name}, function (err, client) {
+        if(err){
+            return done(err);
+        }
+        if(client){
+            return done(null, client);
+        }
+        return done(err, false, {message: "Cliente no existente."})
     })
 }));
