@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var employeeSchema = require('../models/employee')
+var employeeSchema = require('../models/employee');
 
 var clientSchema = new Schema({
     username: {
@@ -38,7 +38,7 @@ var clientSchema = new Schema({
         type: Number,
         default: null
     },
-    employees: [employeeSchema.schema],
+    employees: [ { type: Schema.Types.ObjectId, ref: 'employee' }],
     creation_date: {
         type: Date,
         default: Date.now
