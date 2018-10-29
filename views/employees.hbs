@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper" ng-controller="EmployeesController" ng-init="getUserId('{{user._id}}')">
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar2">
         <div class="logo">
@@ -8,11 +8,8 @@
         </div>
         <div class="menu-sidebar2__content js-scrollbar1">
             <div class="account2">
-                <div class="image img-cir img-120">
-                    <h2></h2>
-                </div>
-                <h4 class="name">john doe</h4>
-                <a href="#">Log Out</a>
+                <h4 class="name">{{user.name}}</h4>
+                <a href="/logout">Cerrar sesión</a>
             </div>
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
@@ -45,8 +42,8 @@
                                     <form action="">
                                         <input class="au-input au-input--full au-input--h65" type="text" placeholder="Buscar..." />
                                         <span class="search-dropdown__icon">
-                                                <i class="zmdi zmdi-search"></i>
-                                            </span>
+                                            <i class="zmdi zmdi-search"></i>
+                                        </span>
                                     </form>
                                 </div>
                             </div>
@@ -142,17 +139,13 @@
                                 <div class="au-breadcrumb-left">
                                     <span class="au-breadcrumb-span">Usted está aquí:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="#">Home</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
                                         <li class="list-inline-item">Empleados</li>
                                     </ul>
                                 </div>
-                                <button class="au-btn au-btn-icon au-btn--green">
-                                    <i class="zmdi zmdi-plus"></i>Nuevo Empleado</button>
+                                <button class="au-btn au-btn-icon au-btn--green" type="button" data-toggle="modal"
+                                    data-target="#largeModal">
+                                    <i class="zmdi zmdi-plus"></i>Nuevo Empleado
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -201,37 +194,37 @@
                                 <div class="table-responsive table-data">
                                     <table class="table">
                                         <thead>
-                                        <tr>
-                                            <td>Nombre / DNI</td>
-                                            <td>Estado</td>
-                                            <td>Tipo de Salario</td>
-                                            <td></td>
-                                        </tr>
+                                            <tr>
+                                                <td>Nombre / DNI</td>
+                                                <td>Estado</td>
+                                                <td>Tipo de Salario</td>
+                                                <td></td>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="table-data__info">
-                                                    <h6>lori lynch</h6>
-                                                    <span>
-                                                                <a href="#">40000000</a>
-                                                            </span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="state inactive">Inactivo</span>
-                                            </td>
-                                            <td>
-                                                <div class="table-data__info">
-                                                    <a>Por Hora</a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                        <span class="more">
-                                                            <i class="zmdi zmdi-more"></i>
+                                            <tr>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>lori lynch</h6>
+                                                        <span>
+                                                            <a href="#">40000000</a>
                                                         </span>
-                                            </td>
-                                        </tr>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="state inactive">Inactivo</span>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <a>Por Hora</a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="more">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -246,17 +239,73 @@
             </div>
         </section>
 
-        <section>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copyright">
-                            <p>Copyright © 2018 UADE-IA. All rights reserved.</p>
-                        </div>
+        <!-- modal large -->
+        <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Large Modal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Usuario</label>
+                                <input ng-model="form.username" class="au-input au-input--full" type="text" name="username" placeholder="Usuario">
+                            </div>
+                            <div class="form-group">
+                                <label>Contraseña</label>
+                                <input ng-model="form.password" class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>Entidad legal</label>
+                                <div class="form-check">
+                                    <div class="radio">
+                                        <label for="physical" class="form-check-label ">
+                                            <input ng-model="form.person_type" id="physical" type="radio" name="person_type" value="physical" class="form-check-input">Física
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label for="legal_entity" class="form-check-label ">
+                                            <input ng-model="form.person_type" id="legal_entity" type="radio" name="person_type" value="legal entity" class="form-check-input">Jurídica
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input ng-model="form.address" class="au-input au-input--full" type="text" name="address" placeholder="Dirección">
+                            </div>
+                            <div class="form-group">
+                                <label>Cuit</label>
+                                <input ng-model="form.cuit" class="au-input au-input--full" type="text" name="cuit" placeholder="Dirección">
+                            </div>
+                            <div class="form-group">
+                                <label>IVA</label>
+                                <input ng-model="form.iva" class="au-input au-input--full" type="text" name="iva" placeholder="IVA">
+                            </div>
+                            <div class="form-group">
+                                <label>Ingresos brutos</label>
+                                <input ng-model="form.gross_income" class="au-input au-input--full" type="text" name="gross_income" placeholder="Ingresos brutos">
+                            </div>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="saveEmployee()">Guardar</button>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <!-- end modal large -->
         <!-- END PAGE CONTAINER-->
     </div>
 
