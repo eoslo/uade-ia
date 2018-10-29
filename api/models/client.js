@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var employeeSchema = require('../models/employee')
+var employeeSchema = require('../models/employee');
 
 var clientSchema = new Schema({
     username: {

@@ -2,7 +2,7 @@ var Employee = require('../models/employee');
 var Client = require('../models/client');
 
 
-class EmployeeController {
+class EmployeeService {
 
     createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, clientId, callback) {
         var employee = new Employee();
@@ -67,4 +67,4 @@ class EmployeeController {
     }
 }
 
-module.exports = EmployeeController;
+module.exports = EmployeeService;
