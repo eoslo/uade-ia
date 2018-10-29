@@ -4,6 +4,14 @@ var Schema = mongoose.Schema;
 
 
 var clientSchema = new Schema({
+    username: {
+      type: String,
+      required: 'Please enter the client Username'
+    },
+    password: {
+      type: String,
+      required: 'Please enter the client Password'
+    },
     name: {
         type: String,
         required: 'Kindly enter the name of the client'
