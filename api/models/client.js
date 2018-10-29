@@ -38,7 +38,7 @@ var clientSchema = new Schema({
         type: Number,
         default: null
     },
-    employees: [ { type: Schema.Types.ObjectId, ref: 'employee' }],
+    employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     creation_date: {
         type: Date,
         default: Date.now
