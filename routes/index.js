@@ -11,12 +11,18 @@ router.get('/login', notLoggedIn, function (req, res, next) {
     res.render('login');
 });
 
+router.get('/logout', loggedIn, function(req, res){
+    req.logout();
+    res.redirect('/login');
+});
+
 router.get('/register', notLoggedIn, function (req, res, next) {
     res.render('register');
 });
 
 router.get('/employees', loggedIn, function (req, res, next) {
-    res.render('employees');
+    console.log(req.user);
+    res.render('employees', {user: req.user});
 });
 
 router.get('/novedades', loggedIn, function (req, res, next) {
