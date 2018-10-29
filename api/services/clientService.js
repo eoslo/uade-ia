@@ -5,7 +5,7 @@ class ClientService {
     updateClient(id, name, person_type, address, cuit, iva, gross_income, employees, callback){
         console.log(id);
         console.log(name);
-        var client = Client.findById(id, function (err, client){
+        Client.findById(id, function (err, client){
             if (err) {
                 return callback(err);
             } else {
@@ -33,7 +33,7 @@ class ClientService {
     }
 
     deleteClient(id){
-        var client = Client.findById(id, function (err, client){
+    Client.findById(id, function (err, client){
             if (err){
                 return callback(err);
             } else {
