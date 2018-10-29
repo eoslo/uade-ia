@@ -15,13 +15,9 @@ var updateSchema = new Schema({
         default: Date.now
     },
     status: {
-        type: [{
-            type: String,
-            enum: ['active', 'inactive']
-        }],
-        default: ['active']
+        type: String,
+        default: 'active'
     }
 });
 
 module.exports = mongoose.model('update', updateSchema);
-// module.exports = updateSchema;
