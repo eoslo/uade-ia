@@ -4,7 +4,7 @@ var passport = require('passport');
 
 /* GET home page. */
 router.get('/', loggedIn ,function (req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.redirect('/employees');
 });
 
 router.get('/login', notLoggedIn, function (req, res, next) {
@@ -15,16 +15,24 @@ router.get('/register', notLoggedIn, function (req, res, next) {
     res.render('register');
 });
 
+router.get('/employees', loggedIn, function (req, res, next) {
+    res.render('employees');
+});
+
+router.get('/novedades', loggedIn, function (req, res, next) {
+    res.render('updates');
+});
+
 router.post('/signup', notLoggedIn, passport.authenticate('local.signup'), function(req, res) {
-    res.redirect('/login');
+    res.status(200);
+    res.send({});
 });
 
 router.post('/signin', notLoggedIn, passport.authenticate('local.signin'), function(req, res) {
-    if(loggedIn()){
+    if(req.isAuthenticated()){
         res.status(200);
         res.send({});
-    }
-    else{
+    } else{
         res.status(404);
         res.send({});
     }
