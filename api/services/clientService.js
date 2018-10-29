@@ -1,10 +1,9 @@
 var Client = require('../models/client');
 
-class clientService {
-    function createClient(username, password, name, person_type, address, cuit, iva, gross_income, employees, callback){
-        var client = new Client();
-        client.username = username;
-        client.password = password;
+class ClientService {
+
+    updateClient(id, name, person_type, address, cuit, iva, gross_income, employees, callback){
+        var client = Client.findById(id);
         client.name = name;
         client.person_type = person_type;
         client.address = address;
@@ -12,9 +11,23 @@ class clientService {
         client.iva = iva;
         client.gross_income = gross_income;
         client.employees = employees;
-        client.save(callback);
+        client.save(function (err) {
+            if (err) {
+                return callback(err);
+            }
+            return callback(err, client);
+        });
+    }
+
+    deleteClient(id){
+        var client = Client.findById(id);
+        client.deleteOne({_id: id}, function (err) {
+            if (err) {
+                return callback(err)
+            }
+        })
     }
 }
 
-module.export = ;
+module.exports = ClientService;
 

@@ -1,7 +1,7 @@
 var Employee = require('../models/employee');
 
 
-class EmployeeController {
+class EmployeeService {
 
     createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, callback) {
         var employee = new Employee();
@@ -21,4 +21,4 @@ class EmployeeController {
     }
 }
 
-module.exports = EmployeeController;
+module.exports = EmployeeService;
