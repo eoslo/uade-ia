@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var updateSchema = require('update.js');
 
 var employeeSchema = new Schema({
     name: {

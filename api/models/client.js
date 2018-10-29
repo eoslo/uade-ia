@@ -16,8 +16,11 @@ var clientSchema = new Schema({
         required: 'Kindly enter the name of the client'
     },
     person_type: {
-        type: String,
-        default: null
+        type: [{
+            type: String,
+            enum: ['physical', 'legal entity']
+        }],
+        default: ['physical']
     },
     address: {
         type: String,
