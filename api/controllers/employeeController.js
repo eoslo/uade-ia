@@ -24,6 +24,15 @@ class employeeController {
                 return callback(err, employee)
             })
     }
+
+    deleteEmployee(req, callback){
+        return this.employeeService.deleteEmployee(req.body.employee_id, function (err, employee) {
+                if(err){
+                    console.error(err);
+                }
+                return callback(err, employee)
+            })
+    }
 }
 
 

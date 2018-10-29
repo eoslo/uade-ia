@@ -19,7 +19,18 @@ router.put('/', function(req, res, next) {
     employeeController.modifyEmployee(req, function (err, employee) {
         if(err){
             res.status(500);
-            res.send({error:'Hubo un error al crear el empleado'});
+            res.send({error:'Hubo un error al modificar el empleado'});
+        }
+        res.status(200);
+        res.send(employee);
+    })
+});
+
+router.delete('/', function(req, res, next) {
+    employeeController.deleteEmployee(req, function (err, employee) {
+        if(err){
+            res.status(500);
+            res.send({error:'Hubo un error al eliminar el empleado'});
         }
         res.status(200);
         res.send(employee);

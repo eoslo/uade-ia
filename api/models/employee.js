@@ -32,18 +32,15 @@ var employeeSchema = new Schema({
         type: Number,
         default: null
     },
-    updates: [updateSchema.schema],
-    salaries: [salarySchema.schema],
+    updates: {type:[updateSchema.schema], default:[]},
+    salaries: {type:[salarySchema.schema], default:[]},
     creation_date: {
         type: Date,
         default: Date.now
     },
     status: {
-        type: [{
-            type: String,
-            enum: ['active', 'inactive']
-        }],
-        default: ['active']
+        type: String,
+        default: "active"
     }
 });
 
