@@ -17,13 +17,13 @@ var employeeSchema = new Schema({
     dni: {
         type: String,
         default: null
-    }
+    },
     creation_date: {
         type: Date,
         default: Date.now
     },
     doc: {
-        type: String
+        type: String,
         default: null
     },
     status: {
