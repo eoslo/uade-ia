@@ -52,7 +52,7 @@ passport.use('local.signin', new LocalStrategy({
             return done(err);
         }
         if(client){
-            return done(null, client);
+          return done(null, client);
         }
         return done(err, false, {message: "Cliente no existente."})
     })
