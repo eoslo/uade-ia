@@ -8,17 +8,4 @@ router.get('/', function(req, res, next) {
     res.send(client);
 });
 
-router.post('/signup', notLoggedIn, passport.authenticate('local.signup', {
-    successRedirect: '/',
-    failureRedirect: '/signup',
-    failureFlash: true
-}))
-
-function notLoggedIn(req, res, next) {
-    if(!req.isAuthenticated()){
-        return next();
-    }
-    res.redirect('/login');
-}
-
 module.exports = router;

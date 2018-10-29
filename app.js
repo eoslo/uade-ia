@@ -9,7 +9,6 @@ var passport = require('passport');
 var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
 var clientRouter = require('./routes/client');
 
 var app = express();
@@ -35,7 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vendor', express.static(__dirname + '/public/vendor'));
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
 app.use('/client', clientRouter);
 
 // catch 404 and forward to error handler
