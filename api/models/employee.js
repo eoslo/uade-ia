@@ -18,6 +18,25 @@ var employeeSchema = new Schema({
         type: String,
         default: null
     },
+    payroll_type: {
+      type: [{
+          type: String,
+          enum: ['monthly', 'per hour']
+      }],
+      default: ['monthly']
+    },
+    gross_salary: {
+        type: Number,
+        default: null
+    },
+    salary_per_hour: {
+        type: Number,
+        default: null
+    },
+    updates: {
+      type: [updateSchema],
+      default: undefined
+    },
     creation_date: {
         type: Date,
         default: Date.now
