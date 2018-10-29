@@ -39,6 +39,16 @@ class ClientService {
             console.log("[+] Successfully deleted user with id:" + id);
         })
     }
+
+    getEmployees(id, callback){
+        Client.findOne({ _id: clientId }).populate('employees').
+        exec(function (err, client) {
+            if (err){
+                return callback(err);
+            }
+            return callback(err, client.employees);
+        });;
+    }
 }
 
 module.exports = ClientService;
