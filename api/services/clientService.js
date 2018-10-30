@@ -61,14 +61,15 @@ class ClientService {
         });
     }
 
-    getAllUpdates(employees){
+    getAllUpdates(employees, callback){
         console.log(employees);
         var updates = [];
         employees.forEach(function (employee){
             updates.concat(employee.updates);
         });
-        return updates;
+        return callback(updates);
     }
+
 }
 
 module.exports = ClientService;

@@ -45,9 +45,6 @@ class clientController {
         });
     }
 
-    getUpdatesByEmployeeId(req, callback){
-        console.log('TODO');
-    }
 }
 
 module.exports = clientController;
