@@ -154,7 +154,7 @@
                                     </ul>
                                 </div>
                                 <button class="au-btn au-btn-icon au-btn--green" type="button" data-toggle="modal"
-                                    data-target="#largeModal">
+                                    data-target="#largeModal" ng-click="newEmployee()">
                                     <i class="zmdi zmdi-plus"></i>Nuevo Empleado
                                 </button>
                             </div>
@@ -172,8 +172,7 @@
                         <div class="col-xl-12">
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
-                                <h3 class="title-3 m-b-30">
-                                    <i class="zmdi zmdi-account-calendar"></i>Empleados</h3>
+                                <h3 class="title-3 m-b-30"><i class="zmdi zmdi-account-calendar"></i>Empleados</h3>
                                 <div class="table-responsive table-data">
                                     <table class="table">
                                         <thead>
@@ -182,7 +181,7 @@
                                                 <td>Tipo de Salario</td>
                                                 <td>Sueldo</td>
                                                 <td>Estado</td>
-                                                <td></td>
+                                                <td>Acciones</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -211,9 +210,17 @@
                                                     <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
                                                 </td>
                                                 <td>
-                                                    <span class="more">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </span>
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Editar" data-toggle="modal"
+                                                        data-target="#largeModal" ng-click="getEmployee(employee._id)">
+                                                        <i class="zmdi zmdi-mail-edit"></i>
+                                                    </button>
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                        <i class="zmdi zmdi-mail-delete"></i>
+                                                    </button>
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Agregar novedad" data-toggle="modal"
+                                                        data-target="#largeModal">
+                                                            <i class="zmdi zmdi-more"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </tbody>
