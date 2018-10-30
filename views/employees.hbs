@@ -14,13 +14,24 @@
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a href="employees">
-                            <i class="fa fa-user"></i>Empleados</a>
+                        <a href="/employees">
+                            <i class="fa fa-user"></i>Empleados
+                        </a>
                     </li>
                     <li>
-                        <a href="inbox.html">
-                            <i class="fa fa-bell"></i>Novedades</a>
-                        <span class="inbox-num">3</span>
+                        <a href="/updates">
+                            <i class="fa fa-check-square"></i>Novedades
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/payroll">
+                            <i class="fa fa-dollar"></i>Liquidaciones
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/bills">
+                            <i class="fa fa-list-alt"></i>Facturas
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -163,61 +174,41 @@
                             <div class="user-data m-b-40">
                                 <h3 class="title-3 m-b-30">
                                     <i class="zmdi zmdi-account-calendar"></i>Empleados</h3>
-
-
-                                <!-- SEARCH
-                                <div class="filters m-b-45">
-                                    <div class="form-header" action="" method="POST">
-                                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Buscar empleado...">
-                                        <button class="au-btn--submit" type="submit">
-                                            <i class="zmdi zmdi-search"></i>
-                                        </button>
-                                    </div>
-                                    <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-                                        <select class="js-select2" name="state">
-                                            <option selected="selected">Estado</option>
-                                            <option value="">Activo</option>
-                                            <option value="">Inactivo</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                    <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                        <select class="js-select2 au-select-dark" name="salary">
-                                            <option selected="selected">Tipo de Salario</option>
-                                            <option value="">Mensual</option>
-                                            <option value="">Por Hora</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                                END SEARCH-->
                                 <div class="table-responsive table-data">
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <td>Nombre / DNI</td>
-                                                <td>Estado</td>
                                                 <td>Tipo de Salario</td>
+                                                <td>Sueldo</td>
+                                                <td>Estado</td>
                                                 <td></td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr ng-repeat="employee in employees">
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <h6>lori lynch</h6>
-                                                        <span>
-                                                            <a href="#">40000000</a>
-                                                        </span>
+                                                        <h6 ng-bind="employee.name"></h6>
+                                                        <span ng-bind="employee.dni"></span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span class="state inactive">Inactivo</span>
+                                                    <div class="table-data__info">
+                                                        <span ng-if="employee.payroll_type == 'monthly'">Mensual</span>
+                                                        <span ng-if="employee.payroll_type == 'per_hour'">Por hora</span>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <a>Por Hora</a>
+                                                        $ <span ng-if="employee.payroll_type == 'monthly'" ng-bind="employee.gross_salary"></span>
+                                                        <span ng-if="employee.payroll_type == 'per_hour'" ng-bind="employee.salary_per_hour"></span>
+                                                        <span ng-if="employee.payroll_type == 'per_hour'"> / hora</span>
                                                     </div>
+                                                </td>
+                                                <td>
+                                                    <span ng-if="employee.status == 'active'" class="state active">Activo</span>
+                                                    <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
                                                 </td>
                                                 <td>
                                                     <span class="more">
@@ -227,9 +218,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                                <div class="user-data__footer">
-                                    <button class="au-btn au-btn-load">Cargar Más</button>
                                 </div>
                             </div>
                             <!-- END USER DATA-->
@@ -258,7 +246,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Dirección</label>
-                                <input ng-model="form.address" class="au-input au-input--full" type="text" name="address" placeholder="Dirección del empleado...">
+                                <input ng-model="form.address" class="au-input au-input--full" type="text" name="address" placeholder="Dirección de vivienda del empleado...">
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Cumpleaños</label>
@@ -283,19 +271,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" ng-show="form.payroll_type == 'monthly'">
                                 <label>Salario Mensual</label>
                                 <input ng-model="form.gross_salary" class="au-input au-input--full" type="text" name="gross_salary" placeholder="Salario Mensual del empleado...">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Salario Por Hora</label>
                                 <input ng-model="form.salary_per_hour" class="au-input au-input--full" type="text" name="salary_per_hour" placeholder="Salario Por Hora del empleado...">
+                            </div>
+                            <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
+                                <label>Horas Estimadas</label>
+                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="text" name="estimated_hours" placeholder="Horas estimadas diarias del empleado...">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="saveEmployee()">Guardar</button>
+                        <button type="button" class="btn btn-primary" ng-click="registerEmployee()">Guardar</button>
                     </div>
                 </div>
             </div>
