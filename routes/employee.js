@@ -36,4 +36,15 @@ router.delete('/', function(req, res, next) {
         res.send(employee);
     })
 });
+
+router.get('/:id/updates', function(req, res, next){
+    employeeController.getUpdatesByEmployeeId(req, function (err, updates){
+        if(err) {
+            res.status(500);
+            res.send({error:'Hubo un error intentando encontrar las novedades del empleado'});
+        }
+        res.status(200);
+        res.send(updates);
+    })
+});
 module.exports = router;
