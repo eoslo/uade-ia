@@ -6,6 +6,8 @@ var Schema = mongoose.Schema;
 * salary_change
 * absense_days
 * per_hour_change
+* bonus
+* vacation_days
 * */
 var updateSchema = new Schema({
     update: {

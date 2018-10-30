@@ -36,8 +36,14 @@ angular.module('PaychecksApp')
     };
 
     $scope.registerEmployee = function() {
+        if($scope.form.employee_id) {
+            var method = 'PUT';
+        } else {
+            var method = 'POST'
+        }
+
         $http({
-            method: 'POST',
+            method: method,
             url: $rootScope.serverEndpoint + 'employee',
             data: $scope.form
         })
