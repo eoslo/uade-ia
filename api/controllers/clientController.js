@@ -52,7 +52,7 @@ class clientController {
     getAllSalaries(req, callback) {
         return this.getEmployees(req, function (err, employees) {
             if(err){
-                cosole.error(err);
+                console.error(err);
                 return callback(err);
             }
             var result = [];
