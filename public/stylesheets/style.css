@@ -10,3 +10,7 @@ body .page-wrapper {
 .page-wrapper .container.login .login-wrap {
     padding-bottom: 50px;
 }
+
+.page-wrapper .action-icon{
+    margin-right: 5px;
+}
