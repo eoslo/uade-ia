@@ -35,7 +35,7 @@ class ClientService {
             if (err) {
                 return callback(err);
             } else {
-                if (client != null) {
+                if (client && client.status === 'active') {
                     console.log(client.name);
                     client.name = name;
                     client.person_type = person_type;
@@ -51,27 +51,34 @@ class ClientService {
                         return callback(err, client);
                     });
                 } else {
-                    console.log("[+] The user you are looking for does not exist in our database!");
+                    if(client.status === 'inactive'){
+                        console.log("[+] The client you are looking for is currently inactive!");
+                        return callback("[+] The client you are looking for is currently inactive!");
+                    }
+                    console.log("[+] The client you are looking for does not exist in hour database!");
+                    return callback("[+] The client you are looking for does not exist in hour database!");
                 }
             }
         });
 
     }
 
-    deleteClient(id){
+    deleteClient(id, callback){
         Client.findById(id, function (err, client){
             if (err){
-                return err;
+                return callback(err);
             } else {
-                if (client != null){
+                if (client && client.status === 'active'){
                     client.status = 'inactive';
                     client.save(function (err){
                         if (err){
-                            return err;
+                            return callback(err);
                         }
                         console.log("[+] Successfully deleted user with id:" + id + "(Logically)");
-                        return err, client;
+                        return callback(err, client);
                     });
+                } else {
+                    return callback("[+] The client you are looking for is currently inactive!")
                 }
             }
         });
