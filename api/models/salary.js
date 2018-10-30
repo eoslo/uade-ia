@@ -2,15 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var salarySchema = new Schema({
-    mount: {
-        type: Number,
-        default: 0
-    },
     description: {type:[{
             description: String,
             mount: Number
         }], default:[]},
-    income: {
+    gross_income: {
+        type: Number,
+        default: 0
+    },
+    net_income: {
         type: Number,
         default: 0
     },
