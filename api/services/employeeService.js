@@ -65,15 +65,15 @@ class EmployeeService {
         })
     }
 
-    getUpdatesByEmployeeId(id){
+    getUpdatesByEmployeeId(id, callback){
         Employee.findById(id, function (err, employee) {
             if (err){
-                return err;
+                return callback(err);
             } else {
                 if(employee){
-                    return employee.updates;
+                    return callback(err, employee.updates);
                 }
-                return {};
+                return callback(err, {});
             }
         });
     }

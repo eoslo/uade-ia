@@ -44,7 +44,7 @@ class employeeController {
                 console.error(err);
                 return callback(err);
             }
-            return callback(updates);
+            return callback(err, updates);
         });
     }
 

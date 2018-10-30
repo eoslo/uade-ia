@@ -25,7 +25,7 @@ class SalaryService {
                             }
                             else if(employee.payroll_type === 'monthly' && update.absence_days){
                                 mount = ((employee.gross_salary/30)*update.absence_days);
-                                salary.description.push({description:update.absence_days.toString()+" dias ausentes.", mount:mount});
+                                salary.description.push({description:update.absence_days.toString()+" dias ausentes.", mount:-mount});
                                 salary.mount -= mount;
                             }
                         })
@@ -42,6 +42,7 @@ class SalaryService {
                             salary.mount += employee.salary_per_hour*employee.estimated_hours;
                         }
                     }
+                    salary = deductions(employee, salary);
                     employee.update({ $push :{salaries:salary} }, function (err, raw) {
                         if(err){
                             errors.push({error:err, employee:employee.dni});
@@ -57,6 +58,9 @@ class SalaryService {
         })
     }
 
+    deductions(employee, salary){
+
+    }
 }
 
 module.exports = SalaryService;
