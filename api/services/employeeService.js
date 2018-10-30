@@ -30,13 +30,13 @@ class EmployeeService {
         });
     }
 
-    modifyEmployee(id, address, gross_salary, salary_per_hour, estimated_hours, callback){
+    modifyEmployee(id, name, address, birth_date, dni, estimated_hours, deductions, callback){
         Employee.findById(id, function (err, employee) {
             if(err){
                 return callback(err);
             }
             if(employee && employee.status === 'active'){
-                employee.update({ address: address, gross_salary: gross_salary, salary_per_hour: salary_per_hour, estimated_hours: estimated_hours }, function (err, raw) {
+                employee.update({ name: name, address: address, birth_date: birth_date, dni: dni, estimated_hours: estimated_hours, deductions: deductions }, function (err, raw) {
                     if(err){
                         return callback(err);
                     }
