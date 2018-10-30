@@ -6,7 +6,7 @@ class updateController {
     }
 
     createUpdate(req, callback){
-        return this.updateService.createUpdate(req.body.absence_days, req.body.worked_hours, req.body.employee_id, function (err, update){
+        return this.updateService.createUpdate(req.body.update, req.body.mount, req.body.employee_id, function (err, update){
             if (err){
                 console.error(err);
             }

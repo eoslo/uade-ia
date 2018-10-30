@@ -10,6 +10,10 @@ var salarySchema = new Schema({
             description: String,
             mount: Number
         }], default:[]},
+    income: {
+        type: Number,
+        default: 0
+    },
     pay_date: {
         type: Date,
         default: null
