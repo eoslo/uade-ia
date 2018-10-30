@@ -9,6 +9,7 @@ router.post('/', function(req, res, next) {
         if(err){
             res.status(500);
             res.send({error:'Hubo un error al crear el empleado'});
+            return;
         }
         res.status(201);
         res.send(update);

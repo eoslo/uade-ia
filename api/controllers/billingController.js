@@ -1,10 +1,8 @@
 var BillingService = require('../services/billingService');
+var billingService = new BillingService();
+
 
 class billingController {
-    constructor(){
-        this.billingService = new BillingService();
-    }
-
     createBill(req, callback) {
         var clientId = req.params.clientId
         if (clientId && clientId.length == 24){

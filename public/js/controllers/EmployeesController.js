@@ -4,6 +4,12 @@ angular.module('PaychecksApp')
 
 .controller('EmployeesController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
     $scope.employees = [];
+    $scope.updateForm = {
+        update: null,
+        mount: null,
+        employee_id: null
+    };
+
     initEmployeeForm();
 
     $scope.getUserId = function(userId) {
@@ -36,13 +42,37 @@ angular.module('PaychecksApp')
     };
 
     $scope.registerEmployee = function() {
+        $scope.form.client_id = $scope.userId;
+        if($scope.form.employee_id) {
+            var method = 'PUT';
+        } else {
+            var method = 'POST'
+        }
+
         $http({
-            method: 'POST',
+            method: method,
             url: $rootScope.serverEndpoint + 'employee',
             data: $scope.form
         })
         .then(function(response) {
             getClientEmployees();
+            angular.element('#close-modal-btn').trigger('click');
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    };
+
+    $scope.newUpdate = function() {
+        $scope.updateForm.employee_id = $scope.form.employee_id;
+        $http({
+            method: 'POST',
+            url: $rootScope.serverEndpoint + 'update',
+            data: $scope.updateForm
+        })
+        .then(function(response) {
+            getClientEmployees();
+            angular.element('#close-modal-btn2').trigger('click');
         })
         .catch(function(error) {
             console.log(error);

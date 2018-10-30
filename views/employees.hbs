@@ -13,8 +13,8 @@
             </div>
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
-                    <li>
-                        <a href="/employees">
+                    <li class="active">
+                        <a>
                             <i class="fa fa-user"></i>Empleados
                         </a>
                     </li>
@@ -41,105 +41,6 @@
 
     <!-- PAGE CONTAINER-->
     <div class="page-container2">
-        <!-- HEADER DESKTOP-->
-        <header class="header-desktop2">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="header-wrap2">
-                        <div class="header-button2">
-                            <div class="header-button-item js-item-menu">
-                                <i class="zmdi zmdi-search"></i>
-                                <div class="search-dropdown js-dropdown">
-                                    <form action="">
-                                        <input class="au-input au-input--full au-input--h65" type="text" placeholder="Buscar..." />
-                                        <span class="search-dropdown__icon">
-                                            <i class="zmdi zmdi-search"></i>
-                                        </span>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="header-button-item has-noti js-item-menu">
-                                <i class="zmdi zmdi-notifications"></i>
-                                <div class="notifi-dropdown js-dropdown">
-                                    <div class="notifi__title">
-                                        <p>Usted tiene 3 notificaciones</p>
-                                    </div>
-                                    <div class="notifi__item">
-                                        <div class="bg-c1 img-cir img-40">
-                                            <i class="zmdi zmdi-email-open"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>Usted tiene un correo nuevo</p>
-                                            <span class="date">12 de Abril, 2018 09:37</span>
-                                        </div>
-                                    </div>
-                                    <div class="notifi__item">
-                                        <div class="bg-c2 img-cir img-40">
-                                            <i class="zmdi zmdi-account-box"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>Su cuenta ha sido bloqueada</p>
-                                            <span class="date">12 de Abril, 2018 09:23</span>
-                                        </div>
-                                    </div>
-                                    <div class="notifi__item">
-                                        <div class="bg-c3 img-cir img-40">
-                                            <i class="zmdi zmdi-file-text"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>Usted tiene un nuevo archivo</p>
-                                            <span class="date">11 de Abril, 2018 18:56</span>
-                                        </div>
-                                    </div>
-                                    <div class="notifi__footer">
-                                        <a href="#">Todas las Notificaciones</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="header-button-item mr-0 js-sidebar-btn">
-                                <i class="zmdi zmdi-menu"></i>
-                            </div>
-                            <div class="setting-menu js-right-sidebar d-none d-lg-block">
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Cuenta</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-settings"></i>Configuración</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Facturación</a>
-                                    </div>
-                                </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-globe"></i>Lenguaje</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-pin"></i>Ubicación</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-email"></i>Email</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-notifications"></i>Notificaciones</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- END HEADER DESKTOP-->
-
         <!-- BREADCRUMB-->
         <section class="au-breadcrumb m-t-75">
             <div class="section__content section__content--p30">
@@ -165,6 +66,17 @@
         </section>
         <!-- END BREADCRUMB-->
 
+        <!-- HEADER -->
+        <header class="header-desktop2">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap2">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER -->
+        
         <section>
             <div class="section__content section__content--p30">
                 <div class="container-fluid ">
@@ -210,16 +122,14 @@
                                                     <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
                                                 </td>
                                                 <td>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Editar" data-toggle="modal"
-                                                        data-target="#largeModal" ng-click="getEmployee(employee._id)">
-                                                        <i class="zmdi zmdi-mail-edit"></i>
+                                                    <button class="action-icon" data-toggle="modal" data-target="#largeModal" ng-click="getEmployee(employee._id)">
+                                                        <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                        <i class="zmdi zmdi-mail-delete"></i>
+                                                    <button class="action-icon" title="Eliminar">
+                                                        <i class="fa fa-trash"></i>
                                                     </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Agregar novedad" data-toggle="modal"
-                                                        data-target="#largeModal">
-                                                            <i class="zmdi zmdi-more"></i>
+                                                    <button class="action-icon" title="Agregar novedad" data-toggle="modal" data-target="#largeModal2" ng-click="getEmployee(employee._id)">
+                                                        <i class="fa fa-plus"></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -268,39 +178,83 @@
                                 <div class="form-check">
                                     <div class="radio">
                                         <label for="monthly" class="form-check-label ">
-                                            <input ng-model="form.payroll_type" id="monthly" type="radio" name="payroll_type" value="monthly" class="form-check-input">Mensual
+                                            <input ng-model="form.payroll_type" id="monthly" type="radio" name="payroll_type" value="monthly" class="form-check-input" ng-disabled="form.employee_id">Mensual
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label for="per_hour" class="form-check-label ">
-                                            <input ng-model="form.payroll_type" id="per_hour" type="radio" name="payroll_type" value="per_hour" class="form-check-input">Por Hora
+                                            <input ng-model="form.payroll_type" id="per_hour" type="radio" name="payroll_type" value="per_hour" class="form-check-input" ng-disabled="form.employee_id">Por Hora
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'monthly'">
                                 <label>Salario Mensual</label>
-                                <input ng-model="form.gross_salary" class="au-input au-input--full" type="text" name="gross_salary" placeholder="Salario Mensual del empleado...">
+                                <input ng-model="form.gross_salary" class="au-input au-input--full" type="number" name="gross_salary" placeholder="Salario Mensual del empleado..." ng-disabled="form.employee_id">
+                            </div>
+                            <div class="form-group" ng-show="form.payroll_type == 'monthly'">
+                                <label>Deducciones</label>
+                                <input ng-model="form.deductions" class="au-input au-input--full" type="number" name="deductions" placeholder="Jubilación, PAMI y Obra Social (17% por defecto)">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Salario Por Hora</label>
-                                <input ng-model="form.salary_per_hour" class="au-input au-input--full" type="text" name="salary_per_hour" placeholder="Salario Por Hora del empleado...">
+                                <input ng-model="form.salary_per_hour" class="au-input au-input--full" type="number" name="salary_per_hour" placeholder="Salario Por Hora del empleado..." ng-disabled="form.employee_id">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Horas Estimadas</label>
-                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="text" name="estimated_hours" placeholder="Horas estimadas diarias del empleado...">
+                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas diarias del empleado...">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn">Cancelar</button>
                         <button type="button" class="btn btn-primary" ng-click="registerEmployee()">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- END EMPLOYEE REGISTER -->
-        <!-- END PAGE CONTAINER-->
-    </div>
 
+
+        <!-- UPDATE REGISTER -->
+        <div class="modal fade" id="largeModal2" tabindex="-2" role="dialog" aria-labelledby="largeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Agregar novedad para <span ng-bind="form.name"></span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Tipo de novedad</label>
+                                <select ng-model="updateForm.update" name="select" id="select" class="form-control">
+                                    <option value="">Elija un tipo de novedad</option>
+                                    <option value="salary_change" ng-if="form.payroll_type == 'monthly'">Cambio de Sueldo</option>
+                                    <option value="per_hour_change" ng-if="form.payroll_type == 'per_hour'">Cambio de valor por hora</option>
+                                    <option value="worked_hours" ng-if="form.payroll_type == 'per_hour'">Horas trabajadas</option>
+                                    <option value="absense_days" ng-if="form.payroll_type == 'monthly'">Días ausentes</option>
+                                    <option value="vacation_days" ng-if="form.payroll_type == 'monthly'">Días de vacaciones</option>
+                                    <option value="bonus">Bono</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Monto / Cantidad</label>
+                                <input ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor bono, cantidad días o cantidad horas">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn2">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="newUpdate()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END UPDATE REGISTER -->
+    </div>
+    <!-- END PAGE CONTAINER-->
 </div>

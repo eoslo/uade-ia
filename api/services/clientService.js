@@ -29,14 +29,11 @@ class ClientService {
     }
 
     updateClient(id, name, person_type, address, cuit, iva, gross_income, employees, callback){
-        console.log(id);
-        console.log(name);
         Client.findById(id, function (err, client){
             if (err) {
                 return callback(err);
             } else {
                 if (client && client.status === 'active') {
-                    console.log(client.name);
                     client.name = name;
                     client.person_type = person_type;
                     client.address = address;
@@ -102,17 +99,26 @@ class ClientService {
             if (err){
                 return callback(err);
             }
+            if(!client){
+                return callback("No hay empleados con ese id.");
+            }
             return callback(err, client.employees);
         });
     }
 
     getAllUpdates(employees, callback){
-        console.log(employees);
         var updates = [];
         employees.forEach(function (employee){
-            updates.concat(employee.updates);
+            employee.updates.forEach(function (update){
+                var update = {
+                    update: update,
+                    employee_id: employee.id,
+                    employee_name: employee.name
+                }
+                updates.push(update);
+            });
         });
-        return callback(updates);
+        return callback(null, updates);
     }
 
     getClientId(username, password, callback){

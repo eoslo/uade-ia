@@ -6,7 +6,7 @@ class UpdateService {
 
     createUpdate(updateText, mount, employeeId, callback) {
         var update = new Update();
-        update.update = update;
+        update.update = updateText;
         update.mount = mount;
         Employee.findById(employeeId, function (err, employee) {
             if(employee){

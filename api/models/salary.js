@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var DateUtils = require('../utils/dateUtil');
+var dateUtils = new DateUtils();
 
 var salarySchema = new Schema({
     description: {type:[{
@@ -15,12 +17,12 @@ var salarySchema = new Schema({
         default: 0
     },
     pay_date: {
-        type: Date,
+        type: String,
         default: null
     },
     creation_date: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: dateUtils.formattedDateArgentina()
     },
     status: {
         type: String,

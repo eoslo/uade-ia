@@ -9,6 +9,7 @@ router.post('/', function(req, res, next) {
         if(err){
             res.status(500);
             res.send({error:'Hubo un error al crear el empleado'});
+            return;
         }
         res.status(201);
         res.send(employee);
@@ -20,6 +21,7 @@ router.put('/', function(req, res, next) {
         if(err){
             res.status(500);
             res.send({error:'Hubo un error al modificar el empleado'});
+            return;
         }
         res.status(200);
         res.send(employee);
@@ -31,6 +33,7 @@ router.delete('/', function(req, res, next) {
         if(err){
             res.status(500);
             res.send({error:'Hubo un error al eliminar el empleado'});
+            return;
         }
         res.status(200);
         res.send(employee);
@@ -42,9 +45,10 @@ router.get('/:id/updates', function(req, res, next){
         if(err) {
             res.status(500);
             res.send({error:'Hubo un error intentando encontrar las novedades del empleado'});
+            return;
         }
         res.status(200);
-        res.send({_updates:updates});
+        res.send(updates);
     })
 });
 
@@ -52,7 +56,8 @@ router.get('/:id/salary', function (req, res, next) {
     employeeController.getLastPayroll(req, function (err, salary) {
         if(err){
             res.status(500);
-            res.send({error:'Hubo un error al obtener la ultima liquidacion.'})
+            res.send({error:'Hubo un error al obtener la ultima liquidacion.'});
+            return;
         }
         res.status(200);
         res.send(salary);
