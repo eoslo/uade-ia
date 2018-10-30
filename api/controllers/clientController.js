@@ -11,7 +11,7 @@ class clientController {
                console.error(err);
            }
            return callback(err, client);
-       })
+       });
     }
 
     deleteClient(req, callback){
@@ -19,7 +19,8 @@ class clientController {
             if (err) {
                 console.error(err);
             }
-        })
+            return callback(err);
+        });
     }
 
     getEmployees(req, callback){
@@ -28,21 +29,30 @@ class clientController {
                 console.error(err);
             }
             return callback(err, employees);
-        })
+        });
     }
 
-    getAllUpdates(req, callback){
-        this.getEmployees(req, function (err, employees){
+    getAllUpdates(req, callback) {
+        this.getEmployees(req, function (err, employees) {
             if (err) {
                 console.log(err);
             }
-            return this.clientService.getAllUpdates(employees, function (err){
+            return this.clientService.getAllUpdates(employees, function (err) {
                 if (err) {
                     console.error(err);
                 }
             })
         });
+    }
 
+    getClientId(req, callback){
+        return this.clientService.getClientId(req.body.username, req.body.password, function (err, clientId) {
+            if (err) {
+                console.error(err);
+                return callback(err, clientId);
+            }
+            return callback(err, clientId);
+        });
     }
 }
 

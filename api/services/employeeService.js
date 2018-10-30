@@ -63,6 +63,16 @@ class EmployeeService {
             }
         })
     }
+
+    getUpdatesByEmployeeId(id){
+        Employee.findById(id, function (err, employee) {
+            if (err){
+                return callback(err);
+            } else {
+                return callback(err, employee.updates);
+            }
+        });
+    }
 }
 
 module.exports = EmployeeService;

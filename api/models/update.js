@@ -21,4 +21,3 @@ var updateSchema = new Schema({
 });
 
 module.exports = mongoose.model('update', updateSchema);
-// module.exports = updateSchema;

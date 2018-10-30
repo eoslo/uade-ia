@@ -33,6 +33,16 @@ class employeeController {
                 return callback(err, employee)
             })
     }
+
+    getUpdatesByEmployeeId(req, callback){
+        return this.employeeService.getUpdatesByEmployeeId(req.params.id, function(err, updates){
+            if (err){
+                console.error(err);
+                return callback(err);
+            }
+            return callback(updates);
+        });
+    }
 }
 
 
