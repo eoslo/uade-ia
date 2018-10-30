@@ -53,7 +53,7 @@ router.get('/:id/updates', function(req, res, next) {
 router.get('/:username', function(req, res, next) {
     clientController.getClientId(req, function (err, clientId) {
         if(err){
-            res.send(500);
+            res.status(500);
             res.send({error:err})
         }
         if(clientId){
