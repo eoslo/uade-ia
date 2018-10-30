@@ -10,6 +10,7 @@ class payrollController {
             if(err){
                 return callback(err);
             }
+            return callback();
         })
     }
 }

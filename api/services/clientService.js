@@ -102,12 +102,14 @@ class ClientService {
             if (err){
                 return callback(err);
             }
+            if(!client){
+                return callback("No hay empleados con ese id.");
+            }
             return callback(err, client.employees);
         });
     }
 
     getAllUpdates(employees, callback){
-        console.log(employees);
         var updates = [];
         employees.forEach(function (employee){
             employee.updates.forEach(function (update){
@@ -119,7 +121,7 @@ class ClientService {
                 updates.push(update);
             });
         });
-        return callback(updates);
+        return callback(null, updates);
     }
 
     getClientId(username, password, callback){
