@@ -51,11 +51,13 @@ class EmployeeService {
     deleteEmployee(id, callback){
         Employee.findById(id, function (err, employee) {
             if(err){
+                console.log("[+] Could not find an employee with that id inside the database :(");
                 return callback(err);
             }
             if(employee && employee.status === 'active'){
                 employee.update({ status: "inactive" }, function (err, raw) {
                     if(err){
+                        console.log("[+] Error while updating the employee :(");
                         return callback(err);
                     }
                     else{
