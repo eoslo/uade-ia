@@ -1,8 +1,10 @@
 var Client = require('../models/client');
+var DateUtil = require('../utils/dateUtil');
+var dateUtil = new DateUtil();
 
 class ClientService {
 
-    createClient(username, password, name, person_type, address, cuit, iva, gross_income, done){
+    createClient(username, password, name, person_type, address, cuit, iva, gross_income, pay_date, done){
         Client.findOne({'username': username}, function (err, client) {
             if(err){
                 return done(err);
@@ -19,6 +21,7 @@ class ClientService {
             newClient.cuit = cuit;
             newClient.iva = iva;
             newClient.gross_income = gross_income;
+            newClient.pay_date = dateUtil.getPayDate(pay_date);
             newClient.save(function (err, result) {
                 if(err){
                     return done(err);
@@ -29,14 +32,11 @@ class ClientService {
     }
 
     updateClient(id, name, person_type, address, cuit, iva, gross_income, employees, callback){
-        console.log(id);
-        console.log(name);
         Client.findById(id, function (err, client){
             if (err) {
                 return callback(err);
             } else {
                 if (client && client.status === 'active') {
-                    console.log(client.name);
                     client.name = name;
                     client.person_type = person_type;
                     client.address = address;
@@ -84,16 +84,8 @@ class ClientService {
         });
     }
 
-    getClientForPassport(username, password, done){
-        Client.findOne({'username': username}, function (err, client) {
-            if(err){
-                return done(err);
-            }
-            if(client && client.password === password){
-                return done(null, client);
-            }
-            return done(err, false, {message: "Cliente no existente."});
-        })
+    getClientForPassport(usernameOrCuit, password, done){
+        this.getClientId(usernameOrCuit, password, done);
     }
 
     getEmployees(id, callback){
@@ -123,18 +115,25 @@ class ClientService {
         return callback(null, updates);
     }
 
-    getClientId(username, password, callback){
-        Client.findOne({ username: username }, function (err, client) {
+    getClientId(usernameOrCuit, password, done){
+        Client.findOne({'username': usernameOrCuit}, function (err, client) {
             if(err){
-                return callback(err);
+                return done(err);
             }
-            if(!client){
-                return callback("No existe ese cliente.");
+            if(client && client.password === password){
+                return done(null, {_id:client.id, name:client.name});
             }
-            if (client.password === password){
-                return callback(err, client.id);
+            else if(!client){
+                Client.findOne({'cuit': usernameOrCuit}, function (err, client) {
+                    if(err){
+                        return done(err);
+                    }
+                    if(client && client.password === password){
+                        return done(null, {_id:client.id, name:client.name});
+                    }
+                    return done(err, false, {message: "Cliente no existente."});
+                })
             }
-            return callback("Autenticacion no valida.")
         })
     }
 }

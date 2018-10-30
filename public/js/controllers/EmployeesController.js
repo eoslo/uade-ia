@@ -79,6 +79,23 @@ angular.module('PaychecksApp')
         });
     };
 
+    $scope.deleteEmployee = function() {
+        $http({
+            method: 'DELETE',
+            url: $rootScope.serverEndpoint + 'employee',
+            data: {
+                employee_id: $scope.form.employee_id
+            }
+        })
+            .then(function(response) {
+                getClientEmployees();
+                angular.element('#close-modal-btn2').trigger('click');
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    };
+
     function getClientEmployees() {
         $http({
             method: 'GET',
