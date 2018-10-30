@@ -62,6 +62,17 @@
         </section>
         <!-- END BREADCRUMB-->
 
+        <!-- HEADER -->
+        <header class="header-desktop2">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap2">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER -->
+
         <section>
             <div class="section__content section__content--p30">
                 <div class="container-fluid ">
@@ -84,29 +95,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="update in updates">
+                                            <tr ng-repeat="item in updates">
                                                 
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <span ng-if="employee.payroll_type == 'monthly'">Mensual</span>
-                                                        <span ng-if="employee.payroll_type == 'per_hour'">Por hora</span>
+                                                        <span ng-bind="item.employee_name"></span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <h6 ng-if="update.update == 'worked_hours'">Horas trabajadas</h6>
-                                                        <h6 ng-if="update.update == 'salary_change'">Cambio de Sueldo</h6>
-                                                        <h6 ng-if="update.update == 'absense_days'">Días ausentes</h6>
-                                                        <h6 ng-if="update.update == 'per_hour_change'">Cambio de valor por hora</h6>
-                                                        <h6 ng-if="update.update == 'bonus'">Bono</h6>
-                                                        <h6 ng-if="update.update == 'vacation_days'">Días de vacaciones</h6>
+                                                        <h6 ng-if="item.update.update == 'worked_hours'">Horas trabajadas</h6>
+                                                        <h6 ng-if="item.update.updat == 'salary_change'">Cambio de Sueldo</h6>
+                                                        <h6 ng-if="item.update.updat == 'absense_days'">Días ausentes</h6>
+                                                        <h6 ng-if="item.update.updat == 'per_hour_change'">Cambio de valor por hora</h6>
+                                                        <h6 ng-if="item.update.updat == 'bonus'">Bono</h6>
+                                                        <h6 ng-if="item.update.updat == 'vacation_days'">Días de vacaciones</h6>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        $ <span ng-if="employee.payroll_type == 'monthly'" ng-bind="employee.gross_salary"></span>
-                                                        <span ng-if="employee.payroll_type == 'per_hour'" ng-bind="employee.salary_per_hour"></span>
-                                                        <span ng-if="employee.payroll_type == 'per_hour'"> / hora</span>
+                                                        
                                                     </div>
                                                 </td>
                                                 <td>
