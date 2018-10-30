@@ -17,7 +17,7 @@ router.delete('/', function(req, res, next) {
             res.status(500);
             res.send({error:err})
         } else {
-            res.send('[+] Client Successfully Deleted!')
+            res.send({})
         }
     });
 });
@@ -28,7 +28,7 @@ router.put('/', function(req, res, next){
             res.status(500);
             res.send({error:err})
         } else {
-            res.send('[+] Client Successfully Updated!')
+            res.send({})
         }
     });
 });
