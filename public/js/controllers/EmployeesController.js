@@ -29,7 +29,7 @@ angular.module('PaychecksApp')
                     employee_id: id,
                     name: $scope.employees[i].name,
                     address: $scope.employees[i].address,
-                    birth_day: $scope.employees[i].birth_day,
+                    birth_date: $scope.employees[i].birth_date,
                     dni: $scope.employees[i].dni,
                     payroll_type: $scope.employees[i].payroll_type,
                     gross_salary: $scope.employees[i].gross_salary,
@@ -113,7 +113,7 @@ angular.module('PaychecksApp')
         $scope.form = {
             name: null,
             address: null,
-            birth_day: null,
+            birth_date: null,
             dni: null,
             payroll_type: 'monthly',
             gross_salary: null,

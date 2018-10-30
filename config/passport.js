@@ -19,7 +19,7 @@ passport.use('local.signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, function (req, username, password, done) {
-    clientService.createClient(username, password, req.body.name, req.body.person_type, req.body.address, req.body.cuit, req.body.iva, req.body.gross_income, done);
+    clientService.createClient(username, password, req.body.name, req.body.person_type, req.body.address, req.body.cuit, req.body.iva, req.body.gross_income, req.body.pay_date, done);
 }));
 
 passport.use('local.signin', new LocalStrategy({

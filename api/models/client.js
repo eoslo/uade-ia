@@ -41,8 +41,8 @@ var clientSchema = new Schema({
         default: 0
     },
     pay_date: {
-        type: String,
-        default: dateUtils.formattedDateArgentinaWithoutHour()
+        type: Number,
+        default: 30
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     billings: [ { type: Schema.Types.ObjectId, ref: 'billing' , default:[]}],
