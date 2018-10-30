@@ -4,10 +4,36 @@ angular.module('PaychecksApp')
 
 .controller('EmployeesController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
     $scope.employees = [];
-    $scope.getUserId = function(userId) {
-        $scope.userId = userId;
-        getClientEmployees();
+
+    $scope.form = {
+        name: null,
+        address: null,
+        birth_day: null,
+        dni: null,
+        payroll_type: 'monthly',
+        gross_salary: null,
+        salary_per_hour: null,
+        client_id: null
     }
+
+    $scope.getUserId = function(userId) {
+        $scope.form.client_id = userId;
+        getClientEmployees();
+    };
+
+    $scope.registerEmployee = function() {
+        $http({
+            method: 'POST',
+            url: $rootScope.serverEndpoint + 'employee',
+            data: $scope.form
+        })
+        .then(function(response) {
+            getClientEmployees();
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    };
 
     function getClientEmployees() {
         $http({
@@ -21,27 +47,4 @@ angular.module('PaychecksApp')
             console.log(error);
         });
     }
-    $scope.form = {
-        name: null,
-        address: null,
-        birth_day: null,
-        dni: null,
-        payroll_type: 'monthly',
-        gross_salary: null,
-        salary_per_hour: null,
-    }
-
-    $scope.registerEmployee = function() {
-        $http({
-            method: 'POST',
-            url: $rootScope.serverEndpoint + 'signup',
-            data: $scope.form
-        })
-            .then(function(response) {
-                $window.location.assign('/employee');
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    };
 }])

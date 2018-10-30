@@ -14,13 +14,24 @@
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a href="index.html">
-                            <i class="fa fa-user"></i>Empleados</a>
+                        <a href="/employees">
+                            <i class="fa fa-user"></i>Empleados
+                        </a>
                     </li>
                     <li>
-                        <a href="inbox.html">
-                            <i class="fa fa-bell"></i>Novedades</a>
-                        <span class="inbox-num">3</span>
+                        <a href="/updates">
+                            <i class="fa fa-plus"></i>Novedades
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/payroll">
+                            <i class="fa fa-list-alt"></i>Liquidaciones
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/bills">
+                            <i class="fa fa-money"></i>Facturas
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -288,11 +299,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" ng-show="form.payroll_type == 'monthly'">
                                 <label>Salario Mensual</label>
                                 <input ng-model="form.gross_salary" class="au-input au-input--full" type="text" name="gross_salary" placeholder="Salario Mensual del empleado...">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Salario Por Hora</label>
                                 <input ng-model="form.salary_per_hour" class="au-input au-input--full" type="text" name="salary_per_hour" placeholder="Salario Por Hora del empleado...">
                             </div>
@@ -300,7 +311,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="saveEmployee()">Guardar</button>
+                        <button type="button" class="btn btn-primary" ng-click="registerEmployee()">Guardar</button>
                     </div>
                 </div>
             </div>
