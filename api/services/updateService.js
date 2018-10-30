@@ -23,7 +23,22 @@ class UpdateService {
 
 
     deleteUpdate(id, callback){
-
+        Update.findById(id, function (err, update){
+            if (err){
+                return callback(err);
+            } else {
+                if (update != null){
+                    update.status = 'inactive';
+                    update.save(function (err){
+                        if (err){
+                            return callback(err);
+                        }
+                        console.log('[+] Successfully deleted update with id:' + id + '(Logically)');
+                        return callback(err, update);
+                    });
+                }
+            }
+        })
     }
 }
 
