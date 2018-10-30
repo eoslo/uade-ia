@@ -45,7 +45,7 @@ class EmployeeService {
                     }
                 });
             } else {
-                return callback("[+] The employee you are trying to update is currently inactive!");
+                return callback("The employee you are trying to update is currently inactive!");
             }
         })
     }
@@ -65,7 +65,7 @@ class EmployeeService {
                     }
                 });
             } else {
-                return callback("[+] The employee you are trying to delete is already inactive!");
+                return callback("The employee you are trying to delete is already inactive!");
             }
         })
     }
@@ -78,7 +78,7 @@ class EmployeeService {
                 if(employee){
                     return callback(err, employee.updates);
                 }
-                return callback(err, {});
+                return callback("Employee ", {});
             }
         });
     }
@@ -93,7 +93,7 @@ class EmployeeService {
                 return callback(err, employee.salaries[employee.salaries.length-1]);
             }
             else{
-                return callback(err, {});
+                return callback("No employee or salaries!", {});
             }
         })
     }

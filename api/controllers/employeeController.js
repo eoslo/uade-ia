@@ -18,7 +18,7 @@ class employeeController {
     }
 
     modifyEmployee(req, callback){
-        return this.employeeService.modifyEmployee(req.body.employee_id, requ.body.name, req.body.address,
+        return this.employeeService.modifyEmployee(req.body.employee_id, req.body.name, req.body.address,
             req.body.birth_date, req.body.dni, req.body.estimated_hours, req.body.deductions, function (err, employee) {
                 if(err){
                     console.error(err);
