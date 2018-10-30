@@ -7,7 +7,7 @@ var job = schedule.scheduleJob('50 48 9 30 * *', function(){
         if(err){
             console.error(err);
         }
-    })
+    });
 });
 
 module.exports = job;

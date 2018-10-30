@@ -37,6 +37,10 @@ var employeeSchema = new Schema({
         type: Number,
         default: 0
     },
+    deductions:{
+        type: Number,
+        default: 17
+    },
     updates: {type:[updateSchema.schema], default:[]},
     salaries: {type:[salarySchema.schema], default:[]},
     creation_date: {
