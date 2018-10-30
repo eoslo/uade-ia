@@ -52,11 +52,9 @@ class ClientService {
                     });
                 } else {
                     if(client.status === 'inactive'){
-                        console.log("[+] The client you are looking for is currently inactive!");
-                        return callback("[+] The client you are looking for is currently inactive!");
+                        return callback("El cliente esta inactivo actualmente.");
                     }
-                    console.log("[+] The client you are looking for does not exist in hour database!");
-                    return callback("[+] The client you are looking for does not exist in hour database!");
+                    return callback("El cliente no existe.");
                 }
             }
         });
@@ -74,11 +72,10 @@ class ClientService {
                         if (err){
                             return callback(err);
                         }
-                        console.log("[+] Successfully deleted user with id:" + id + "(Logically)");
                         return callback(err, client);
                     });
                 } else {
-                    return callback("[+] The client you are looking for is currently inactive!")
+                    return callback("El cliente esta inactivo actualmente.")
                 }
             }
         });
