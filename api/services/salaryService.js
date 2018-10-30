@@ -1,6 +1,6 @@
 var Client = require('../models/client');
 var Salary = require('../models/salary');
-var DateUtil = require('../utils/dateUtil');
+var DateUtil = require('../utils/dateUtil')
 var dateUtil = new DateUtil();
 
 class SalaryService {

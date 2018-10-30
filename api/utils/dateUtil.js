@@ -30,17 +30,6 @@ class dateUtil{
 
         return `${day}/${month}/${year}`;
     }
-
-    getPayDate(d) {
-        if(d>28){
-            d   =   0;
-        }
-        var today = Date.now();
-        var d = new Date((new Date()).getFullYear(), (new Date()).getMonth()+1, d);
-        let day = String(d.getDate());
-
-        return day;
-    }
 }
 
 module.exports=dateUtil;
