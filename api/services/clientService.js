@@ -110,7 +110,14 @@ class ClientService {
         console.log(employees);
         var updates = [];
         employees.forEach(function (employee){
-            updates.concat(employee.updates);
+            employee.updates.forEach(function (update){
+                var update = {
+                    update: update,
+                    employee_id: employee.id,
+                    employee_name: employee.name
+                }
+                updates.push(update);
+            });
         });
         return callback(updates);
     }

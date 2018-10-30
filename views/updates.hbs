@@ -175,21 +175,16 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <td>Tipo de novedad</td>
                                                 <td>Empleado</td>
-                                                <td>Sueldo</td>
-                                                <td>Estado</td>
-                                                <td></td>
+                                                <td>Tipo de novedad</td>
+                                                <td>Monto / Cantidad</td>
+                                                <td>Fecha de creación</td>
+                                                <td>Acciones</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="employee in employees">
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <h6 ng-bind="employee.name"></h6>
-                                                        <span ng-bind="employee.dni"></span>
-                                                    </div>
-                                                </td>
+                                            <tr ng-repeat="update in updates">
+                                                
                                                 <td>
                                                     <div class="table-data__info">
                                                         <span ng-if="employee.payroll_type == 'monthly'">Mensual</span>
@@ -198,14 +193,20 @@
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
+                                                        <h6 ng-if="update.update == 'worked_hours'">Horas trabajadas</h6>
+                                                        <h6 ng-if="update.update == 'salary_change'">Cambio de Sueldo</h6>
+                                                        <h6 ng-if="update.update == 'absense_days'">Días ausentes</h6>
+                                                        <h6 ng-if="update.update == 'per_hour_change'">Cambio de valor por hora</h6>
+                                                        <h6 ng-if="update.update == 'bonus'">Bono</h6>
+                                                        <h6 ng-if="update.update == 'vacation_days'">Días de vacaciones</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info">
                                                         $ <span ng-if="employee.payroll_type == 'monthly'" ng-bind="employee.gross_salary"></span>
                                                         <span ng-if="employee.payroll_type == 'per_hour'" ng-bind="employee.salary_per_hour"></span>
                                                         <span ng-if="employee.payroll_type == 'per_hour'"> / hora</span>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <span ng-if="employee.status == 'active'" class="state active">Activo</span>
-                                                    <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
                                                 </td>
                                                 <td>
                                                     <span class="more">
