@@ -21,9 +21,13 @@ var BillingSchema = new Schema({
         type: Number,
         required: 'Please enter the cost_per_employee'
     },
-    iva: {
+    iva_percent: {
         type: Number,
-        required: 'Please enter the iva'
+        required: 'Please enter the iva percent'
+    },
+    iva_value: {
+        type: Number,
+        required: 'Please enter the iva value'
     },
     base_cost: {
         type: Number,
