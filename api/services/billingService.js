@@ -6,11 +6,12 @@ var Client = require('../models/client');
 class BillingService {
 
     constructor(){
-
+        /*
         this.dateUtil = new DateUtil();
         this.nextMonth =  new Date()
         this.nextMonth.setMonth(this.nextMonth.getMonth() + 1)
         this.billing = new billingMock(5,5,5,5,5,5, this.dateUtil.formattedDateArgentina(new Date()),this.dateUtil.formattedDateArgentina(this.nextMonth));
+        */
     }
 
     createBill(id, done){
@@ -18,11 +19,14 @@ class BillingService {
             if (err) {
                 return done(err);
             }
-            if (client) {
-                return done(null,client)
+            if (!client || client.status != "active") {
+                return done(`active client with id ${id} not found`,{})
             }
-            console.log("id: "+id)
-            return done(`Client with id ${id} not found`,{})
+            var employees_amount = client.employees.length
+
+            var billing = new Billing()
+            return done(null,billing)
+
         })
 
     }
