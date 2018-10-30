@@ -1,5 +1,7 @@
 var Employee = require('../models/employee');
 var Salary = require('../models/salary');
+var DateUtil = require('../utils/dateUtil')
+var dateUtil = new DateUtil();
 
 class SalaryService {
 
@@ -15,7 +17,7 @@ class SalaryService {
                     client.employees.forEach(function (employee) {
                         if(employee.status === 'active'){
                             var salary = new Salary();
-                            salary.pay_date = client.pay_date;
+                            salary.pay_date = dateUtil.formattedDateArgentinaForPayroll(client.pay_date);
                             if(employee.payroll_type === 'monthly'){
                                 salary.net_income = employee.gross_salary;
                                 salary.gross_income = employee.gross_salary;
