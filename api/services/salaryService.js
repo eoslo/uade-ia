@@ -18,7 +18,7 @@ class SalaryService {
                         client.employees.forEach(function (employee) {
                             if(employee.status === 'active'){
                                 var salary = new Salary();
-                                salary.pay_date = dateUtil.formattedDateArgentinaForPayroll();
+                                salary.pay_date = dateUtil.formattedDateArgentinaForPayroll(client.pay_date);
                                 if(employee.payroll_type === 'monthly'){
                                     salary.net_income = employee.gross_salary;
                                     salary.gross_income = employee.gross_salary;
