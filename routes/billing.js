@@ -1,16 +1,21 @@
 var express = require('express');
 var router = express.Router();
-var clientMock = require('../mock/clientMock');
-var ClientController = require('../api/controllers/clientController');
+var billingMock = require('../mock/billingMock')
+var DateUtil = require('../api/utils/dateUtil')
+//cvar BillingController = require('../api/controllers/billingController');
 
-var clientController = new ClientController();
+var dateUtil = new DateUtil();
+//var billingController = new BillingController();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    var client = new clientMock('Lucio', new Date().getDate(), '27302434','active');
-    res.send(client);
+    var nextMonth =  new Date()
+    nextMonth.setMonth(nextMonth.getMonth() + 1)
+    var billing = new billingMock(1,2,3,4,5,6, dateUtil.formattedDateArgentina(new Date()),dateUtil.formattedDateArgentina(nextMonth));
+    res.send(billing);
 });
 
+/*
 router.delete('/', function(req, res, next) {
     clientController.deleteClient(id, function (err) {
         if (err) {
@@ -45,13 +50,8 @@ router.get('/:id/employees', function (req, res, next) {
 });
 
 router.get('/:id/updates', function(req, res, next) {
-    clientController.getAllUpdates(req, function (err, updates) {
-        if (err) {
-            res.status(500);
-            res.send({error:err});
-        }
-        res.status(200);
-        res.send({_updates:updates});
+    clientController.getAllUpdates(req, function (err) {
+
     });
 });
 
@@ -66,5 +66,5 @@ router.post('/auth', function(req, res, next) {
         }
     });
 });
-
+*/
 module.exports = router;

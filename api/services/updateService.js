@@ -14,14 +14,17 @@ class UpdateService {
                 let gross_salary = employee.gross_salary;
                 if(updateText === 'salary_change'){
                     gross_salary = mount;
+                    update.status = 'inactive';
                 }
                 else if(updateText === 'per_hour_change'){
                     salary_per_hour = mount;
+                    update.status = 'inactive';
                 }
                 employee.update({ $push: { updates: update }, gross_salary:gross_salary, salary_per_hour:salary_per_hour }, function (err) {
                     if(err){
                         return callback(err);
                     }
+                    return callback();
                 })
             }
             else{
@@ -47,7 +50,7 @@ class UpdateService {
             if (err){
                 return callback(err);
             } else {
-                if (update != null){
+                if (update && update.status === 'active'){
                     update.status = 'inactive';
                     update.save(function (err){
                         if (err){
@@ -56,6 +59,8 @@ class UpdateService {
                         console.log('[+] Successfully deleted update with id:' + id + '(Logically)');
                         return callback(err, update);
                     });
+                } else {
+                    return callback("[+] The update you are trying to delete is already inactive!");
                 }
             }
         })
