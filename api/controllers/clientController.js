@@ -57,11 +57,13 @@ class clientController {
             }
             var result = [];
             employees.forEach(function (employee){
-                result.push({
-                    employee_id: employee.id,
-                    employee_name: employee.name,
-                    salary: employee.salaries[employee.salaries.length-1]
-                });
+                if(employee.salaries.length){
+                    result.push({
+                        employee_id: employee.id,
+                        employee_name: employee.name,
+                        salary: employee.salaries[employee.salaries.length-1]
+                    });
+                }
             });
             return callback(err, result);
         });
