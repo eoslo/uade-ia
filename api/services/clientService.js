@@ -101,13 +101,16 @@ class ClientService {
     getAllUpdates(employees, callback){
         var updates = [];
         employees.forEach(function (employee){
-            employee.updates.forEach(function (update){
-                var update = {
-                    update: update,
-                    employee_name: employee.name
-                }
-                updates.push(update);
-            });
+            if (employee.status === 'active'){
+                employee.updates.forEach(function (update){
+                    var update = {
+                        update: update,
+                        employee_id: employee.id,
+                        employee_name: employee.name
+                    }
+                    updates.push(update);
+                });
+            }
         });
         return callback(null, updates);
     }

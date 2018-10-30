@@ -29,6 +29,7 @@ router.put('/', function(req, res, next) {
 });
 
 router.delete('/', function(req, res, next) {
+    console.log('adsadsa');
     employeeController.deleteEmployee(req, function (err, employee) {
         if(err){
             res.status(500);
