@@ -50,7 +50,7 @@ router.get('/:id/updates', function(req, res, next) {
     });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/auth', function(req, res, next) {
     clientController.getClientId(req, function (err, clientId) {
         if(err){
             res.status(500);
