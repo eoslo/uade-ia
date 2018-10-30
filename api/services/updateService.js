@@ -24,6 +24,7 @@ class UpdateService {
                     if(err){
                         return callback(err);
                     }
+                    return callback();
                 })
             }
             else{
