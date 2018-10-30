@@ -28,6 +28,16 @@ router.get('/updates', loggedIn, function (req, res, next) {
     res.render('updates', {user: req.user});
 });
 
+router.get('/payroll', loggedIn, function (req, res, next) {
+    console.log(req.user);
+    res.render('payroll', {user: req.user});
+});
+
+router.get('/bills', loggedIn, function (req, res, next) {
+    console.log(req.user);
+    res.render('bills', {user: req.user});
+});
+
 router.post('/signup', notLoggedIn, passport.authenticate('local.signup'), function(req, res) {
     res.status(200);
     res.send({});

@@ -10,27 +10,32 @@ var employeeSchema = new Schema({
     },
     address: {
         type: String,
-        default: null
+        default: "NONE"
     },
     birth_date: {
         type: String,
-        default: null
+        default: "NONE"
     },
     dni: {
         type: String,
-        default: null
+        default: "NONE"
     },
     payroll_type: {
         type: String,
-        default: null
+        default: "monthly",
+        required: 'Kindly enter the payroll type of the employee'
     },
     gross_salary: {
         type: Number,
-        default: null
+        default: 0
     },
     salary_per_hour: {
         type: Number,
-        default: null
+        default: 0
+    },
+    estimated_hours: {
+        type: Number,
+        default: 0
     },
     updates: {type:[updateSchema.schema], default:[]},
     salaries: {type:[salarySchema.schema], default:[]},

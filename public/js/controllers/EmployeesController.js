@@ -28,6 +28,7 @@ angular.module('PaychecksApp')
                     payroll_type: $scope.employees[i].payroll_type,
                     gross_salary: $scope.employees[i].gross_salary,
                     salary_per_hour: $scope.employees[i].salary_per_hour,
+                    estimated_hours: $scope.employees[i].estimated_hours,
                     client_id: $scope.userId
                 }
             }
@@ -70,7 +71,8 @@ angular.module('PaychecksApp')
             payroll_type: 'monthly',
             gross_salary: null,
             salary_per_hour: null,
-            client_id: null
+            client_id: null,
+            estimated_hours: null
         }
     }
 }])

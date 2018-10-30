@@ -1,14 +1,20 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+/*
+* worked_hours
+* salary_change
+* absense_days
+* per_hour_change
+* */
 var updateSchema = new Schema({
-    absence_days: {
-        type: Number,
-        default: null
+    update: {
+        type: String,
+        default: "NONE"
     },
-    worked_hours: {
+    mount: {
         type: Number,
-        default: null
+        default: 0
     },
     creation_date: {
         type: Date,
