@@ -31,17 +31,6 @@ class UpdateService {
                 return callback("Empleado no existente.")
             }
         });
-        // Employee.findOneAndUpdate(
-        //     { _id: employeeId },
-        //     { $push: { updates: update } }, function (err, employee) {
-        //         if(err){
-        //             return callback(err);
-        //         }
-        //         if(!employee){
-        //             return callback("Empleado no existente.");
-        //         }
-        //         return callback(err, update);
-        //     });
     }
 
 
@@ -56,11 +45,10 @@ class UpdateService {
                         if (err){
                             return callback(err);
                         }
-                        console.log('[+] Successfully deleted update with id:' + id + '(Logically)');
                         return callback(err, update);
                     });
                 } else {
-                    return callback("[+] The update you are trying to delete is already inactive!");
+                    return callback("La novedad que esta intentando actualizar ya esta inactiva.");
                 }
             }
         })
