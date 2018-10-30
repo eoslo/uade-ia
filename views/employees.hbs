@@ -196,28 +196,33 @@
                                         <thead>
                                             <tr>
                                                 <td>Nombre / DNI</td>
-                                                <td>Estado</td>
                                                 <td>Tipo de Salario</td>
+                                                <td>Sueldo</td>
+                                                <td>Estado</td>
                                                 <td></td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr ng-repeat="employee in employees">
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <h6>lori lynch</h6>
-                                                        <span>
-                                                            <a href="#">40000000</a>
-                                                        </span>
+                                                        <h6>{{employee.name}}</h6>
+                                                        <span>{{employee.dni}}</span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span class="state inactive">Inactivo</span>
+                                                    <div class="table-data__info">
+                                                        <span>{{employee.payroll_type}}</span>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <a>Por Hora</a>
+                                                        <span ng-if="employee.payroll_type == 'monthly'">${{employee.payroll_type}}</span>
+                                                        <span ng-if="employee.payroll_type == 'per_hour'">${{employee.payroll_type}} / hora</span>
                                                     </div>
+                                                </td>
+                                                <td>
+                                                    <span class="state">{{employee.state}}</span>
                                                 </td>
                                                 <td>
                                                     <span class="more">
@@ -227,9 +232,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                                <div class="user-data__footer">
-                                    <button class="au-btn au-btn-load">Cargar Más</button>
                                 </div>
                             </div>
                             <!-- END USER DATA-->
