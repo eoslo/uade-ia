@@ -29,12 +29,13 @@ angular.module('PaychecksApp')
                     employee_id: id,
                     name: $scope.employees[i].name,
                     address: $scope.employees[i].address,
-                    birth_day: $scope.employees[i].birth_day,
+                    birth_date: $scope.employees[i].birth_date,
                     dni: $scope.employees[i].dni,
                     payroll_type: $scope.employees[i].payroll_type,
                     gross_salary: $scope.employees[i].gross_salary,
                     salary_per_hour: $scope.employees[i].salary_per_hour,
                     estimated_hours: $scope.employees[i].estimated_hours,
+                    deductions: $scope.employees[i].deductions,
                     client_id: $scope.userId
                 }
             }
@@ -83,8 +84,12 @@ angular.module('PaychecksApp')
         $http({
             method: 'DELETE',
             url: $rootScope.serverEndpoint + 'employee',
-            contentType: 'application/json',
-            data: {employee_id:$scope.form.employee_id}
+            data: {
+                "employee_id": $scope.form.employee_id
+            },
+            headers: {
+                'Content-type': 'application/json;charset=utf-8'
+            }
         })
             .then(function(response) {
                 getClientEmployees();
@@ -112,7 +117,7 @@ angular.module('PaychecksApp')
         $scope.form = {
             name: null,
             address: null,
-            birth_day: null,
+            birth_date: null,
             dni: null,
             payroll_type: 'monthly',
             gross_salary: null,

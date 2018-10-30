@@ -18,10 +18,10 @@
                             <i class="fa fa-user"></i>Empleados
                         </a>
                     </li>
-                    <li class="active">
-                        <a>
+                    <li>
+                        <span class="active">
                             <i class="fa fa-check-square"></i>Novedades
-                        </a>
+                        </span>
                     </li>
                     <li>
                         <a href="/payroll">
@@ -84,19 +84,18 @@
                                     <i class="zmdi zmdi-calendar-check"></i>Novedades</h3>
                                 
                                 <div class="table-responsive table-data">
-                                    <table class="table">
+                                    <table class="table" ng-if="updates.length != 0">
                                         <thead>
                                             <tr>
                                                 <td>Empleado</td>
                                                 <td>Tipo de novedad</td>
-                                                <td>Monto / Cantidad</td>
+                                                <td>Monto/Cantidad</td>
                                                 <td>Fecha de creación</td>
-                                                <td>Acciones</td>
+                                                {{!-- <td>Acciones</td> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in updates">
-                                                
                                                 <td>
                                                     <div class="table-data__info">
                                                         <span ng-bind="item.employee_name"></span>
@@ -104,27 +103,41 @@
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <h6 ng-if="item.update.update == 'worked_hours'">Horas trabajadas</h6>
-                                                        <h6 ng-if="item.update.updat == 'salary_change'">Cambio de Sueldo</h6>
-                                                        <h6 ng-if="item.update.updat == 'absense_days'">Días ausentes</h6>
-                                                        <h6 ng-if="item.update.updat == 'per_hour_change'">Cambio de valor por hora</h6>
-                                                        <h6 ng-if="item.update.updat == 'bonus'">Bono</h6>
-                                                        <h6 ng-if="item.update.updat == 'vacation_days'">Días de vacaciones</h6>
+                                                        <span ng-if="item.update.update == 'worked_hours'">Horas trabajadas</span>
+                                                        <span ng-if="item.update.update == 'salary_change'">Cambio de Sueldo</span>
+                                                        <span ng-if="item.update.update == 'absense_days'">Días ausentes</span>
+                                                        <span ng-if="item.update.update == 'per_hour_change'">Cambio valor por hora</span>
+                                                        <span ng-if="item.update.update == 'bonus'">Bono</span>
+                                                        <span ng-if="item.update.update == 'vacation_days'">Días de vacaciones</span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        
+                                                        <span ng-if="item.update.update == 'worked_hours'"><span ng-bind="item.update.mount"></span> horas</span>
+                                                        <span ng-if="item.update.update == 'absense_days' || item.update.update == 'vacation_days'"><span ng-bind="item.update.mount"></span> días</span>
+                                                        <span ng-if="item.update.update == 'bonus' || item.update.update == 'salary_change'">$ <span ng-bind="item.update.mount"></span></span>
+                                                        <span ng-if="item.update.update == 'per_hour_change'">$ <span ng-bind="item.update.mount"></span> / hora</span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span class="more">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </span>
+                                                    <div class="table-data__info">
+                                                        <span ng-bind="item.update.creation_date"></span>
+                                                    </div>
                                                 </td>
+                                                {{!-- <td>
+                                                    <div class="table-data__info">
+                                                        <button class="action-icon" data-toggle="modal" data-target="#largeModal" ng-click="getUpdate(item.update._id)">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button class="action-icon" title="Eliminar">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td> --}}
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <h3 class="title-3 m-b-30" ng-if="updates.length == 0">No tiene novedades registradas.</h3>
                                 </div>
                             </div>
                             <!-- END USER DATA-->
@@ -134,6 +147,45 @@
             </div>
         </section>
         <!-- END PAGE CONTAINER-->
-    </div>
 
+        <!-- UPDATE REGISTER -->
+        {{!-- <div class="modal fade" id="largeModal" tabindex="-2" role="dialog" aria-labelledby="largeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Modificar novedad de <span ng-bind="form.name"></span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Tipo de novedad</label>
+                                <select ng-model="form.update" name="select" id="select" class="form-control">
+                                    <option value="">Elija un tipo de novedad</option>
+                                    <option value="salary_change" ng-if="form.payroll_type == 'monthly'">Cambio de Sueldo</option>
+                                    <option value="per_hour_change" ng-if="form.payroll_type == 'per_hour'">Cambio de valor por hora</option>
+                                    <option value="worked_hours" ng-if="form.payroll_type == 'per_hour'">Horas trabajadas</option>
+                                    <option value="absense_days" ng-if="form.payroll_type == 'monthly'">Días ausentes</option>
+                                    <option value="vacation_days" ng-if="form.payroll_type == 'monthly'">Días de vacaciones</option>
+                                    <option value="bonus">Bono</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Monto / Cantidad</label>
+                                <input ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor bono, cantidad días o cantidad horas">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn2">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="newUpdate()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <!-- END UPDATE REGISTER -->
+    </div>
 </div>

@@ -1,8 +1,10 @@
 var Client = require('../models/client');
+var DateUtil = require('../utils/dateUtil');
+var dateUtil = new DateUtil();
 
 class ClientService {
 
-    createClient(username, password, name, person_type, address, cuit, iva, gross_income, done){
+    createClient(username, password, name, person_type, address, cuit, iva, gross_income, pay_date, done){
         Client.findOne({'username': username}, function (err, client) {
             if(err){
                 return done(err);
@@ -19,6 +21,7 @@ class ClientService {
             newClient.cuit = cuit;
             newClient.iva = iva;
             newClient.gross_income = gross_income;
+            newClient.pay_date = pay_date;
             newClient.save(function (err, result) {
                 if(err){
                     return done(err);
