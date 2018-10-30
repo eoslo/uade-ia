@@ -45,8 +45,13 @@ router.get('/:id/employees', function (req, res, next) {
 });
 
 router.get('/:id/updates', function(req, res, next) {
-    clientController.getAllUpdates(req, function (err) {
-
+    clientController.getAllUpdates(req, function (err, updates) {
+        if (err) {
+            res.status(500);
+            res.send({error:err});
+        }
+        res.status(200);
+        res.send({_updates:updates});
     });
 });
 

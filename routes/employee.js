@@ -44,7 +44,7 @@ router.get('/:id/updates', function(req, res, next){
             res.send({error:'Hubo un error intentando encontrar las novedades del empleado'});
         }
         res.status(200);
-        res.send(updates);
+        res.send({_updates:updates});
     })
 });
 module.exports = router;
