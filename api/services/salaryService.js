@@ -67,7 +67,6 @@ class SalaryService {
                         }
                         else{
                             employee.salaries.push(salary);
-                            console.log(employee.dni + ' ' + employee.salaries[employee.salaries.length-1]);
                         }
                     });
                 }
