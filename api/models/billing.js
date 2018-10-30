@@ -9,7 +9,7 @@ var BillingSchema = new Schema({
         type: Number,
         required: 'Please enter the gross_amount'
     },
-    net_amount: {
+    total_amount: {
         type: Number,
         required: 'Please enter the net_amount'
     },

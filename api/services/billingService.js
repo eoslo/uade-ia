@@ -36,9 +36,21 @@ class BillingService {
 
             billing.gross_amount        = employees_amount * self.cost_per_employee + self.base_cost;
             billing.iva_value           = billing.gross_amount * iva/100;
-            billing.net_amount          = billing.gross_amount - billing.iva_value
+            billing.total_amount        = billing.gross_amount + billing.iva_value
 
-            return done(null,billing)
+            billing.save(function (err, bill) {
+                if(err){
+                    return done(err,{});
+                }
+                Client.findOneAndUpdate(
+                    { _id: id },
+                    { $push: { billings: bill._id } }, function (err, client) {
+                        return done(null, bill);
+                    });
+
+            })
+
+
         })
 
     }

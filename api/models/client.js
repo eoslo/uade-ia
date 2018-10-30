@@ -41,6 +41,7 @@ var clientSchema = new Schema({
         default: 0
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
+    billings: [ { type: Schema.Types.ObjectId, ref: 'billing' , default:[]}],
     creation_date: {
         type: String,
         default: dateUtils.formattedDateArgentina()
