@@ -21,14 +21,23 @@ class SalaryService {
                             if(update.status === 'active'){
                                 let mount = 0;
                                 if(employee.payroll_type === 'per_hour' && update.update === 'worked_hours'){
-                                    mount = update.worked_hours*employee.salary_per_hour;
-                                    salary.description.push({description:update.worked_hours.toString()+" horas trabajadas.", mount:mount});
+                                    mount = update.mount*employee.salary_per_hour;
+                                    salary.description.push({description:update.mount.toString()+" horas trabajadas.", mount:mount});
                                     salary.net_income += mount;
                                 }
-                                else if(employee.payroll_type === 'monthly' && update.update === 'absence_days'){
-                                    mount = ((employee.gross_salary/30)*update.absence_days);
-                                    salary.description.push({description:update.absence_days.toString()+" dias ausentes.", mount:-mount});
+                                else if(employee.payroll_type === 'monthly' && update.update === 'absense_days'){
+                                    mount = ((employee.gross_salary/30)*update.mount);
+                                    salary.description.push({description:update.mount.toString()+" dias ausentes.", mount:-mount});
                                     salary.net_income -= mount;
+                                }
+                                else if(employee.payroll_type === 'monthly' && update.update === 'vacation_days'){
+                                    mount = ((employee.gross_salary/25)*update.mount);
+                                    salary.description.push({description:update.mount.toString()+" dias de vacaciones", mount:mount});
+                                    salary.net_income += mount;
+                                }
+                                else if(update.update === 'bonus'){
+                                    salary.description.push({description:"Bono", mount:update.mount});
+                                    salary.net_income += update.mount;
                                 }
                                 update.status = 'inactive';
                             }
@@ -38,12 +47,12 @@ class SalaryService {
                         if(employee.salaries.length>0){
                             employee.salaries[employee.salaries.length-1].description.forEach(function (description) {
                                 salary.description.push({description:"De ultima liquidacion "+description.description, mount:description.mount});
-                            })
+                            });
                             salary.net_income = employee.salaries[employee.salaries.length-1].mount;
                         }
                         else{
-                            salary.description.push({description:"Sueldo base "+description.description, mount:description.mount});
                             salary.net_income += employee.salary_per_hour*employee.estimated_hours;
+                            salary.description.push({description:"Por horas estimadas", mount:salary.net_income});
                         }
                     }
                     if(employee.payroll_type === 'monthly'){
@@ -58,7 +67,6 @@ class SalaryService {
                         }
                         else{
                             employee.salaries.push(salary);
-                            console.log(employee.dni + ' ' + employee.salaries[employee.salaries.length-1]);
                         }
                     });
                 }
@@ -68,8 +76,8 @@ class SalaryService {
     }
 
     static deductions(employee, salary){
-        salary.net_income -= salary.net_income*(SalaryService.deductions/100);
-        salary.description.push({description:"Deducciones", mount:salary.gross_income-salary.net_income});
+        salary.net_income -= salary.net_income*(employee.deductions/100);
+        salary.description.push({description:"Deducciones", mount:-(salary.gross_income-salary.net_income)});
         return salary;
     }
 }
