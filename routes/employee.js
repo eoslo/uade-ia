@@ -32,7 +32,7 @@ router.delete('/', function(req, res, next) {
     employeeController.deleteEmployee(req, function (err, employee) {
         if(err){
             res.status(500);
-            res.send({error:'Hubo un error al eliminar el empleado'});
+            res.send({error:err});
             return;
         }
         res.status(200);

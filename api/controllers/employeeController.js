@@ -33,7 +33,7 @@ class employeeController {
                     return callback(err);
                 }
                 return callback(err, employee)
-            })
+            });
     }
 
     getUpdatesByEmployeeId(req, callback){
