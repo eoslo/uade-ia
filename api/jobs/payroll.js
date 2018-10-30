@@ -1,7 +1,13 @@
 var schedule = require('node-schedule');
+var SalaryService = require('../services/salaryService');
+var salaryService = new SalaryService();
 
-var job = schedule.scheduleJob('00 00 16 29 * *', function(){
-    console.log('The answer to life, the universe, and everything!');
+var job = schedule.scheduleJob('50 48 9 30 * *', function(){
+    salaryService.payroll(function (err) {
+        if(err){
+            console.error(err);
+        }
+    })
 });
 
 module.exports = job;

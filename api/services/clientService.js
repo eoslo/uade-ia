@@ -85,7 +85,7 @@ class ClientService {
             if(client && client.password === password){
                 return done(null, client);
             }
-            return done(err, false, {message: "Cliente no existente."})
+            return done(err, false, {message: "Cliente no existente."});
         })
     }
 

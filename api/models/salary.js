@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var salarySchema = new Schema({
     mount: {
         type: Number,
-        default: null
+        default: 0
     },
     pay_date: {
         type: Date,
@@ -15,11 +15,8 @@ var salarySchema = new Schema({
         default: Date.now
     },
     status: {
-        type: [{
-            type: String,
-            enum: ['active', 'inactive']
-        }],
-        default: ['active']
+        type: String,
+        default: "pending"
     }
 });
 
