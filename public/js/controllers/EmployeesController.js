@@ -85,7 +85,10 @@ angular.module('PaychecksApp')
             method: 'DELETE',
             url: $rootScope.serverEndpoint + 'employee',
             data: {
-                employee_id: $scope.form.employee_id
+                "employee_id": $scope.form.employee_id
+            },
+            headers: {
+                'Content-type': 'application/json;charset=utf-8'
             }
         })
             .then(function(response) {
