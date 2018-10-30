@@ -13,7 +13,8 @@ angular.module('PaychecksApp')
         payroll_type: 'monthly',
         gross_salary: null,
         salary_per_hour: null,
-        client_id: null
+        client_id: null,
+        estimated_hours: null
     }
 
     $scope.getUserId = function(userId) {
