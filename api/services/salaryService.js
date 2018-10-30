@@ -38,12 +38,12 @@ class SalaryService {
                         if(employee.salaries.length>0){
                             employee.salaries[employee.salaries.length-1].description.forEach(function (description) {
                                 salary.description.push({description:"De ultima liquidacion "+description.description, mount:description.mount});
-                            })
+                            });
                             salary.net_income = employee.salaries[employee.salaries.length-1].mount;
                         }
                         else{
-                            salary.description.push({description:"Sueldo base "+description.description, mount:description.mount});
                             salary.net_income += employee.salary_per_hour*employee.estimated_hours;
+                            salary.description.push({description:"Por horas estimadas", mount:salary.net_income});
                         }
                     }
                     if(employee.payroll_type === 'monthly'){
@@ -68,8 +68,8 @@ class SalaryService {
     }
 
     static deductions(employee, salary){
-        salary.net_income -= salary.net_income*(SalaryService.deductions/100);
-        salary.description.push({description:"Deducciones", mount:salary.gross_income-salary.net_income});
+        salary.net_income -= salary.net_income*(employee.deductions/100);
+        salary.description.push({description:"Deducciones", mount:-(salary.gross_income-salary.net_income)});
         return salary;
     }
 }
