@@ -35,6 +35,7 @@ angular.module('PaychecksApp')
                     gross_salary: $scope.employees[i].gross_salary,
                     salary_per_hour: $scope.employees[i].salary_per_hour,
                     estimated_hours: $scope.employees[i].estimated_hours,
+                    deductions: $scope.employees[i].deductions,
                     client_id: $scope.userId
                 }
             }
