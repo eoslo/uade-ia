@@ -52,6 +52,24 @@ class clientController {
         });
     }
 
+    getAllSalaries(req, callback) {
+        return this.getEmployees(req, function (err, employees) {
+            if(err){
+                cosole.error(err);
+                return callback(err);
+            }
+            var result = [];
+            employees.forEach(function (employee){
+                result.push({
+                    employee_id: employee.id,
+                    employee_name: employee.name,
+                    salary: employee.salaries[employee.salaries.length-1]
+                });
+            });
+            return callback(err, result);
+        });
+    }
+
     getClientId(req, callback){
         return this.clientService.getClientId(req.body.username, req.body.password, function (err, clientId) {
             if (err) {
