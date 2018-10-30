@@ -34,7 +34,7 @@ var clientSchema = new Schema({
     },
     iva: {
         type: Number,
-        default: 0.21
+        default: 21
     },
     gross_income: {
         type: Number,
