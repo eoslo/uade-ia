@@ -21,7 +21,7 @@ class ClientService {
             newClient.cuit = cuit;
             newClient.iva = iva;
             newClient.gross_income = gross_income;
-            newClient.pay_date = dateUtil.getPayDate(pay_date);
+            newClient.pay_date = pay_date;
             newClient.save(function (err, result) {
                 if(err){
                     return done(err);
