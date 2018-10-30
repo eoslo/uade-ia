@@ -216,7 +216,7 @@
                                                     <button class="action-icon" title="Eliminar">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
-                                                    <button class="action-icon" title="Agregar novedad" data-toggle="modal" data-target="#largeModal">
+                                                    <button class="action-icon" title="Agregar novedad" data-toggle="modal" data-target="#largeModal2" ng-click="getEmployee(employee._id)">
                                                         <i class="fa fa-plus"></i>
                                                     </button>
                                                 </td>
@@ -302,7 +302,47 @@
             </div>
         </div>
         <!-- END EMPLOYEE REGISTER -->
-        <!-- END PAGE CONTAINER-->
-    </div>
 
+
+        <!-- UPDATE REGISTER -->
+        <div class="modal fade" id="largeModal2" tabindex="-2" role="dialog" aria-labelledby="largeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Agregar novedad para <span ng-bind="form.name"></span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Tipo de novedad</label>
+                                <select ng-model="updateForm.update" name="select" id="select" class="form-control">
+                                    <option value="">Elija un tipo de novedad</option>
+                                    <option value="salary_change" ng-if="form.payroll_type == 'monthly'">Cambio de Sueldo</option>
+                                    <option value="per_hour_change" ng-if="form.payroll_type == 'per_hour'">Cambio de valor por hora</option>
+                                    <option value="worked_hours" ng-if="form.payroll_type == 'per_hour'">Horas trabajadas</option>
+                                    <option value="absense_days" ng-if="form.payroll_type == 'monthly'">Días ausentes</option>
+                                    <option value="vacation_days" ng-if="form.payroll_type == 'monthly'">Días de vacaciones</option>
+                                    <option value="bonus">Bono</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Monto / Cantidad</label>
+                                <input ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor bono, cantidad días o cantidad horas">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn2">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="newUpdate()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END UPDATE REGISTER -->
+    </div>
+    <!-- END PAGE CONTAINER-->
 </div>
