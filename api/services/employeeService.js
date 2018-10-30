@@ -4,7 +4,7 @@ var Client = require('../models/client');
 
 class EmployeeService {
 
-    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, estimated_hours, clientId, callback) {
+    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, estimated_hours, deductions, clientId, callback) {
         var employee = new Employee();
         employee.name = name;
         employee.address = address;
@@ -14,6 +14,7 @@ class EmployeeService {
         employee.gross_salary = gross_salary;
         employee.salary_per_hour = salaray_per_hour;
         employee.estimated_hours = estimated_hours;
+        employee.deductions = deductions;
         employee.save(function (err) {
             if(err){
                 return callback(err, null);
