@@ -34,7 +34,7 @@ var clientSchema = new Schema({
     },
     iva: {
         type: Number,
-        default: 0.21
+        default: 21
     },
     gross_income: {
         type: Number,
@@ -42,7 +42,7 @@ var clientSchema = new Schema({
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     creation_date: {
-        type: String,
+        type: Date,
         default: dateUtils.formattedDateArgentina()
     },
     status: {
