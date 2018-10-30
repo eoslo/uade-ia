@@ -36,7 +36,7 @@ var clientSchema = new Schema({
     },
     gross_income: {
         type: Number,
-        default: "NONE"
+        default: 0
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     creation_date: {
