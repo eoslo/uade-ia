@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var billingMock = require('../mock/billingMock')
 var DateUtil = require('../api/utils/dateUtil')
-var BillingController = require('../api/controllers/billingController');
+//cvar BillingController = require('../api/controllers/billingController');
 
 var dateUtil = new DateUtil();
-var billingController = new BillingController();
+//var billingController = new BillingController();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
