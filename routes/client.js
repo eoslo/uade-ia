@@ -77,7 +77,7 @@ router.post('/auth', function(req, res, next) {
             return;
         }
         if(clientId){
-            res.send({client_id:clientId});
+            res.send(clientId);
         }
     });
 });

@@ -167,7 +167,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Cumpleaños</label>
-                                <input ng-model="form.birth_day" id="datepicker" class="au-input au-input--full" type="text" name="birth_day" placeholder="Día de Cumpleaños del empleado...">
+                                <input ng-model="form.birth_day" id="datepicker" class="au-input au-input--full" type="text" name="birth_day" placeholder="Día de Cumpleaños del empleado (DD/MM/AAAA)...">
                             </div>
                             <div class="form-group">
                                 <label>DNI</label>
@@ -222,7 +222,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Agregar novedad para <span ng-bind="form.name"></span></h5>
+                        <h5 class="modal-title" id="largeModalLabel">Agregar Novedad para <span ng-bind="form.name"></span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -232,7 +232,7 @@
                             <div class="form-group">
                                 <label>Tipo de novedad</label>
                                 <select ng-model="updateForm.update" name="select" id="select" class="form-control">
-                                    <option value="">Elija un tipo de novedad</option>
+                                    <option value="">Seleccione un tipo de novedad</option>
                                     <option value="salary_change" ng-if="form.payroll_type == 'monthly'">Cambio de Sueldo</option>
                                     <option value="per_hour_change" ng-if="form.payroll_type == 'per_hour'">Cambio de valor por hora</option>
                                     <option value="worked_hours" ng-if="form.payroll_type == 'per_hour'">Horas trabajadas</option>
@@ -242,7 +242,9 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Monto / Cantidad</label>
+                                <label ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus'">Monto</label>
+                                <label ng-if="updateForm.update == 'absense_days' || updateForm.update == 'vacation_days'">Días</label>
+                                <label ng-if="updateForm.update == 'worked_hours'">Horas</label>
                                 <input ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor bono, cantidad días o cantidad horas">
                             </div>
                         </form>

@@ -5,7 +5,7 @@ var clientService = new ClientService();
 var LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function (client, done) {
-    done(null, client.id);
+    done(null, client._id);
 });
 
 passport.deserializeUser(function (id, done) {
