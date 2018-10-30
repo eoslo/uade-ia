@@ -9,6 +9,7 @@ class clientController {
        return this.clientService.updateClient(req.body.id, req.body.name, req.body.person_type, req.body.address, req.body.cuit, req.body.iva, req.body.gross_income, req.body.employees, function (err, client) {
            if (err) {
                console.error(err);
+               return callback(err);
            }
            return callback(err, client);
        });
@@ -18,6 +19,7 @@ class clientController {
         return this.clientService.deleteClient(req.body.id, function (err){
             if (err) {
                 console.error(err);
+                return callback(err);
             }
             return callback(err);
         });
@@ -27,6 +29,7 @@ class clientController {
         return this.clientService.getEmployees(req.params.id, function (err, employees) {
             if(err){
                 console.error(err);
+                return callback(err);
             }
             return callback(err, employees);
         });
@@ -37,10 +40,12 @@ class clientController {
         return this.getEmployees(req, function (err, employees) {
             if (err) {
                 console.log(err);
+                return callback(err);
             }
             return self.clientService.getAllUpdates(employees, function (err, updates) {
                 if (err) {
                     console.error(err);
+                    return callback(err);
                 }
                 return callback(err, updates)
             })

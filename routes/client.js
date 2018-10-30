@@ -15,7 +15,8 @@ router.delete('/', function(req, res, next) {
     clientController.deleteClient(id, function (err) {
         if (err) {
             res.status(500);
-            res.send({error:err})
+            res.send({error:err});
+            return;
         } else {
             res.send({})
         }
@@ -26,9 +27,9 @@ router.put('/', function(req, res, next){
     clientController.updateClient(req, function (err) {
         if (err) {
             res.status(500);
-            res.send({error:err})
+            res.send({error:err});
         } else {
-            res.send({})
+            res.send({});
         }
     });
 });
@@ -37,7 +38,8 @@ router.get('/:id/employees', function (req, res, next) {
     clientController.getEmployees(req, function (err, employees) {
         if(err){
             res.status(500);
-            res.send({error:err})
+            res.send({error:err});
+            return;
         }
         res.status(200);
         res.send(employees);
@@ -49,9 +51,10 @@ router.get('/:id/updates', function(req, res, next) {
         if (err) {
             res.status(500);
             res.send({error:err});
+            return;
         }
         res.status(200);
-        res.send({_updates:updates});
+        res.send(updates);
     });
 });
 
@@ -60,6 +63,7 @@ router.post('/auth', function(req, res, next) {
         if(err){
             res.status(500);
             res.send({error:err})
+            return;
         }
         if(clientId){
             res.send({client_id:clientId});

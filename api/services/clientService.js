@@ -102,6 +102,9 @@ class ClientService {
             if (err){
                 return callback(err);
             }
+            if(!client){
+                return callback("No hay empleados con ese id.");
+            }
             return callback(err, client.employees);
         });
     }
