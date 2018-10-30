@@ -67,9 +67,11 @@ class EmployeeService {
     getUpdatesByEmployeeId(id){
         Employee.findById(id, function (err, employee) {
             if (err){
-                return callback(err);
+                return err;
             } else {
-                return callback(err, employee.updates);
+                console.log('[+] Employee ' + id + " updates:");
+                console.log(employee.updates);
+                return employee.updates;
             }
         });
     }
