@@ -14,9 +14,11 @@ class UpdateService {
                 let gross_salary = employee.gross_salary;
                 if(updateText === 'salary_change'){
                     gross_salary = mount;
+                    update.status = 'inactive';
                 }
                 else if(updateText === 'per_hour_change'){
                     salary_per_hour = mount;
+                    update.status = 'inactive';
                 }
                 employee.update({ $push: { updates: update }, gross_salary:gross_salary, salary_per_hour:salary_per_hour }, function (err) {
                     if(err){

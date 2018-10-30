@@ -14,7 +14,7 @@ class EmployeeService {
         employee.gross_salary = gross_salary;
         employee.salary_per_hour = salaray_per_hour;
         employee.estimated_hours = estimated_hours;
-        employee.deductions = deductions;
+        SalaryService.deductions = deductions;
         employee.save(function (err) {
             if(err){
                 return callback(err, null);

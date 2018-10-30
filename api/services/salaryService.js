@@ -18,16 +18,19 @@ class SalaryService {
                     }
                     if(employee.updates.length){
                         employee.updates.forEach(function (update) {
-                            let mount = 0;
-                            if(employee.payroll_type === 'per_hour' && update.update === 'worked_hours'){
-                                mount = update.worked_hours*employee.salary_per_hour;
-                                salary.description.push({description:update.worked_hours.toString()+" horas trabajadas.", mount:mount});
-                                salary.net_income += mount;
-                            }
-                            else if(employee.payroll_type === 'monthly' && update.update === 'absence_days'){
-                                mount = ((employee.gross_salary/30)*update.absence_days);
-                                salary.description.push({description:update.absence_days.toString()+" dias ausentes.", mount:-mount});
-                                salary.net_income -= mount;
+                            if(update.status === 'active'){
+                                let mount = 0;
+                                if(employee.payroll_type === 'per_hour' && update.update === 'worked_hours'){
+                                    mount = update.worked_hours*employee.salary_per_hour;
+                                    salary.description.push({description:update.worked_hours.toString()+" horas trabajadas.", mount:mount});
+                                    salary.net_income += mount;
+                                }
+                                else if(employee.payroll_type === 'monthly' && update.update === 'absence_days'){
+                                    mount = ((employee.gross_salary/30)*update.absence_days);
+                                    salary.description.push({description:update.absence_days.toString()+" dias ausentes.", mount:-mount});
+                                    salary.net_income -= mount;
+                                }
+                                update.status = 'inactive';
                             }
                         })
                     }
@@ -44,12 +47,12 @@ class SalaryService {
                         }
                     }
                     if(employee.payroll_type === 'monthly'){
-                        salary = this.deductions(employee, salary);
+                        salary = SalaryService.deductions(employee, salary);
                     }
                     else{
                         salary.gross_income = salary.net_income;
                     }
-                    employee.update({ $push :{salaries:salary} }, function (err, raw) {
+                    employee.update({ $push :{salaries:salary}, updates:employee.updates }, function (err, raw) {
                         if(err){
                             errors.push({error:err, employee:employee.dni});
                         }
@@ -64,8 +67,8 @@ class SalaryService {
         })
     }
 
-    deductions(employee, salary){
-        salary.net_income -= salary.net_income*(employee.deductions/100);
+    static deductions(employee, salary){
+        salary.net_income -= salary.net_income*(SalaryService.deductions/100);
         salary.description.push({description:"Deducciones", mount:salary.gross_income-salary.net_income});
         return salary;
     }
