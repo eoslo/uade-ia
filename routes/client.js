@@ -16,7 +16,6 @@ router.delete('/', function(req, res, next) {
         if (err) {
             res.status(500);
             res.send({error:err});
-            return;
         } else {
             res.send({})
         }
