@@ -42,7 +42,7 @@ var clientSchema = new Schema({
     },
     pay_date: {
         type: Number,
-        default: 30
+        default: 0
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     billings: [ { type: Schema.Types.ObjectId, ref: 'billing' , default:[]}],
