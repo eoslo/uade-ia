@@ -21,12 +21,21 @@ router.get('/register', notLoggedIn, function (req, res, next) {
 });
 
 router.get('/employees', loggedIn, function (req, res, next) {
-    console.log(req.user);
     res.render('employees', {user: req.user});
 });
 
-router.get('/novedades', loggedIn, function (req, res, next) {
-    res.render('updates');
+router.get('/updates', loggedIn, function (req, res, next) {
+    res.render('updates', {user: req.user});
+});
+
+router.get('/payroll', loggedIn, function (req, res, next) {
+    console.log(req.user);
+    res.render('payroll', {user: req.user});
+});
+
+router.get('/bills', loggedIn, function (req, res, next) {
+    console.log(req.user);
+    res.render('bills', {user: req.user});
 });
 
 router.post('/signup', notLoggedIn, passport.authenticate('local.signup'), function(req, res) {

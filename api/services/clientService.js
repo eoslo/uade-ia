@@ -59,18 +59,18 @@ class ClientService {
     }
 
     deleteClient(id){
-    Client.findById(id, function (err, client){
+        Client.findById(id, function (err, client){
             if (err){
-                return callback(err);
+                return err;
             } else {
                 if (client != null){
                     client.status = 'inactive';
                     client.save(function (err){
                         if (err){
-                            return callback(err);
+                            return err;
                         }
                         console.log("[+] Successfully deleted user with id:" + id + "(Logically)");
-                        return callback(err, client);
+                        return err, client;
                     });
                 }
             }
