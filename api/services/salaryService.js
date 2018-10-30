@@ -51,7 +51,7 @@ class SalaryService {
                                     })
                                 }
                                 else if(employee.payroll_type === 'monthly'){
-                                    salary.description.push({description:`Sueldo basico`, mount:description.mount});
+                                    salary.description.push({description:`Sueldo basico`, mount:salary.gross_income});
                                 }
                                 else if(employee.payroll_type === 'per_hour'){
                                     if(employee.salaries.length>0){
@@ -82,8 +82,8 @@ class SalaryService {
                             }
                         });
                     }
-                    return callback(err);
-                })
+                });
+                return callback(err);
             }
         })
     }
