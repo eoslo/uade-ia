@@ -14,4 +14,4 @@ class payrollController {
     }
 }
 
-module.exports = clientController;
+module.exports = payrollController;
