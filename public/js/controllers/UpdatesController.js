@@ -7,7 +7,7 @@ angular.module('PaychecksApp')
     $scope.form = {
         update: null,
         mount: null,
-        employee_id: null
+        employee_name: null,
     };
 
     $scope.getUserId = function(userId) {

@@ -115,7 +115,6 @@ class ClientService {
             employee.updates.forEach(function (update){
                 var update = {
                     update: update,
-                    employee_id: employee.id,
                     employee_name: employee.name
                 }
                 updates.push(update);
