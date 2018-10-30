@@ -14,3 +14,19 @@ body .page-wrapper {
 .page-wrapper .action-icon{
     margin-right: 5px;
 }
+
+.navbar-sidebar2 .navbar__list li span {
+    font-size: 16px;
+    color: #555;
+    display: block;
+    padding: 18px 35px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.navbar-sidebar2 .navbar__list li span.active {
+    color: #9E31E6;
+}
+
+.navbar-sidebar2 .navbar__list li span > i {
+    margin-right: 20px;
+}
