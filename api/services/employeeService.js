@@ -65,7 +65,8 @@ class EmployeeService {
                     }
                 });
             } else {
-                return callback("The employee you are trying to delete is already inactive!");
+                console.log(employee);
+                return callback("The employee you are trying to delete is already inactive or does not exist!");
             }
         })
     }
