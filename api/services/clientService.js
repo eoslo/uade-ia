@@ -29,14 +29,11 @@ class ClientService {
     }
 
     updateClient(id, name, person_type, address, cuit, iva, gross_income, employees, callback){
-        console.log(id);
-        console.log(name);
         Client.findById(id, function (err, client){
             if (err) {
                 return callback(err);
             } else {
                 if (client && client.status === 'active') {
-                    console.log(client.name);
                     client.name = name;
                     client.person_type = person_type;
                     client.address = address;

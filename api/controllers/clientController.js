@@ -39,7 +39,7 @@ class clientController {
         let self = this;
         return this.getEmployees(req, function (err, employees) {
             if (err) {
-                console.log(err);
+                console.error(err);
                 return callback(err);
             }
             return self.clientService.getAllUpdates(employees, function (err, updates) {
