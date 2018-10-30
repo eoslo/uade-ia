@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.delete('/', function(req, res, next) {
-    employeeController.deleteEmployee(req, function (err, employee) {
+    updateController.deleteUpdate(req, function (err, employee) {
         if(err){
             res.status(500);
             res.send({error:'Hubo un error al eliminar la novedad'});
