@@ -110,7 +110,6 @@ class ClientService {
     }
 
     getAllUpdates(employees, callback){
-        console.log(employees);
         var updates = [];
         employees.forEach(function (employee){
             employee.updates.forEach(function (update){
@@ -122,7 +121,7 @@ class ClientService {
                 updates.push(update);
             });
         });
-        return callback(updates);
+        return callback(null, updates);
     }
 
     getClientId(username, password, callback){
