@@ -57,5 +57,5 @@ router.get('/:id/salary', function (req, res, next) {
         res.status(200);
         res.send(salary);
     })
-})
+});
 module.exports = router;

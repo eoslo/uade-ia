@@ -47,7 +47,7 @@ class UpdateService {
             if (err){
                 return callback(err);
             } else {
-                if (update != null){
+                if (update && update.status === 'active'){
                     update.status = 'inactive';
                     update.save(function (err){
                         if (err){
@@ -56,6 +56,8 @@ class UpdateService {
                         console.log('[+] Successfully deleted update with id:' + id + '(Logically)');
                         return callback(err, update);
                     });
+                } else {
+                    return callback("[+] The update you are trying to delete is already inactive!");
                 }
             }
         })

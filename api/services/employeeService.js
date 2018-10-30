@@ -19,7 +19,7 @@ class EmployeeService {
                 return callback(err, null);
             }
 
-            console.log(employee)
+            console.log(employee);
 
             Client.findOneAndUpdate(
                 { _id: clientId },
@@ -34,7 +34,7 @@ class EmployeeService {
             if(err){
                 return callback(err);
             }
-            if(employee){
+            if(employee && employee.status === 'active'){
                 employee.update({ address: address, gross_salary: gross_salary, salary_per_hour: salary_per_hour, estimated_hours: estimated_hours }, function (err, raw) {
                     if(err){
                         return callback(err);
@@ -43,6 +43,8 @@ class EmployeeService {
                         return callback(err, employee);
                     }
                 });
+            } else {
+                return callback("[+] The employee you are trying to update is currently inactive!");
             }
         })
     }
@@ -52,7 +54,7 @@ class EmployeeService {
             if(err){
                 return callback(err);
             }
-            if(employee){
+            if(employee && employee.status === 'active'){
                 employee.update({ status: "inactive" }, function (err, raw) {
                     if(err){
                         return callback(err);
@@ -61,6 +63,8 @@ class EmployeeService {
                         return callback(err, employee);
                     }
                 });
+            } else {
+                return callback("[+] The employee you are trying to delete is already inactive!");
             }
         })
     }
