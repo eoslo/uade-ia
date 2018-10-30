@@ -6,13 +6,19 @@ class billingController {
     }
 
     createBill(req, callback) {
-        return this.billingService.createBill(req.params.clientId, function (err, bill) {
+        var clientId = req.params.clientId
+        if (clientId && clientId.length == 24){
+            return this.billingService.createBill(clientId , function (err, bill) {
                 if(err){
                     console.error(err);
                     return callback(err);
                 }
                 return callback(err, bill);
             })
+        }else{
+            return callback("error in client id format, should have 24 characters",{})
+        }
+
     }
 }
 
