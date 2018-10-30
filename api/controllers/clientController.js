@@ -51,7 +51,7 @@ class clientController {
                 console.error(err);
                 return callback(err, clientId);
             }
-            return callback(clientId);
+            return callback(err, clientId);
         });
     }
 

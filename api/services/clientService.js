@@ -78,7 +78,7 @@ class ClientService {
             if(!client){
                 return callback("No existe ese cliente.");
             }
-            if (client.password.equals(password)){
+            if (client.password === password){
                 return callback(err, client.id);
             }
             return callback("Autenticacion no valida.")
