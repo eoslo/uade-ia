@@ -206,23 +206,26 @@
                                             <tr ng-repeat="employee in employees">
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <h6>{{employee.name}}</h6>
-                                                        <span>{{employee.dni}}</span>
+                                                        <h6 ng-bind="employee.name"></h6>
+                                                        <span ng-bind="employee.dni"></span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <span>{{employee.payroll_type}}</span>
+                                                        <span ng-if="employee.payroll_type == 'monthly'">Mensual</span>
+                                                        <span ng-if="employee.payroll_type == 'per_hour'">Por hora</span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <span ng-if="employee.payroll_type == 'monthly'">${{employee.payroll_type}}</span>
-                                                        <span ng-if="employee.payroll_type == 'per_hour'">${{employee.payroll_type}} / hora</span>
+                                                        $ <span ng-if="employee.payroll_type == 'monthly'" ng-bind="employee.gross_salary"></span>
+                                                        <span ng-if="employee.payroll_type == 'per_hour'" ng-bind="employee.salary_per_hour"></span>
+                                                        <span ng-if="employee.payroll_type == 'per_hour'"> / hora</span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span class="state">{{employee.state}}</span>
+                                                    <span ng-if="employee.status == 'active'" class="state active">Activo</span>
+                                                    <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
                                                 </td>
                                                 <td>
                                                     <span class="more">

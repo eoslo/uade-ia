@@ -14,8 +14,8 @@ angular.module('PaychecksApp')
             method: 'GET',
             url: $rootScope.serverEndpoint + 'client/' + $scope.userId + '/employees'
         })
-        .then(function(employees) {
-            $scope.employees = employees
+        .then(function(result) {
+            $scope.employees = result.data
         })
         .catch(function(error) {
             console.log(error);
