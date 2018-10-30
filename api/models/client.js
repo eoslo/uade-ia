@@ -42,7 +42,7 @@ var clientSchema = new Schema({
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     creation_date: {
-        type: Date,
+        type: String,
         default: dateUtils.formattedDateArgentina()
     },
     status: {
