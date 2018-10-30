@@ -43,7 +43,7 @@ app.use('/client', clientRouter);
 app.use('/update', updateRouter);
 app.use('/employee', employeeRouter);
 app.use('/billing', billingRouter);
-app.use('/billing', payrollRouter);
+app.use('/payroll', payrollRouter);
 
 
 // catch 404 and forward to error handler
