@@ -2,12 +2,14 @@ var express = require('express');
 var router = express.Router();
 var clientMock = require('../mock/clientMock');
 var ClientController = require('../api/controllers/clientController');
+var DateUtil = require('../api/utils/dateUtil')
 
+var dateUtil = new DateUtil()
 var clientController = new ClientController();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    var client = new clientMock('Lucio', new Date().getDate(), '27302434','active');
+    var client = new clientMock('Lucio',dateUtil.formattedDateArgentina() , '27302434','active');
     res.send(client);
 });
 
