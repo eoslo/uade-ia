@@ -45,6 +45,19 @@ class clientController {
         });
     }
 
+    getClientId(req, callback){
+        return this.clientService.getClientId(req.body.username, req.body.password, function (err, clientId) {
+            if (err) {
+                console.error(err);
+                return callback(err, clientId);
+            }
+            return callback(err, clientId);
+        });
+    }
+
+    getUpdatesByEmployeeId(req, callback){
+        console.log('TODO');
+    }
 }
 
 module.exports = clientController;

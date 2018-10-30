@@ -11,6 +11,7 @@ var payrollJob = require('./api/jobs/payroll');
 var indexRouter = require('./routes/index');
 var clientRouter = require('./routes/client');
 var employeeRouter = require('./routes/employee');
+var updateRouter = require('./routes/update');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/js', express.static(__dirname + '/public/js'));
 
 app.use('/', indexRouter);
 app.use('/client', clientRouter);
+app.use('/update', updateRouter);
 app.use('/employee', employeeRouter);
 
 
