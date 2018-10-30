@@ -53,6 +53,16 @@ class BillingService {
             })
         })
     }
+
+    createAllBills(callback){
+        console.log("starting job")
+        Client.find({}, function(err, clients) {
+            clients.forEach(function(client) {
+                console.log("id:" + client._id)
+            });
+        });
+        return callback()
+    }
 }
 
 module.exports = BillingService;
