@@ -16,7 +16,6 @@ router.delete('/', function(req, res, next) {
         if (err) {
             res.status(500);
             res.send({error:err});
-            return;
         } else {
             res.send({})
         }
@@ -58,6 +57,18 @@ router.get('/:id/updates', function(req, res, next) {
     });
 });
 
+router.get('/:id/salaries', function(req, res, next) {
+    clientController.getAllSalaries(req, function (err, updates) {
+        if (err) {
+            res.status(500);
+            res.send({error:err});
+            return;
+        }
+        res.status(200);
+        res.send(updates);
+    });
+});
+
 router.post('/auth', function(req, res, next) {
     clientController.getClientId(req, function (err, clientId) {
         if(err){
@@ -66,7 +77,7 @@ router.post('/auth', function(req, res, next) {
             return;
         }
         if(clientId){
-            res.send({client_id:clientId});
+            res.send(clientId);
         }
     });
 });

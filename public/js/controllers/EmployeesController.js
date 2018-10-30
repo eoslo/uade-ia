@@ -42,6 +42,7 @@ angular.module('PaychecksApp')
     };
 
     $scope.registerEmployee = function() {
+        $scope.form.client_id = $scope.userId;
         if($scope.form.employee_id) {
             var method = 'PUT';
         } else {

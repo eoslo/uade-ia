@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var DateUtils = require('../utils/dateUtil');
+var dateUtils = new DateUtils();
 
 /*
 * worked_hours
@@ -19,8 +21,8 @@ var updateSchema = new Schema({
         default: 0
     },
     creation_date: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: dateUtils.formattedDateArgentina()
     },
     status: {
         type: String,

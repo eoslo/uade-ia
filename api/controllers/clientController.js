@@ -1,12 +1,10 @@
 var ClientService = require('../services/clientService');
+var clientService = new ClientService();
 
 class clientController {
-    constructor(){
-        this.clientService = new ClientService();
-    }
 
     updateClient(req, callback){
-       return this.clientService.updateClient(req.body.id, req.body.name, req.body.person_type, req.body.address, req.body.cuit, req.body.iva, req.body.gross_income, req.body.employees, function (err, client) {
+       return clientService.updateClient(req.body.id, req.body.name, req.body.person_type, req.body.address, req.body.cuit, req.body.iva, req.body.gross_income, req.body.employees, function (err, client) {
            if (err) {
                console.error(err);
                return callback(err);
@@ -16,7 +14,7 @@ class clientController {
     }
 
     deleteClient(req, callback){
-        return this.clientService.deleteClient(req.body.id, function (err){
+        return clientService.deleteClient(req.body.id, function (err){
             if (err) {
                 console.error(err);
                 return callback(err);
@@ -26,7 +24,7 @@ class clientController {
     }
 
     getEmployees(req, callback){
-        return this.clientService.getEmployees(req.params.id, function (err, employees) {
+        return clientService.getEmployees(req.params.id, function (err, employees) {
             if(err){
                 console.error(err);
                 return callback(err);
@@ -36,13 +34,12 @@ class clientController {
     }
 
     getAllUpdates(req, callback) {
-        let self = this;
         return this.getEmployees(req, function (err, employees) {
             if (err) {
-                console.log(err);
+                console.error(err);
                 return callback(err);
             }
-            return self.clientService.getAllUpdates(employees, function (err, updates) {
+            return  clientService.getAllUpdates(employees, function (err, updates) {
                 if (err) {
                     console.error(err);
                     return callback(err);
@@ -52,8 +49,26 @@ class clientController {
         });
     }
 
+    getAllSalaries(req, callback) {
+        return this.getEmployees(req, function (err, employees) {
+            if(err){
+                cosole.error(err);
+                return callback(err);
+            }
+            var result = [];
+            employees.forEach(function (employee){
+                result.push({
+                    employee_id: employee.id,
+                    employee_name: employee.name,
+                    salary: employee.salaries[employee.salaries.length-1]
+                });
+            });
+            return callback(err, result);
+        });
+    }
+
     getClientId(req, callback){
-        return this.clientService.getClientId(req.body.username, req.body.password, function (err, clientId) {
+        return clientService.getClientId(req.body.username, req.body.password, function (err, clientId) {
             if (err) {
                 console.error(err);
                 return callback(err, clientId);

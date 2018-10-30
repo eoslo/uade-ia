@@ -20,8 +20,6 @@ class EmployeeService {
                 return callback(err, null);
             }
 
-            console.log(employee);
-
             Client.findOneAndUpdate(
                 { _id: clientId },
                 { $push: { employees: employee._id } }, function (err, client) {

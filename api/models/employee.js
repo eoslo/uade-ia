@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var updateSchema = require('../models/update');
 var salarySchema = require('../models/salary');
+var DateUtils = require('../utils/dateUtil');
+var dateUtils = new DateUtils();
 
 var employeeSchema = new Schema({
     name: {
@@ -44,8 +46,8 @@ var employeeSchema = new Schema({
     updates: {type:[updateSchema.schema], default:[]},
     salaries: {type:[salarySchema.schema], default:[]},
     creation_date: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: dateUtils.formattedDateArgentina()
     },
     status: {
         type: String,
