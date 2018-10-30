@@ -3,7 +3,7 @@
 angular.module('PaychecksApp')
 
 .controller('BillsController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
-    $scope.updates = [];
+    $scope.bills = [];
 
     $scope.getUserId = function(userId) {
         $scope.userId = userId;
@@ -16,7 +16,7 @@ angular.module('PaychecksApp')
             url: $rootScope.serverEndpoint + 'billing/' + $scope.userId
         })
         .then(function(result) {
-            $scope.updates = result.data
+            $scope.bills = result.data
         })
         .catch(function(error) {
             console.log(error);

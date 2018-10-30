@@ -90,7 +90,7 @@ angular.module('PaychecksApp')
         })
             .then(function(response) {
                 getClientEmployees();
-                angular.element('#close-modal-btn2').trigger('click');
+                angular.element('#close-modal-btn3').trigger('click');
             })
             .catch(function(error) {
                 console.log(error);

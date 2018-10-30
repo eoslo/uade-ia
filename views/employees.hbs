@@ -122,10 +122,10 @@
                                                     <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
                                                 </td>
                                                 <td ng-if="employee.status == 'active'">
-                                                    <button class="action-icon" data-toggle="modal" data-target="#largeModal" ng-click="getEmployee(employee._id)">
+                                                    <button class="action-icon" title="Editar empleado" data-toggle="modal" data-target="#largeModal" ng-click="getEmployee(employee._id)">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button class="action-icon" data-toggle="modal" data-target="#smallModal" ng-click="getEmployee(employee._id)">
+                                                    <button class="action-icon" title="Eliminar empleado" data-toggle="modal" data-target="#smallModal" ng-click="getEmployee(employee._id)">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                     <button class="action-icon" title="Agregar novedad" data-toggle="modal" data-target="#largeModal2" ng-click="getEmployee(employee._id)">
@@ -217,7 +217,7 @@
         <!-- END EMPLOYEE REGISTER -->
 
 
-        <!-- UPDATE REGISTER -->
+        <!-- UPDATE EMPLOYEE -->
         <div class="modal fade" id="largeModal2" tabindex="-2" role="dialog" aria-labelledby="largeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -257,9 +257,9 @@
                 </div>
             </div>
         </div>
-        <!-- END UPDATE REGISTER -->
+        <!-- END UPDATE EMPLOYEE -->
 
-        <!-- UPDATE REGISTER -->
+        <!-- DELETE EMPLOYEE -->
         <div class="modal fade" id="smallModal" tabindex="-2" role="dialog" aria-labelledby="smallModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-sm" role="document">
@@ -278,7 +278,7 @@
                 </div>
             </div>
         </div>
-        <!-- END UPDATE REGISTER -->
+        <!-- END DELETE EMPLOYEE -->
     </div>
     <!-- END PAGE CONTAINER-->
 </div>

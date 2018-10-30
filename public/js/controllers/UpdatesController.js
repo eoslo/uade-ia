@@ -15,6 +15,25 @@ angular.module('PaychecksApp')
         getClientUpdates();
     };
 
+    $scope.setUpdateId = function(id) {
+        $scope.updateId = id;
+    };
+
+    $scope.deleteEmployee = function() {
+        $http({
+            method: 'POST',
+            url: $rootScope.serverEndpoint + 'update',
+            data: $scope.updateForm
+        })
+        .then(function(response) {
+            getClientEmployees();
+            angular.element('#close-modal-btn').trigger('click');
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    };
+
     function getClientUpdates() {
         $http({
             method: 'GET',
