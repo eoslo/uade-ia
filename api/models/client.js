@@ -24,11 +24,11 @@ var clientSchema = new Schema({
     },
     address: {
         type: String,
-        default: null
+        default: "NONE"
     },
     cuit: {
         type: String,
-        default: null
+        default: "NONE"
     },
     iva: {
         type: Number,
@@ -36,7 +36,7 @@ var clientSchema = new Schema({
     },
     gross_income: {
         type: Number,
-        default: null
+        default: "NONE"
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     creation_date: {

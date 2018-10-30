@@ -150,12 +150,12 @@
                                 <div class="au-breadcrumb-left">
                                     <span class="au-breadcrumb-span">Usted está aquí:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item">Empleados</li>
+                                        <li class="list-inline-item">Liquidaciones</li>
                                     </ul>
                                 </div>
                                 <button class="au-btn au-btn-icon au-btn--green" type="button" data-toggle="modal"
-                                    data-target="#largeModal">
-                                    <i class="zmdi zmdi-plus"></i>Nuevo Empleado
+                                        data-target="#largeModal">
+                                    <i class="zmdi zmdi-money"></i>Liquidar Sueldos
                                 </button>
                             </div>
                         </div>
@@ -173,49 +173,50 @@
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
                                 <h3 class="title-3 m-b-30">
-                                    <i class="zmdi zmdi-account-calendar"></i>Empleados</h3>
+                                    <i class="zmdi zmdi-money-box"></i>Liquidaciones</h3>
                                 <div class="table-responsive table-data">
                                     <table class="table">
                                         <thead>
-                                            <tr>
-                                                <td>Nombre / DNI</td>
-                                                <td>Tipo de Salario</td>
-                                                <td>Sueldo</td>
-                                                <td>Estado</td>
-                                                <td></td>
-                                            </tr>
+                                        <tr>
+                                            <td>Empleado / DNI</td>
+                                            <td>Fecha</td>
+                                            <td>Tipo de Sueldo</td>
+                                            <td>Salario</td>
+                                            <td>Monto Liquidación</td>
+                                            <td></td>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="employee in employees">
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <h6 ng-bind="employee.name"></h6>
-                                                        <span ng-bind="employee.dni"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-if="employee.payroll_type == 'monthly'">Mensual</span>
-                                                        <span ng-if="employee.payroll_type == 'per_hour'">Por hora</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        $ <span ng-if="employee.payroll_type == 'monthly'" ng-bind="employee.gross_salary"></span>
-                                                        <span ng-if="employee.payroll_type == 'per_hour'" ng-bind="employee.salary_per_hour"></span>
-                                                        <span ng-if="employee.payroll_type == 'per_hour'"> / hora</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span ng-if="employee.status == 'active'" class="state active">Activo</span>
-                                                    <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
-                                                </td>
-                                                <td>
+                                        <tr ng-repeat="employee in employees">
+                                            <td>
+                                                <div class="table-data__info">
+                                                    <h6 ng-bind="employee.name"></h6>
+                                                    <span ng-bind="employee.dni"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="table-data__info">
+                                                    <span ng-if="employee.payroll_type == 'monthly'">Mensual</span>
+                                                    <span ng-if="employee.payroll_type == 'per_hour'">Por hora</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="table-data__info">
+                                                    $ <span ng-if="employee.payroll_type == 'monthly'" ng-bind="employee.gross_salary"></span>
+                                                    <span ng-if="employee.payroll_type == 'per_hour'" ng-bind="employee.salary_per_hour"></span>
+                                                    <span ng-if="employee.payroll_type == 'per_hour'"> / hora</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span ng-if="employee.status == 'active'" class="state active">Activo</span>
+                                                <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
+                                            </td>
+                                            <td>
                                                     <span class="more">
                                                         <i class="zmdi zmdi-more"></i>
                                                     </span>
-                                                </td>
-                                            </tr>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -229,7 +230,7 @@
 
         <!-- modal large -->
         <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
-            aria-hidden="true">
+             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

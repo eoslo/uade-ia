@@ -70,11 +70,27 @@ class EmployeeService {
             if (err){
                 return err;
             } else {
-                console.log('[+] Employee ' + id + " updates:");
-                console.log(employee.updates);
-                return employee.updates;
+                if(employee){
+                    return employee.updates;
+                }
+                return {};
             }
         });
+    }
+
+
+    getLastPayroll(id, callback){
+        Employee.findById(id, function (err, employee) {
+            if(err){
+                return callback(err);
+            }
+            if(employee && employee.salaries.length>0){
+                return callback(err, employee.salaries[employee.salaries.length-1]);
+            }
+            else{
+                return callback(err, {});
+            }
+        })
     }
 }
 

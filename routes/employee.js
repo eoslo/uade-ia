@@ -47,4 +47,15 @@ router.get('/:id/updates', function(req, res, next){
         res.send({_updates:updates});
     })
 });
+
+router.get('/:id/salary', function (req, res, next) {
+    employeeController.getLastPayroll(req, function (err, salary) {
+        if(err){
+            res.status(500);
+            res.send({error:'Hubo un error al obtener la ultima liquidacion.'})
+        }
+        res.status(200);
+        res.send(salary);
+    })
+})
 module.exports = router;
