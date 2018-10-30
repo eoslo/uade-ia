@@ -4,7 +4,7 @@ var Client = require('../models/client');
 
 class EmployeeService {
 
-    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, estimated_hours, clientId, callback) {
+    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, estimated_hours, deductions, clientId, callback) {
         var employee = new Employee();
         employee.name = name;
         employee.address = address;
@@ -14,12 +14,13 @@ class EmployeeService {
         employee.gross_salary = gross_salary;
         employee.salary_per_hour = salaray_per_hour;
         employee.estimated_hours = estimated_hours;
+        SalaryService.deductions = deductions;
         employee.save(function (err) {
             if(err){
                 return callback(err, null);
             }
 
-            console.log(employee)
+            console.log(employee);
 
             Client.findOneAndUpdate(
                 { _id: clientId },
@@ -29,13 +30,13 @@ class EmployeeService {
         });
     }
 
-    modifyEmployee(id, address, gross_salary, salary_per_hour, estimated_hours, callback){
+    modifyEmployee(id, name, address, birth_date, dni, estimated_hours, deductions, callback){
         Employee.findById(id, function (err, employee) {
             if(err){
                 return callback(err);
             }
-            if(employee){
-                employee.update({ address: address, gross_salary: gross_salary, salary_per_hour: salary_per_hour, estimated_hours: estimated_hours }, function (err, raw) {
+            if(employee && employee.status === 'active'){
+                employee.update({ name: name, address: address, birth_date: birth_date, dni: dni, estimated_hours: estimated_hours, deductions: deductions }, function (err, raw) {
                     if(err){
                         return callback(err);
                     }
@@ -43,6 +44,8 @@ class EmployeeService {
                         return callback(err, employee);
                     }
                 });
+            } else {
+                return callback("[+] The employee you are trying to update is currently inactive!");
             }
         })
     }
@@ -52,7 +55,7 @@ class EmployeeService {
             if(err){
                 return callback(err);
             }
-            if(employee){
+            if(employee && employee.status === 'active'){
                 employee.update({ status: "inactive" }, function (err, raw) {
                     if(err){
                         return callback(err);
@@ -61,6 +64,8 @@ class EmployeeService {
                         return callback(err, employee);
                     }
                 });
+            } else {
+                return callback("[+] The employee you are trying to delete is already inactive!");
             }
         })
     }
