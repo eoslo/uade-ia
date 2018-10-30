@@ -1,4 +1,7 @@
 var mongoose = require('mongoose');
+var DateUtils = require('../utils/dateUtil');
+var dateUtils = new DateUtils();
+
 var Schema = mongoose.Schema;
 
 var BillingSchema = new Schema({
@@ -27,12 +30,14 @@ var BillingSchema = new Schema({
         required: 'Please enter the base_cost'
     },
     creation_date: {
-        type: Date,
-        required: 'Please enter the creation_date'
+        type: String,
+        required: 'Please enter the creation_date',
+        default: dateUtils.formattedDateArgentina()
     },
     expiration_date: {
-        type: Date,
-        required: 'Please enter the expiration_date'
+        type: String,
+        required: 'Please enter the expiration_date',
+        default: dateUtils.formattedDateArgentina()
     }
 });
 

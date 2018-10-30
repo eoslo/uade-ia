@@ -1,12 +1,10 @@
 var BillingService = require('../services/billingService');
+var billingService = new BillingService();
+
 
 class billingController {
-    constructor(){
-        this.billingService = new BillingService();
-    }
-
     createBill(req, callback) {
-        return this.billingService.createBill(req.params.clientId, function (err, bill) {
+        return billingService.createBill(req.params.clientId, function (err, bill) {
                 if(err){
                     console.error(err);
                     return callback(err);

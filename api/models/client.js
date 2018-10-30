@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var employeeSchema = require('../models/employee');
+var DateUtils = require('../utils/dateUtil');
+var dateUtils = new DateUtils();
 
 var clientSchema = new Schema({
     username: {
@@ -40,8 +42,8 @@ var clientSchema = new Schema({
     },
     employees: [ { type: Schema.Types.ObjectId, ref: 'employee' , default:[]}],
     creation_date: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: dateUtils.formattedDateArgentina()
     },
     status: {
         type: String,
