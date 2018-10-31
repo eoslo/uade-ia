@@ -17,7 +17,7 @@ https://sueldosya.herokuapp.com
 
 ---
 ### ABM clientes
-* Crear usuario<br>
+* Crear cliente<br>
 <b>recurso /login</b><br>
     desde el frontend seleccionar la opcion registrarse <br>
     <img src="images/registrate.png" width="300" height="300"  style="float: left;"/><br>
@@ -29,14 +29,13 @@ https://sueldosya.herokuapp.com
 curl -X POST https://sueldosya.herokuapp.com/client/auth -H 'Content-Type: application/json' -D '{"username":"lautarin","password":"1337"}'
 ```
 
-o 
+ó tambien con este request 
 
 ```
 curl -X GET https://sueldosya.herokuapp.com/client/:cuitNumber -H 'Content-Type: application/json'
 ```
 
-
-response 
+ambos devuleven este response
 ```
 {
     "_id": "5bd99cb677a9412434bbd2f1",
@@ -96,7 +95,8 @@ curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: applicat
 * Update client
 
 ```
-curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"employees":[]}'
+curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"
+es":[], "cbu":123123123}'
 ```
 
 ---
@@ -186,6 +186,7 @@ body
     "deductions": 17,
     "name": "Esclavo1"
     "client_id":"5bd9c52a4e28672e50bc9efd"
+    "cbu":123456123
 }
 ```
 
@@ -199,6 +200,7 @@ body
 
 ```
 {
+    "employee_id":"5bd99d1377a9412434bbd2f2"
     "address": "Casa Esclavo1",
     "birth_date": "11 de Noviembre",
     "dni": "38745192",
@@ -207,7 +209,8 @@ body
     "salary_per_hour": null,
     "estimated_hours": null,
     "deductions": 17,
-    "name": "Esclavo1"
+    "name": "Esclavo1",
+    "cbu":123456123 
 }
 ```
 
