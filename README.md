@@ -179,7 +179,7 @@ body
     "address": "Casa Esclavo1",
     "birth_date": "11 de Noviembre",
     "dni": "38745192",
-    "payroll_type": "monthly"|"per hour",
+    "payroll_type": "monthly"|"per_hour",
     "gross_salary": 75,
     "salary_per_hour": null,
     "estimated_hours": null,
@@ -189,6 +189,8 @@ body
     "cbu":123456123
 }
 ```
+
+si el payroll es monthly entonces se debe cargar gross_salary (salario bruto) en cambio si el payroll type es per_hour se debe cargar el salary_per_hour
 
 * Modificar empleado
 
