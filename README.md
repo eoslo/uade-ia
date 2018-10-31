@@ -95,7 +95,7 @@ curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: applicat
 * Update client
 
 ```
-curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000, "cbu":123123123}'
+curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal_entity","cuit":123123123,"iva":21,"gross_income":1000, "cbu":123123123}'
 ```
 
 ---
