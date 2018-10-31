@@ -2307,6 +2307,10 @@ section {
     left: 300px;
 }
 
+.fading {
+    background: -webkit-linear-gradient(to left, rgba(56, 179, 224, 1), rgba(143, 1, 237, 0));
+}
+
 @media (max-width: 991px) {
     .header-desktop2 {
         left: 0;
