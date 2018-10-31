@@ -27,6 +27,7 @@ class employeeController {
     }
 
     deleteEmployee(req, callback){
+        console.log(req.body);
         return employeeService.deleteEmployee(req.body.employee_id, function (err, employee) {
                 if(err){
                     console.error(err);

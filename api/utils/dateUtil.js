@@ -16,11 +16,7 @@ class dateUtil{
         return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
     }
 
-    formattedDateArgentinaForPayroll(d) {
-        if(d>28){
-            d   =   0;
-        }
-        var d = new Date((new Date()).getFullYear(), (new Date()).getMonth()+1, d);
+    formattedDateArgentinaWithOutHourMinutes(d = new Date) {
         let month = String(d.getMonth() + 1);
         let day = String(d.getDate());
         const year = String(d.getFullYear());
@@ -29,6 +25,21 @@ class dateUtil{
         if (day.length < 2) day = '0' + day;
 
         return `${day}/${month}/${year}`;
+    }
+
+
+    formattedDateArgentinaForPayroll(d) {
+        var today = new Date();
+        var paying_day;
+
+        //last day of the month
+        if(d==0){
+            var first_day_of_next_month = new Date(today.getFullYear(),today.getMonth()+1,1);
+            paying_day = new Date(first_day_of_next_month - 1);
+        }else{
+            paying_day = new Date(today.getFullYear(),today.getMonth()+1,d);
+        }
+        return this.formattedDateArgentinaWithOutHourMinutes(paying_day)
     }
 }
 
