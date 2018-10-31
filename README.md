@@ -16,9 +16,12 @@
 
 ---
 ### ABM clientes
-* Crear usuario
-recurso /login
-<img src="images/registrate.png" style="height:20px ; width:20px" />
+* Crear usuario<br>
+<b>recurso /login</b>
+<img src="images/registrate.png" width="300" height="300" />
+
+completar el formulario <br>
+<img src="images/register-form.png"  width="350" height="600"/>
 
 desde el frontend seleccionar la opcion registrarse
 ---
