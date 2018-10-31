@@ -9,7 +9,7 @@
 * [Carga de novedades de empleados](#Carga_novedades). Las novedades son:
 	* Para empleados por hora, se carga novedad de horas trabajadas
 	* Para empleados por mes, se carga novedad de vacaciones (se resta de su salario)
-* [Liquidacion de sueldo de empleado](#Liquidacion_sueldo).
+* [Liquidacion de sueldo de empleado](#liquidacion-de-sueldo).
 	* Para empleados por hora, se multiplica horas trabajadas (cargadas en novedades) por suelo por hora
 	* Para empleados por mes, el salario base menos 1/30 de salario por cada dia de vacaciones (cargadas en novedades) 
 * [Facturacion de servicios brindados](#Facturacion_servicios)
