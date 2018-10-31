@@ -156,7 +156,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Agregar Empleado</h5>
+                        <h5 class="modal-title" id="largeModalLabel">Formulario de Empleado</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -165,7 +165,7 @@
                         <form>
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre del empleado...">
+                                <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>Dirección</label>
@@ -177,7 +177,11 @@
                             </div>
                             <div class="form-group">
                                 <label>DNI</label>
-                                <input ng-model="form.dni" class="au-input au-input--full" type="text" name="dni" placeholder="DNI del empleado...">
+                                <input ng-model="form.dni" class="au-input au-input--full" type="text" name="dni" placeholder="DNI del empleado..." required>
+                            </div>
+                            <div class="form-group">
+                                <label>Clave Bancaria Uniforme (CBU)</label>
+                                <input ng-model="form.cbu" class="au-input au-input--full" type="text" name="cbu" placeholder="CBU del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>Tipo de Pago</label>
@@ -196,19 +200,19 @@
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'monthly'">
                                 <label>Salario Mensual</label>
-                                <input ng-model="form.gross_salary" class="au-input au-input--full" type="number" name="gross_salary" placeholder="Salario Mensual del empleado..." ng-disabled="form.employee_id">
+                                <input ng-model="form.gross_salary" ng-required="form.payroll_type == 'monthly'" class="au-input au-input--full" type="number" name="gross_salary" placeholder="Salario Mensual del empleado..." ng-disabled="form.employee_id">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'monthly'">
                                 <label>Deducciones</label>
-                                <input ng-model="form.deductions" class="au-input au-input--full" type="number" name="deductions" placeholder="Jubilación, PAMI y Obra Social (17% por defecto)">
+                                <input ng-model="form.deductions" ng-required="form.payroll_type == 'monthly'" class="au-input au-input--full" type="number" name="deductions" placeholder="Jubilación, PAMI y Obra Social (17% por defecto)">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Salario Por Hora</label>
-                                <input ng-model="form.salary_per_hour" class="au-input au-input--full" type="number" name="salary_per_hour" placeholder="Salario Por Hora del empleado..." ng-disabled="form.employee_id">
+                                <input ng-model="form.salary_per_hour" ng-required="form.payroll_type == 'per_hour'" class="au-input au-input--full" type="number" name="salary_per_hour" placeholder="Salario Por Hora del empleado..." ng-disabled="form.employee_id">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Horas Estimadas</label>
-                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas mensuales del empleado...">
+                                <input ng-model="form.estimated_hours" ng-required="form.payroll_type == 'per_hour'" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas mensuales del empleado...">
                             </div>
                         </form>
                     </div>
