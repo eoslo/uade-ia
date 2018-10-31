@@ -377,9 +377,9 @@ section {
 .login-content {
     background: #fff;
     padding: 30px 30px 20px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
 }
 
 .social-login-content {
@@ -491,6 +491,18 @@ section {
 
 .au-btn--green:active {
     background: #2f8335;
+}
+
+.au-btn--red {
+    background: #dc3545;
+}
+
+.au-btn--red:hover {
+    background: #ce2939;
+}
+
+.au-btn--red:active {
+    background: #bc0719;
 }
 
 .au-btn-plus {
@@ -2307,6 +2319,58 @@ section {
     left: 300px;
 }
 
+.fade-background{
+    background-color: #8F01ED;
+}
+
+.fade-text{
+    color: #8F01ED;
+}
+
+.fading {
+    background: linear-gradient(to left, #00d8ff, #8F01ED, #8F01ED);
+    background-size: 150% 150%;
+    -webkit-animation: Gradient 7s ease infinite;
+    -moz-animation: Gradient 7s ease infinite;
+    animation: Gradient 7s ease infinite;
+}
+
+.fullfading {
+    background: linear-gradient(-75deg, #00d8ff, #8F01ED, #EE7752, #E73C7E, #db2a20);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+}
+
+.titlefading {
+    background: linear-gradient(-75deg, #00d8ff, #8F01ED, #EE7752, #E73C7E, #db2a20);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@-webkit-keyframes Gradient {
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
+}
+
+@-moz-keyframes Gradient {
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
+}
+
+@keyframes Gradient {
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
+}
+
 @media (max-width: 991px) {
     .header-desktop2 {
         left: 0;
@@ -3966,6 +4030,10 @@ section {
 .user-data__footer {
     padding: 29px 0;
     text-align: center;
+}
+
+.white-text{
+    color: white !important;
 }
 
 .map-data {
