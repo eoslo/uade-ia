@@ -17,13 +17,25 @@
 ---
 ### ABM clientes
 * Crear usuario<br>
-<b>recurso /login</b>
-<img src="images/registrate.png" width="300" height="300" />
+<b>recurso /login</b><br>
+	* desde el frontend seleccionar la opcion registrarse
+	<img src="images/registrate.png" width="300" height="300" /><br>
+	* completar el formulario <br>
+	<img src="images/register-form.png"  width="350" height="600"/>
 
-completar el formulario <br>
-<img src="images/register-form.png"  width="350" height="600"/>
+* Obtener el client id de tu usuario
+```
+curl -X POST http://localhost:3000/client/auth -H 'Content-Type: application/json' -D '{"username":"lautarin","password":"1337"}'
+```
 
-desde el frontend seleccionar la opcion registrarse
+response 
+```
+{
+    "_id": "5bd99cb677a9412434bbd2f1",
+    "name": "Lautarin"
+}
+```
+
 ---
 ### ABM empleados
 
