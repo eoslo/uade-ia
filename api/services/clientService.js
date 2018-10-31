@@ -32,7 +32,7 @@ class ClientService {
         })
     }
 
-    updateClient(id, name, address, iva, gross_income, pay_date, cbu, callback){
+    updateClient(id, name, address, iva, gross_income, pay_date, cbu, password, callback){
         Client.findById(id, function (err, client){
             if (err) {
                 return callback(err);
@@ -44,6 +44,7 @@ class ClientService {
                     client.gross_income = gross_income;
                     client.pay_date = pay_date;
                     client.cbu = cbu;
+                    client.password = password;
                     client.save(function (err) {
                         if (err) {
                             return callback(err);
