@@ -86,8 +86,13 @@
                         <div class="col-xl-12">
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
-                                <h3 class="title-3 m-b-30">
-                                    <i class="zmdi zmdi-money-box"></i>Liquidaciones</h3>
+                                <h3 class="title-3 m-b-30 clearfix">
+                                    <i class="zmdi zmdi-money-box"></i>Liquidaciones
+                                    <span ng-bind="pay_date" style="float: right"></span>
+                                    <span style="float: right; margin-right: 5px;">Fecha de pago: </span>
+                                    <span ng-bind="totalToPay" style="float: right; margin-right: 5px;"></span>
+                                    <span style="float: right; margin-right: 5px;">Total a depositar: </span>
+                                </h3>
                                 <div class="table-responsive table-data">
                                     <table class="table">
                                         <thead>

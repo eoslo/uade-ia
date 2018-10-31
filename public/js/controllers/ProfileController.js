@@ -24,7 +24,6 @@ angular.module('PaychecksApp')
         var user = JSON.parse(userString);
         $scope.form = {
             id: user._id,
-            password: null,
             name: user.name,
             address: user.address,
             iva: user.iva,
