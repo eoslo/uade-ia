@@ -4,7 +4,7 @@ var clientService = new ClientService();
 class clientController {
 
     updateClient(req, callback){
-       return clientService.updateClient(req.body.id, req.body.name, req.body.person_type, req.body.address, req.body.cuit, req.body.iva, req.body.gross_income, req.body.employees, function (err, client) {
+       return clientService.updateClient(req.body.id, req.body.name, req.body.address, req.body.iva, req.body.gross_income, req.body.pay_date, function (err, client) {
            if (err) {
                console.error(err);
                return callback(err);
