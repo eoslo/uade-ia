@@ -44,6 +44,11 @@
                             <i class="fa fa-list-alt"></i>Facturas
                         </a>
                     </li>
+                    <li>
+                        <a href="/profile">
+                            <i class="fa fa-user"></i>Cuenta
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -160,26 +165,26 @@
                         <form>
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre del empleado...">
+                                <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>Dirección</label>
-                                <input ng-model="form.address" class="au-input au-input--full" type="text" name="address" placeholder="Dirección de vivienda del empleado...">
+                                <input ng-model="form.address" class="au-input au-input--full" type="text" name="address" placeholder="Dirección de vivienda del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Cumpleaños</label>
-                                <input ng-model="form.birth_date" id="datepicker" class="au-input au-input--full" type="text" name="birth_date" placeholder="Día de Cumpleaños del empleado...">
+                                <input ng-model="form.birth_date" id="datepicker" class="au-input au-input--full" type="text" name="birth_date" placeholder="Día de Cumpleaños del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>DNI</label>
-                                <input ng-model="form.dni" class="au-input au-input--full" type="text" name="dni" placeholder="DNI del empleado...">
+                                <input ng-model="form.dni" class="au-input au-input--full" type="text" name="dni" placeholder="DNI del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>Tipo de Pago</label>
                                 <div class="form-check">
                                     <div class="radio">
                                         <label for="monthly" class="form-check-label ">
-                                            <input ng-model="form.payroll_type" id="monthly" type="radio" name="payroll_type" value="monthly" class="form-check-input" ng-disabled="form.employee_id">Mensual
+                                            <input ng-model="form.payroll_type" id="monthly" type="radio" name="payroll_type" value="monthly" class="form-check-input" ng-disabled="form.employee_id" checked>Mensual
                                         </label>
                                     </div>
                                     <div class="radio">

@@ -1,0 +1,170 @@
+<div class="page-wrapper" ng-controller="ProfileController" ng-init="getUser('{{user}}')">
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar2">
+        <div class="logo">
+            <a href="#">
+                <h2 style="color: white">¡Sueldos Ya!</h2>
+            </a>
+        </div>
+        <div class="menu-sidebar2__content js-scrollbar1">
+            <div class="account2">
+                <h4 class="name">{{user.name}}</h4>
+                <a href="/logout">Cerrar sesión</a>
+            </div>
+            <nav class="navbar-sidebar2">
+                <ul class="list-unstyled navbar__list">
+                    <li>
+                        <a href="/employees">
+                            <i class="fa fa-user"></i>Empleados
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/payroll">
+                            <i class="fa fa-dollar"></i>Liquidaciones
+                        </a>
+                    </li>
+                    <li>
+                        <span class="active">
+                            <i class="fa fa-dollar"></i>Liquidaciones
+                        </span>
+                    </li>
+                    <li>
+                        <a href="/bills">
+                            <i class="fa fa-list-alt"></i>Facturas
+                        </a>
+                    </li>
+                    <li>
+                        <span class="active">
+                            <i class="fa fa-user"></i>Cuenta
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container2">
+        
+        <!-- BREADCRUMB-->
+        <section class="au-breadcrumb m-t-75">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="au-breadcrumb-content">
+                                <div class="au-breadcrumb-left">
+                                    <span class="au-breadcrumb-span">Usted está aquí:</span>
+                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                        <li class="list-inline-item">Datos de la cuenta</li>
+                                    </ul>
+                                </div>
+                                <button class="au-btn au-btn-icon au-btn--red" type="button" data-toggle="modal"
+                                    data-target="#smallModal" style="background-color: #dc3545 !important">
+                                    Eliminar cuenta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END BREADCRUMB-->
+
+        <!-- HEADER -->
+        <header class="header-desktop2">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap2">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER -->
+
+        <section>
+            <div class="section__content section__content--p30">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <!-- USER DATA-->
+                            <div class="user-data m-b-40">
+                                <h3 class="title-3 m-b-30">
+                                    <i class="zmdi zmdi-money-box"></i>Datos de la cuenta
+                                </h3>
+                                <form ng-submit="updateClient()" style="padding: 0 40px">
+                                    <div class="form-group">
+                                        <label>Contraseña</label>
+                                        <input ng-model="form.password" class="au-input au-input--full" type="password" name="password" placeholder="Contraseña" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Dirección</label>
+                                        <input ng-model="form.address" class="au-input au-input--full" type="text" name="address" placeholder="Dirección">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>IVA</label>
+                                        <input ng-model="form.iva" class="au-input au-input--full" type="text" name="iva" placeholder="IVA"required>
+                                    </div>
+                                    <div class="form-group" ng-show="form.person_type == 'legal_entity'">
+                                        <label>Ingresos brutos</label>
+                                        <input ng-model="form.gross_income" class="au-input au-input--full" type="text" name="gross_income" placeholder="Ingresos brutos" ng-required="form.person_type == 'legal_entity'">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Día de pago por defecto</label>
+                                        <select ng-model="form.pay_date" name="select" id="select" class="form-control" required>
+                                            <option value="">Seleccione una opción</option>
+                                            <option value="0">Último día del mes</option>
+                                            <option value="1">1° día del mes siguiente</option>
+                                            <option value="2">2° día del mes siguiente</option>
+                                            <option value="3">3° día del mes siguiente</option>
+                                            <option value="4">4° día del mes siguiente</option>
+                                            <option value="5">5° día del mes siguiente</option>
+                                        </select>
+                                    </div>
+                                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" ng-disabled="variables.isSubmitting">Actualizar</button>
+                                </form>
+                            </div>
+                            <!-- END USER DATA-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END PAGE CONTAINER-->
+    </div>
+    <!-- DELETE Client -->
+    <div class="modal fade" id="smallModal" tabindex="-2" role="dialog" aria-labelledby="smallModalLabel"
+            aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largeModalLabel">Esta seguro que desea eliminar la cuenta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn3">Cancelar</button>
+                    <button type="button" class="btn btn-danger" ng-click="deleteClient()" ng-disabled="variables.isSubmitting">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END DELETE Client -->
+
+    <div class="alert alert-danger" role="alert" ng-if="variables.showError">
+        No se pudieron actualizar los datos, pruebe más tarde
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showDeleteError">
+        No se pudo eliminar la cuenta, pruebe más tarde
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showSuccess">
+        Datos actualizados correctamente
+    </div>
+</div>

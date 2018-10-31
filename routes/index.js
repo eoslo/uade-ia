@@ -29,13 +29,15 @@ router.get('/updates', loggedIn, function (req, res, next) {
 });
 
 router.get('/payroll', loggedIn, function (req, res, next) {
-    console.log(req.user);
     res.render('payroll', {user: req.user});
 });
 
 router.get('/bills', loggedIn, function (req, res, next) {
-    console.log(req.user);
     res.render('bills', {user: req.user});
+});
+
+router.get('/profile', loggedIn, function (req, res, next) {
+    res.render('profile', {user: JSON.stringify(req.user)});
 });
 
 router.post('/signup', notLoggedIn, passport.authenticate('local.signup'), function(req, res) {

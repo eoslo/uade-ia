@@ -31,19 +31,17 @@ class ClientService {
         })
     }
 
-    updateClient(id, name, person_type, address, cuit, iva, gross_income, employees, callback){
+    updateClient(id, name, address, iva, gross_income, pay_date, callback){
         Client.findById(id, function (err, client){
             if (err) {
                 return callback(err);
             } else {
                 if (client && client.status === 'active') {
                     client.name = name;
-                    client.person_type = person_type;
                     client.address = address;
-                    client.cuit = cuit;
                     client.iva = iva;
                     client.gross_income = gross_income;
-                    client.employees = employees;
+                    client.pay_date = pay_date;
                     client.save(function (err) {
                         if (err) {
                             return callback(err);
@@ -129,11 +127,20 @@ class ClientService {
                         return done(err);
                     }
                     if(client && client.password === password){
-                        return done(null, {_id:client.id, name:client.name});
+                        return done(null, {_id:client.id, name:client.name, });
                     }
                     return done(err, false, {message: "Cliente no existente."});
                 })
             }
+        })
+    }
+
+    getClient(id, done) {
+        Client.findById(id, function (err, client) {
+            if (err) {
+                return done(err);
+            }
+            return done(null,client);
         })
     }
 }

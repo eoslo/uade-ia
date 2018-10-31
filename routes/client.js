@@ -8,9 +8,15 @@ var dateUtil = new DateUtil()
 var clientController = new ClientController();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    var client = new clientMock('Lucio',dateUtil.formattedDateArgentina() , '27302434','active');
-    res.send(client);
+router.get('/:id', function(req, res, next) {
+    clientController.getClient(req, function (err,client) {
+        if (err) {
+            res.status(500);
+            res.send({error:err});
+        } else {
+            res.send(client);
+        }
+    });
 });
 
 router.delete('/', function(req, res, next) {

@@ -16,6 +16,7 @@ class SalaryService {
                 clients.forEach(function (client) {
                     if(client.employees.length){
                         client.employees.forEach(function (employee) {
+                            let activeUpdates = SalaryService.wipeInactiveUpdates(employee);
                             if(employee.status === 'active'){
                                 var salary = new Salary();
                                 salary.pay_date = dateUtil.formattedDateArgentinaForPayroll(client.pay_date);
@@ -24,7 +25,7 @@ class SalaryService {
                                     salary.gross_income = employee.gross_salary;
                                     salary.description.push({description:`Sueldo basico`, mount:salary.gross_income});
                                 }
-                                if(employee.updates.length){
+                                if(employee.updates.length && activeUpdates.length){
                                     employee.updates.forEach(function (update) {
                                         if(update.status === 'active'){
                                             let mount = 0;
@@ -56,7 +57,7 @@ class SalaryService {
                                         employee.salaries[employee.salaries.length-1].description.forEach(function (description) {
                                             salary.description.push({description:`De ultima liquidacion ${description.description.toLowerCase().replace(/de ultima liquidacion /g, '')}`, mount:description.mount});
                                         });
-                                        salary.net_income = employee.salaries[employee.salaries.length-1].mount;
+                                        salary.net_income = employee.salaries[employee.salaries.length-1].net_income;
                                     }
                                     else{
                                         salary.net_income += employee.salary_per_hour*employee.estimated_hours;
@@ -90,6 +91,16 @@ class SalaryService {
         salary.net_income -= salary.net_income*(employee.deductions/100);
         salary.description.push({description:"Deducciones", mount:-(salary.gross_income-salary.net_income)});
         return salary;
+    }
+
+    static wipeInactiveUpdates(employee){
+        let activeUpdates = [];
+        employee.updates.forEach(function (update){
+            if(update.status === 'active'){
+                activeUpdates.push(update);
+            }
+        });
+        return activeUpdates;
     }
 }
 

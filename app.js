@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
 var payrollJob = require('./api/jobs/payroll');
+var billingJob = require('./api/jobs/billingJob');
 var indexRouter = require('./routes/index');
 var clientRouter = require('./routes/client');
 var employeeRouter = require('./routes/employee');
@@ -72,8 +73,6 @@ var db = mongoose.connection;
 //Bind connection to error event (to track Database connection errors)
 db.on('error', console.error.bind(console, 'MongoDB Connection Error:'));
 payrollJob;
-
-
-
+billingJob;
 
 module.exports = app;

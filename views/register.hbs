@@ -65,7 +65,7 @@
                                     <option value="5">5° día del mes siguiente</option>
                                 </select>
                             </div>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" ng-disabled="isSubmitting">register</button>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" ng-disabled="variables.isSubmitting">register</button>
                         </form>
                         <div class="register-link">
                             <p>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" role="alert" ng-if="showError">
+                <div class="alert alert-danger" role="alert" ng-if="variables.showError">
                     No se pudo crear el usuario, pruebe más tarde
                 </div>
             </div>
