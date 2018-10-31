@@ -17,6 +17,9 @@
 ---
 ### ABM clientes
 * Crear usuario
+recurso /login
+<img src="images/registrate.png" style="height=50px ; width=50px" />
+
 desde el frontend seleccionar la opcion registrarse
 ---
 ### ABM empleados
