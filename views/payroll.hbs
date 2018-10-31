@@ -15,7 +15,7 @@
                 <ul class="list-unstyled navbar__list">
                     <li>
                         <a href="/employees">
-                            <i class="fa fa-user"></i>Empleados
+                            <i class="fa fa-users"></i>Empleados
                         </a>
                     </li>
                     <li>
@@ -69,7 +69,7 @@
         <!-- END BREADCRUMB-->
 
         <!-- HEADER -->
-        <header class="header-desktop2">
+        <header class="header-desktop2 fading">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="header-wrap2">
@@ -100,7 +100,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="payroll in payroll">
+                                        <tr ng-repeat="payroll in payrolls">
                                             <td>
                                                 <div class="table-data__info">
                                                     <h6 ng-bind="payroll.employee_name"></h6>
@@ -114,17 +114,17 @@
                                             </td>
                                             <td>
                                                 <div class="table-data__info">
-                                                    <span ng-bind="payroll.salary.gross_income">Mensual</span>
+                                                    <span ng-bind="payroll.salary.gross_income"></span>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="table-data__info">
-                                                    <span ng-bind="payroll.salary.gross_income">Mensual</span>
+                                                    <span ng-bind="payroll.salary.net_income"></span>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="table-data__info">
-                                                    <span ng-if="payroll.salary.status == 'pending'">Pendiente</span>
+                                                    <span ng-if="payroll.salary.status == 'pending'" class="state pending">Pendiente</span>
                                                 </div>
                                             </td>
                                         </tr>

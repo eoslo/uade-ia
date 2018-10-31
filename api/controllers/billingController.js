@@ -6,8 +6,7 @@ class billingController {
     createBill(req, callback) {
         var clientId = req.params.clientId
         if (clientId && clientId.length == 24){
-            console.log("b")
-            return billingService.createBill(clientId, 0, 0, function (err, bill) {
+            return billingService.createBill(clientId , 0, 0, function (err, bill) {
                 if(err){
                     console.error(err);
                     return callback(err);
