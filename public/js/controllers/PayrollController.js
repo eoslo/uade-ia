@@ -3,7 +3,7 @@
 angular.module('PaychecksApp')
 
 .controller('PayrollController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
-    $scope.bills = [];
+    $scope.payrolls = [];
 
     $scope.getUserId = function(userId) {
         $scope.userId = userId;
@@ -13,10 +13,10 @@ angular.module('PaychecksApp')
     function getClientPayrolls() {
         $http({
             method: 'GET',
-            url: $rootScope.serverEndpoint + 'billing/' + $scope.userId
+            url: $rootScope.serverEndpoint + 'client/' + $scope.userId + '/salaries'
         })
         .then(function(result) {
-            $scope.bills = result.data
+            $scope.payrolls = result.data
         })
         .catch(function(error) {
             console.log(error);

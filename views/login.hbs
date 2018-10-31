@@ -12,16 +12,11 @@
                         <form ng-submit="login()">
                             <div class="form-group">
                                 <label>Usuario</label>
-                                <input ng-model="form.username" class="au-input au-input--full" type="text" name="username" placeholder="Usuario">
+                                <input ng-model="form.username" class="au-input au-input--full" type="text" name="username" placeholder="Usuario o CUIT" required>
                             </div>
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input ng-model="form.password" class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
-                            </div>
-                            <div class="login-checkbox">
-                                {{!-- <label>
-                                    <a href="#">Forgotten Password?</a>
-                                </label> --}}
+                                <input ng-model="form.password" class="au-input au-input--full" type="password" name="password" placeholder="Contraseña" required>
                             </div>
                             <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Ingresar</button>
                         </form>
@@ -36,5 +31,7 @@
             </div>
         </div>
     </div>
-
+    <div class="alert alert-danger" role="alert" ng-if="showError">
+        No se pudo ingresar en este momento, pruebe más tarde
+    </div>
 </div>

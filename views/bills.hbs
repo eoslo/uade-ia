@@ -33,6 +33,11 @@
                             <i class="fa fa-list-alt"></i>Facturas
                         </span>
                     </li>
+                    <li>
+                        <a href="/profile">
+                            <i class="fa fa-user"></i>Cuenta
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -140,9 +145,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-bind="bill.status"></span>
-                                                    </div>
+                                                    <span ng-if="bill.status == 'payment pending'" class="state pending">Pendiente</span>
                                                 </td>
                                             </tr>
                                         </tbody>

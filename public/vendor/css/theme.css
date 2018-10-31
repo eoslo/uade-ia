@@ -4448,6 +4448,10 @@ section {
     background: #fa4251;
 }
 
+.state.pending {
+    background: #508ced;
+}
+
 .state.active {
     background: #57b846;
 }
