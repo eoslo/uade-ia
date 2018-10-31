@@ -4,28 +4,28 @@
 <b>indice</b>
 * [ABM de clientes](#abm-clientes)
 * [ABM de empleados y asociacion con clientes](#abm-empleados). Los tipos posibles de empleados son:
-	* Empleados con sueldo por hora
-	* Empleados con sueldo por mes
+    * Empleados con sueldo por hora
+    * Empleados con sueldo por mes
 * [Carga de novedades de empleados](#carga-de-novedades). Las novedades son:
-	* Para empleados por hora, se carga novedad de horas trabajadas
-	* Para empleados por mes, se carga novedad de vacaciones (se resta de su salario)
+    * Para empleados por hora, se carga novedad de horas trabajadas
+    * Para empleados por mes, se carga novedad de vacaciones (se resta de su salario)
 * [Liquidacion de sueldo de empleado](#liquidacion-de-sueldo).
-	* Para empleados por hora, se multiplica horas trabajadas (cargadas en novedades) por suelo por hora
-	* Para empleados por mes, el salario base menos 1/30 de salario por cada dia de vacaciones (cargadas en novedades) 
+    * Para empleados por hora, se multiplica horas trabajadas (cargadas en novedades) por suelo por hora
+    * Para empleados por mes, el salario base menos 1/30 de salario por cada dia de vacaciones (cargadas en novedades) 
 * [Facturacion de servicios brindados](#facturacion-de-servicios)
 
 ---
 ### ABM clientes
 * Crear usuario<br>
 <b>recurso /login</b><br>
-	desde el frontend seleccionar la opcion registrarse <br>
-	<img src="images/registrate.png" width="300" height="300"  style="float: left;"/><br>
-	completar el formulario <br>
-	<img src="images/register-form.png"  width="350" height="600"/><br>
+    desde el frontend seleccionar la opcion registrarse <br>
+    <img src="images/registrate.png" width="300" height="300"  style="float: left;"/><br>
+    completar el formulario <br>
+    <img src="images/register-form.png"  width="350" height="600"/><br>
 
 * Obtener el client id de tu usuario
 ```
-curl -X POST http://localhost:3000/client/auth -H 'Content-Type: application/json' -D '{"username":"lautarin","password":"1337"}'
+curl -X POST https://sueldosya.herokuapp.com/client/auth -H 'Content-Type: application/json' -D '{"username":"lautarin","password":"1337"}'
 ```
 
 response 
@@ -38,7 +38,7 @@ response
 
 * Get client
 ```
-curl -X GET http://localhost:3000/client/:clientId
+curl -X GET https://sueldosya.herokuapp.com/client/:clientId
 ```
 
 Response
@@ -82,13 +82,13 @@ Response
 
 * Delete client
 ```
-curl -X DELETE http://localhost:3000/client -H 'Content-Type: application/json' -D '{"id":"5bd99cb677a9412434bbd2f1"}'
+curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"id":"5bd99cb677a9412434bbd2f1"}'
 ```
 
 * Update client
 
 ```
-curl -X PUT http://localhost:3000/client -H 'Content-Type: application/json' -D '{"name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"employees":[]}'
+curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"employees":[]}'
 ```
 
 ---
@@ -96,7 +96,7 @@ curl -X PUT http://localhost:3000/client -H 'Content-Type: application/json' -D 
  * Obtener los empleados de un cliente
  
  ```
-curl -X GET http://localhost:3000/client/:clientId/employees
+curl -X GET https://sueldosya.herokuapp.com/client/:clientId/employees
 ```
 response
 ```
@@ -155,14 +155,14 @@ response
                 ],
                 "_id": "5bd99f2277a9412434bbd2f6"
             }
-	]   
-	"name": "Esclavo2"
+    ]   
+    "name": "Esclavo2"
    }
 ```
 
 * Crear empleado
 ```
-curl -X POST http://localhost:3000/employee -H 'Content-Type: application/json' -D {BODY}
+curl -X POST https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -D {BODY}
 ```
 
 body 
@@ -183,7 +183,7 @@ body
 * Modificar empleado
 
 ```
-curl -X PUT http://localhost:3000/employee -H 'Content-Type: application/json' -D {BODY}
+curl -X PUT https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -D {BODY}
 ```
 
 body
@@ -206,7 +206,7 @@ body
 ### Carga de novedades
 * Obtener las novedades de un cliente
 ```
-curl -X GET http://localhost:3000/client/:clientId/updates
+curl -X GET https://sueldosya.herokuapp.com/client/:clientId/updates
 ```
 response
 ```
@@ -238,12 +238,63 @@ response
 
 * Crear una novedad
 ```
-curl -X POST http://localhost:3000/update -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
+curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
 ```
 
 ---
 ### Liquidacion de sueldo
 
+```
+curl -X GET https://sueldosya.herokuapp.com/payroll/:clientId
+```
 
 ---
 ### Facturacion de servicios
+
+* Obtener las facturas de servicio de un cliente
+
+```
+curl -X GET https://sueldosya.herokuapp.com/billing/:clientId
+```
+
+response 
+```
+[
+    {
+        "bill_number": 33,
+        "creation_date": "31/10/2018 15:33:25",
+        "expiration_date": "01/12/2018 15:31:05",
+        "status": "payment pending",
+        "_id": "5bd9f575eda39606048a3c63",
+        "base_cost": 20000,
+        "cost_per_employee": 500,
+        "employees_amount": 1,
+        "iva_percent": 21,
+        "gross_amount": 20500,
+        "iva_value": 4305,
+        "total_amount": 24805,
+        "__v": 0
+    },
+    {
+        "bill_number": 35,
+        "creation_date": "31/10/2018 15:37:42",
+        "expiration_date": "01/12/2018 15:37:34",
+        "status": "payment pending",
+        "_id": "5bd9f67653e38b199cfc76f6",
+        "base_cost": 20000,
+        "cost_per_employee": 500,
+        "employees_amount": 1,
+        "iva_percent": 21,
+        "gross_amount": 20500,
+        "iva_value": 4305,
+        "total_amount": 24805,
+        "__v": 0
+    }
+]
+```
+
+* Generar la facturacion por servicios a un usuario
+
+```
+curl -X POST https://sueldosya.herokuapp.com/billing/:clientId
+```

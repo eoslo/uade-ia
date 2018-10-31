@@ -16,6 +16,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:clientId', function(req, res, next) {
+    billingController.getBill(req, function (err, bill) {
+        if(err){
+            res.status(500);
+            res.send({error:err})
+        }
+        res.status(200);
+        res.send(bill);
+    })
+});
+
+router.post('/:clientId', function(req, res, next) {
     billingController.createBill(req, function (err, bill) {
         if(err){
             res.status(500);

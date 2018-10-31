@@ -13,6 +13,7 @@ class BillingService {
     }
 
     createBill(id, current, finish, done){
+        console.log("c")
         var self = this
         Client.findById(id, function (err, client) {
             if (err) {
@@ -22,6 +23,7 @@ class BillingService {
                 return done(`active client with id ${id} not found`,{})
             }
 
+            console.log("d")
             Client.findById(id).populate('billings').exec(function (err,client){
                 var bills = client.billings
                 Billing.count({}, function( err, count){
@@ -74,6 +76,22 @@ class BillingService {
             });
         });
         return callback()
+    }
+
+    getBill(id, done) {
+        Client.findById(id, function (err, client) {
+            if (err) {
+                return done(err);
+            }
+            if (!client || client.status != "active") {
+                return done(`active client with id ${id} not found`,{})
+            }
+
+            Client.findById(id).populate('billings').exec(function (err,client) {
+                var bills = client.billings
+                return done(null, bills);
+            })
+        })
     }
 }
 
