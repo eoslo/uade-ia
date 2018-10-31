@@ -203,7 +203,7 @@
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Horas Estimadas</label>
-                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas diarias del empleado...">
+                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas mensuales del empleado...">
                             </div>
                         </form>
                     </div>
@@ -246,7 +246,7 @@
                                 <label ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus'">Monto</label>
                                 <label ng-if="updateForm.update == 'absense_days' || updateForm.update == 'vacation_days'">Días</label>
                                 <label ng-if="updateForm.update == 'worked_hours'">Horas</label>
-                                <input ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor bono, cantidad días o cantidad horas">
+                                <input ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus' || updateForm.update == 'absense_days' || updateForm.update == 'vacation_days' || updateForm.update == 'worked_hours'" ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor...">
                             </div>
                         </form>
                     </div>
