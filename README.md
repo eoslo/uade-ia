@@ -19,7 +19,7 @@
 * Crear usuario<br>
 <b>recurso /login</b><br>
 	desde el frontend seleccionar la opcion registrarse <br>
-	<img src="images/registrate.png" width="300" height="300" align="left"/><br>
+	<img src="images/registrate.png" width="300" height="300"  style="float: left;"/><br>
 	completar el formulario <br>
 	<img src="images/register-form.png"  width="350" height="600"/><br>
 
