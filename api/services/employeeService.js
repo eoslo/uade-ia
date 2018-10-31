@@ -16,7 +16,7 @@ class EmployeeService {
         })
     }
 
-    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, estimated_hours, deductions, clientId, callback) {
+    createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, estimated_hours, deductions, clientId, cbu, callback) {
         var employee = new Employee();
         employee.name = name;
         employee.address = address;
@@ -27,6 +27,7 @@ class EmployeeService {
         employee.salary_per_hour = salaray_per_hour;
         employee.estimated_hours = estimated_hours;
         employee.deductions = deductions;
+        employee.cbu = cbu;
         employee.save(function (err) {
             if(err){
                 return callback(err, null);
@@ -40,13 +41,13 @@ class EmployeeService {
         });
     }
 
-    modifyEmployee(id, name, address, birth_date, dni, estimated_hours, deductions, callback){
+    modifyEmployee(id, name, address, birth_date, dni, estimated_hours, deductions, cbu, callback){
         Employee.findById(id, function (err, employee) {
             if(err){
                 return callback(err);
             }
             if(employee && employee.status === 'active'){
-                employee.update({ name: name, address: address, birth_date: birth_date, dni: dni, estimated_hours: estimated_hours, deductions: deductions }, function (err, raw) {
+                employee.update({ name: name, address: address, birth_date: birth_date, dni: dni, estimated_hours: estimated_hours, deductions: deductions, cbu:cbu }, function (err, raw) {
                     if(err){
                         return callback(err);
                     }
