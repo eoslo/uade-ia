@@ -3,6 +3,16 @@ var employeeService = new EmployeeService();
 
 class employeeController {
 
+    getEmployeeId(req, callback){
+        return employeeService.getEmployeeId(req.params.dni, function (err, employee) {
+            if(err){
+                console.error(err);
+                return callback(err);
+            }
+            return callback(err, employee);
+        })
+    }
+
     createEmployee(req, callback) {
         return employeeService.createEmployee(req.body.name, req.body.address,
             req.body.birth_date, req.body.dni, req.body.payroll_type, req.body.gross_salary, req.body.salary_per_hour, req.body.estimated_hours,

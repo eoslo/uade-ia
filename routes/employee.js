@@ -53,6 +53,18 @@ router.get('/:id/updates', function(req, res, next){
     })
 });
 
+router.get('/:dni', function(req, res, next){
+    employeeController.getEmployeeId(req, function (err, updates){
+        if(err) {
+            res.status(500);
+            res.send({error:'Hubo un error intentando encontrar al empleado'});
+            return;
+        }
+        res.status(200);
+        res.send(updates);
+    })
+});
+
 router.get('/:id/salary', function (req, res, next) {
     employeeController.getLastPayroll(req, function (err, salary) {
         if(err){

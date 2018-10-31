@@ -4,6 +4,18 @@ var Client = require('../models/client');
 
 class EmployeeService {
 
+    getEmployeeId(dni, callback){
+        Employee.findOne({dni:dni}, function (err, employee) {
+            if(err){
+                return callback(err);
+            }
+            if(!employee){
+                return callback("No existe dicho empleado.");
+            }
+            return callback(err, employee);
+        })
+    }
+
     createEmployee(name, address, birth_date, dni, payroll_type, gross_salary, salaray_per_hour, estimated_hours, deductions, clientId, callback) {
         var employee = new Employee();
         employee.name = name;
