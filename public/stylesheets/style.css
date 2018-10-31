@@ -13,6 +13,12 @@ body .page-wrapper {
 
 .page-wrapper .action-icon{
     margin-right: 5px;
+    color: #808080;
+}
+
+.page-wrapper .action-icon:hover{
+    color: #9E31E6;
+    transition: color 0.5s ease-in-out;
 }
 
 .navbar-sidebar2 .navbar__list li span {
