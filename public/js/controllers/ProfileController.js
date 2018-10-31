@@ -29,7 +29,8 @@ angular.module('PaychecksApp')
             address: user.address,
             iva: user.iva,
             gross_income: user.gross_income,
-            pay_date: '' + user.pay_date
+            pay_date: '' + user.pay_date,
+            cbu: user.cbu
         };
     };
 

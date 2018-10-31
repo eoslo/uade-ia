@@ -12,8 +12,8 @@ angular.module('PaychecksApp')
         showUpdateSuccess: false,
         showDeleteError: false,
         showDeleteSuccess: false
-        
     };
+    
     $scope.updateForm = {
         update: null,
         mount: null,
@@ -166,7 +166,8 @@ angular.module('PaychecksApp')
             gross_salary: null,
             salary_per_hour: null,
             client_id: null,
-            estimated_hours: null
+            estimated_hours: null,
+            cbu: null
         }
     }
 }])
