@@ -10,6 +10,15 @@ class payrollController {
             return callback();
         })
     }
+
+    generateOnePayroll(req, callback){
+        return payrollService.onePayroll(req.params.id, function (err) {
+            if(err){
+                return callback(err);
+            }
+            return callback(err, "done");
+        })
+    }
 }
 
 module.exports = payrollController;
