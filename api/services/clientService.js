@@ -136,6 +136,15 @@ class ClientService {
             }
         })
     }
+
+    getClient(id, done) {
+        Client.findById(id, function (err, client) {
+            if (err) {
+                return done(err);
+            }
+            return done(null,client);
+        })
+    }
 }
 
 module.exports = ClientService;

@@ -78,6 +78,16 @@ class clientController {
             return callback(err, clientId);
         });
     }
+
+    getClient(req, callback) {
+        return clientService.getClient(req.params.id, function (err, client) {
+            if (err) {
+                console.error(err);
+                return callback(err, client);
+            }
+            return callback(err, client);
+        });
+    }
 }
 
 module.exports = clientController;
