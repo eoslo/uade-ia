@@ -10,8 +10,7 @@ var clientSchema = new Schema({
       required: 'Please enter the client Username'
     },
     password: {
-      type: String,
-      required: 'Please enter the client Password'
+      type: String
     },
     name: {
         type: String,

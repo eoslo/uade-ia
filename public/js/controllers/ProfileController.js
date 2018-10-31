@@ -24,12 +24,12 @@ angular.module('PaychecksApp')
         var user = JSON.parse(userString);
         $scope.form = {
             id: user._id,
-            password: null,
             name: user.name,
             address: user.address,
             iva: user.iva,
             gross_income: user.gross_income,
-            pay_date: '' + user.pay_date
+            pay_date: '' + user.pay_date,
+            cbu: user.cbu
         };
     };
 
