@@ -21,12 +21,15 @@ angular.module('PaychecksApp')
 
     $scope.deleteEmployee = function() {
         $http({
-            method: 'POST',
+            method: 'DELETE',
             url: $rootScope.serverEndpoint + 'update',
-            data: $scope.updateForm
+            data: { id: $scope.updateId },
+            headers: {
+                'Content-type': 'application/json;charset=utf-8'
+            }
         })
         .then(function(response) {
-            getClientEmployees();
+            getClientUpdates();
             angular.element('#close-modal-btn').trigger('click');
         })
         .catch(function(error) {

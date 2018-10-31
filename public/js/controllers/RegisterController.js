@@ -11,7 +11,8 @@ angular.module('PaychecksApp')
         address: null,
         cuit: null,
         iva: null,
-        gross_income: null
+        gross_income: null,
+        pay_date: null
     };
 
     $scope.registerClient = function() {
