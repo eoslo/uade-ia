@@ -8,7 +8,7 @@ router.post('/', function(req, res, next) {
     updateController.createUpdate(req, function (err, update) {
         if(err){
             res.status(500);
-            res.send({error:'Hubo un error al crear la novedad'});
+            res.send({error:err});
             return;
         }
         res.status(201);
@@ -20,7 +20,7 @@ router.post('/:cuit/:dni', function(req, res, next) {
     updateController.createUpdateWithCuit(req, function (err, update) {
         if(err){
             res.status(500);
-            res.send({error:'Hubo un error al crear la novedad'});
+            res.send({error:err});
             return;
         }
         res.status(201);
@@ -32,7 +32,7 @@ router.delete('/', function(req, res, next) {
     updateController.deleteUpdate(req, function (err, employee) {
         if(err){
             res.status(500);
-            res.send({error:'Hubo un error al eliminar la novedad'});
+            res.send({error:err});
         }
         res.status(200);
         res.send(employee);
