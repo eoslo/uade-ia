@@ -25,7 +25,7 @@ class SalaryService {
                                     salary.gross_income = employee.gross_salary;
                                     salary.description.push({description:`Sueldo basico`, mount:salary.gross_income});
                                 }
-                                if(employee.updates.length && activeUpdates){
+                                if(employee.updates.length && activeUpdates.length){
                                     employee.updates.forEach(function (update) {
                                         if(update.status === 'active'){
                                             let mount = 0;
