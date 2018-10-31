@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
     res.send(billing);
 });
 
-router.get('/:clientId', function(req, res, next) {
+router.post('/:clientId', function(req, res, next) {
     billingController.createBill(req, function (err, bill) {
         if(err){
             res.status(500);
