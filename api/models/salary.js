@@ -26,7 +26,7 @@ var salarySchema = new Schema({
     },
     status: {
         type: String,
-        default: "pending"
+        default: "payment pending"
     }
 });
 
