@@ -81,10 +81,6 @@ p {
     margin: 0;
 }
 
-.table-responsive {
-    padding-right: 1px;
-}
-
 .card {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -4012,9 +4008,16 @@ section {
 
 .user-data {
     border: 1px solid #e5e5e5;
-    background: #fff;
     padding-top: 44px;
     margin: 44px 0;
+    background: linear-gradient(to left, #00d8ff, #8F01ED, #8F01ED);
+    background-size: 150% 150%;
+    -webkit-animation: Gradient 7s ease infinite;
+    -moz-animation: Gradient 7s ease infinite;
+    animation: Gradient 7s ease infinite;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .user-data .title-3 {
@@ -4034,6 +4037,10 @@ section {
 
 .white-text{
     color: white !important;
+}
+
+.white-background{
+    background-color: white !important;
 }
 
 .map-data {
@@ -4417,8 +4424,13 @@ section {
     vertical-align: middle;
 }
 
+.auto-width
+{
+    width: auto !important;
+}
+
 .table-data {
-    height: 472px;
+    height: auto;
     overflow-y: auto;
 }
 
@@ -6066,6 +6078,10 @@ section {
 /*                   TRUMPS                            */
 /*-----------------------------------------------------*/
 /*Padding, margin*/
+.p-40 {
+    padding: 0 40px;
+}
+
 .p-b-0 {
     padding-bottom: 0px;
 }
