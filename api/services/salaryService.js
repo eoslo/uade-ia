@@ -57,7 +57,7 @@ class SalaryService {
                                         employee.salaries[employee.salaries.length-1].description.forEach(function (description) {
                                             salary.description.push({description:`De ultima liquidacion ${description.description.toLowerCase().replace(/de ultima liquidacion /g, '')}`, mount:description.mount});
                                         });
-                                        salary.net_income = employee.salaries[employee.salaries.length-1].mount;
+                                        salary.net_income = employee.salaries[employee.salaries.length-1].net_income;
                                     }
                                     else{
                                         salary.net_income += employee.salary_per_hour*employee.estimated_hours;
