@@ -18,10 +18,10 @@
 ### ABM clientes
 * Crear usuario<br>
 <b>recurso /login</b><br>
-	* desde el frontend seleccionar la opcion registrarse
-	<img src="images/registrate.png" width="300" height="300" /><br>
-	* completar el formulario <br>
-	<img src="images/register-form.png"  width="350" height="600"/>
+	desde el frontend seleccionar la opcion registrarse <br>
+	<img src="images/registrate.png" width="300" height="300" align="left"/><br>
+	completar el formulario <br>
+	<img src="images/register-form.png"  width="350" height="600"/><br>
 
 * Obtener el client id de tu usuario
 ```
