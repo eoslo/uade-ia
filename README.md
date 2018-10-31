@@ -239,9 +239,12 @@ response
 
 * Crear una novedad
 ```
-curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
+curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
 ```
 
+```
+curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150"}'
+```
 ---
 ### Liquidacion de sueldo
 
