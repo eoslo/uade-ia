@@ -137,13 +137,6 @@ response
                 "creation_date": "31/10/2018 09:07:45",
                 "status": "inactive",
                 "_id": "5bd99e8877a9412434bbd2f4"
-            },
-            {
-                "update": "worked_hours",
-                "mount": 100,
-                "creation_date": "31/10/2018 09:07:45",
-                "status": "inactive",
-                "_id": "5bd9a4e677a9412434bbd33b"
             }
         ],
         "salaries": [
@@ -161,18 +154,9 @@ response
                     }
                 ],
                 "_id": "5bd99f2277a9412434bbd2f6"
-            },
-            {
-                "gross_income": 0,
-                "net_income": 0,
-                "pay_date": "31/10/2018",
-                "creation_date": "31/10/2018 09:07:45",
-                "status": "pending",
-                "description": [],
-                "_id": "5bd9a25e77a9412434bbd30b"
             }
-	    ]   
-	    "name": "Esclavo2"
+	]   
+	"name": "Esclavo2"
    }
 ```
 
