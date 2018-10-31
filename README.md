@@ -244,6 +244,70 @@ curl -X POST http://localhost:3000/update -H 'Content-Type: application/json' -D
 ---
 ### Liquidacion de sueldo
 
+```
+curl -X GET http://localhost:3000/payroll/:clientId
+```
 
 ---
 ### Facturacion de servicios
+
+* Obtener las facturas de servicio de un cliente
+
+```
+curl -X GET http://localhost:3000/billing/:clientId
+```
+
+response 
+```
+[
+    {
+        "bill_number": 33,
+        "creation_date": "31/10/2018 15:33:25",
+        "expiration_date": "01/12/2018 15:31:05",
+        "status": "payment pending",
+        "_id": "5bd9f575eda39606048a3c63",
+        "base_cost": 20000,
+        "cost_per_employee": 500,
+        "employees_amount": 1,
+        "iva_percent": 21,
+        "gross_amount": 20500,
+        "iva_value": 4305,
+        "total_amount": 24805,
+        "__v": 0
+    },
+    {
+        "bill_number": 35,
+        "creation_date": "31/10/2018 15:37:42",
+        "expiration_date": "01/12/2018 15:37:34",
+        "status": "payment pending",
+        "_id": "5bd9f67653e38b199cfc76f6",
+        "base_cost": 20000,
+        "cost_per_employee": 500,
+        "employees_amount": 1,
+        "iva_percent": 21,
+        "gross_amount": 20500,
+        "iva_value": 4305,
+        "total_amount": 24805,
+        "__v": 0
+    }
+]
+```
+
+* Generar la facturacion por servicios a un usuario
+
+```
+curl -X POST http://localhost:3000/billing/:clientId
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
