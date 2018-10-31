@@ -14,12 +14,21 @@
 	* Para empleados por mes, el salario base menos 1/30 de salario por cada dia de vacaciones (cargadas en novedades) 
 * [Facturacion de servicios brindados](#facturacion-de-servicios)
 
+---
 ### ABM clientes
-
+* Crear usuario
+desde el frontend seleccionar la opcion registrarse
+---
 ### ABM empleados
 
+
+---
 ### Carga de novedades
 
+
+---
 ### Liquidacion de sueldo
 
+
+---
 ### Facturacion de servicios
