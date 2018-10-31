@@ -75,6 +75,10 @@ class clientController {
                 console.error(err);
                 return callback(err, clientId);
             }
+            if(!clientId){
+                console.error(clientId);
+                return callback("No existe dicho usuario")
+            }
             return callback(err, clientId);
         });
     }

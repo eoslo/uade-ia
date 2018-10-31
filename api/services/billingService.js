@@ -12,7 +12,7 @@ class BillingService {
         this.nextMonth.setMonth(this.nextMonth.getMonth() + 1)
     }
 
-    createBill(id, done){
+    createBill(id, current, finish, done){
         var self = this
         Client.findById(id, function (err, client) {
             if (err) {
@@ -45,13 +45,17 @@ class BillingService {
 
                     billing.save(function (err, bill) {
                         if(err){
+                            console.error(err);
                             return done(err,{});
                         }
                         Client.findOneAndUpdate(
                             { _id: id },
                             { $push: { billings: bill._id } }, function (err, client) {
                                 bills.push(bill)
-                                return done(null, bills);
+                                if(current===finish){
+                                    return done(null, bills);
+                                }
+                                return;
                             });
                     })
                 })
@@ -59,11 +63,14 @@ class BillingService {
         })
     }
 
-    createAllBills(callback){
+    createAllBills(){
         console.log("starting job")
+        let self = this;
         Client.find({}, function(err, clients) {
-            clients.forEach(function(client) {
-                console.log("id:" + client._id)
+            clients.forEach(function(client, index) {
+                self.createBill(client.id, index, clients.length-1, function (err, bills) {
+                    return;
+                })
             });
         });
         return callback()
