@@ -15,6 +15,16 @@ body .page-wrapper {
     margin-right: 5px;
 }
 
+.page-wrapper {
+    position: relative;
+}
+
+.page-wrapper .alert {
+    position: absolute;
+    right: 50px;
+    bottom: 30px;
+}
+
 .navbar-sidebar2 .navbar__list li span {
     font-size: 16px;
     color: #555;

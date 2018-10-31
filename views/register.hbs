@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Día de pago por defecto</label>
-                                <select ng-model="form.pay_date" name="select" id="select" class="form-control">
+                                <select ng-model="form.pay_date" name="select" id="select" class="form-control" required>
                                     <option value="">Seleccione una opción</option>
                                     <option value="0">Último día del mes</option>
                                     <option value="1">1° día del mes siguiente</option>
@@ -65,7 +65,7 @@
                                     <option value="5">5° día del mes siguiente</option>
                                 </select>
                             </div>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" ng-disabled="isSubmitting">register</button>
                         </form>
                         <div class="register-link">
                             <p>
@@ -74,6 +74,9 @@
                             </p>
                         </div>
                     </div>
+                </div>
+                <div class="alert alert-danger" role="alert" ng-if="showError">
+                    No se pudo crear el usuario, pruebe más tarde
                 </div>
             </div>
         </div>

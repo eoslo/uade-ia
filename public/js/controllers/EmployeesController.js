@@ -4,6 +4,16 @@ angular.module('PaychecksApp')
 
 .controller('EmployeesController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
     $scope.employees = [];
+    $scope.variables = {
+        isSubmitting: false,
+        showEmployeeError: false,
+        showEmployeeSuccess: false,
+        showUpdateError: false,
+        showUpdateSuccess: false,
+        showDeleteError: false,
+        showDeleteSuccess: false
+        
+    };
     $scope.updateForm = {
         update: null,
         mount: null,
@@ -43,6 +53,7 @@ angular.module('PaychecksApp')
     };
 
     $scope.registerEmployee = function() {
+        $scope.variables.isSubmitting = true;
         $scope.form.client_id = $scope.userId;
         if($scope.form.employee_id) {
             var method = 'PUT';
@@ -57,14 +68,25 @@ angular.module('PaychecksApp')
         })
         .then(function(response) {
             getClientEmployees();
+            $scope.variables.isSubmitting = false;
             angular.element('#close-modal-btn').trigger('click');
+            $scope.variables.showEmployeeSuccess = true;
+            $timeout( function(){
+                $scope.variables.showEmployeeSuccess = false;
+            }, 3000 );
         })
         .catch(function(error) {
+            $scope.variables.isSubmitting = false;
+            $scope.variables.showEmployeeError = true;
+            $timeout( function(){
+                $scope.variables.showEmployeeError = false;
+            }, 3000 );
             console.log(error);
         });
     };
 
     $scope.newUpdate = function() {
+        $scope.variables.isSubmitting = true;
         $scope.updateForm.employee_id = $scope.form.employee_id;
         $http({
             method: 'POST',
@@ -73,14 +95,25 @@ angular.module('PaychecksApp')
         })
         .then(function(response) {
             getClientEmployees();
+            $scope.variables.isSubmitting = false;
             angular.element('#close-modal-btn2').trigger('click');
+            $scope.variables.showUpdateSuccess = true;
+            $timeout( function(){
+                $scope.variables.showUpdateSuccess = false;
+            }, 3000 );
         })
         .catch(function(error) {
+            $scope.variables.isSubmitting = false;
+            $scope.variables.showUpdateError = true;
+            $timeout( function(){
+                $scope.variables.showUpdateError = false;
+            }, 3000 );
             console.log(error);
         });
     };
 
     $scope.deleteEmployee = function() {
+        $scope.variables.isSubmitting = true;
         $http({
             method: 'DELETE',
             url: $rootScope.serverEndpoint + 'employee',
@@ -93,9 +126,19 @@ angular.module('PaychecksApp')
         })
             .then(function(response) {
                 getClientEmployees();
+                $scope.variables.isSubmitting = false;
                 angular.element('#close-modal-btn3').trigger('click');
+                $scope.variables.showDeleteSuccess = true;
+                $timeout( function(){
+                    $scope.variables.showDeleteSuccess = false;
+                }, 3000 );
             })
             .catch(function(error) {
+                $scope.variables.isSubmitting = false;
+                $scope.variables.showDeleteError = true;
+                $timeout( function(){
+                    $scope.variables.showDeleteError = false;
+                }, 3000 );
                 console.log(error);
             });
     };
