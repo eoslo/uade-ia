@@ -170,7 +170,7 @@ response
 
 * Crear empleado
 ```
-curl -X POST https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -D {BODY}
+curl -X POST https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -d {BODY}
 ```
 
 body 
