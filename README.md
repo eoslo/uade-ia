@@ -160,8 +160,47 @@ response
    }
 ```
 
- 
+* Crear empleado
+```
+curl -X POST http://localhost:3000/employee -H 'Content-Type: application/json' -D {BODY}
+```
 
+body 
+```
+{
+    "address": "Casa Esclavo1",
+    "birth_date": "11 de Noviembre",
+    "dni": "38745192",
+    "payroll_type": "monthly"|"per hour",
+    "gross_salary": 75,
+    "salary_per_hour": null,
+    "estimated_hours": null,
+    "deductions": 17,
+    "name": "Esclavo1"
+}
+```
+
+* Modificar empleado
+
+```
+curl -X PUT http://localhost:3000/employee -H 'Content-Type: application/json' -D {BODY}
+```
+
+body
+
+```
+{
+    "address": "Casa Esclavo1",
+    "birth_date": "11 de Noviembre",
+    "dni": "38745192",
+    "payroll_type": "monthly"|"per hour",
+    "gross_salary": 75,
+    "salary_per_hour": null,
+    "estimated_hours": null,
+    "deductions": 17,
+    "name": "Esclavo1"
+}
+```
 
 ---
 ### Carga de novedades
