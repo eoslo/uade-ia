@@ -89,7 +89,7 @@ class SalaryService {
 
     static deductions(employee, salary){
         salary.net_income -= salary.net_income*(employee.deductions/100);
-        salary.description.push({description:"Deducciones", mount:-(salary.gross_income-salary.net_income)});
+        salary.description.push({description:"Deducciones", mount:-(salary.net_income*(employee.deductions/100))});
         return salary;
     }
 
