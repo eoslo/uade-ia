@@ -395,7 +395,11 @@ section {
 }
 
 .register-link > p > a {
-    color: #ff2e44;
+    color: #9E31E6;
+}
+
+.register-link > p > a:hover {
+    color: #8F01ED;
 }
 
 .fontawesome-list-wrap {
@@ -483,6 +487,10 @@ section {
 
 .au-btn--green:hover {
     background: #59bd60;
+}
+
+.au-btn--green:active {
+    background: #2f8335;
 }
 
 .au-btn-plus {
@@ -4438,6 +4446,10 @@ section {
 
 .state.inactive {
     background: #fa4251;
+}
+
+.state.pending {
+    background: #508ced;
 }
 
 .state.active {
