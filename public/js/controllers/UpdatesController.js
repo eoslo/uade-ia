@@ -19,7 +19,7 @@ angular.module('PaychecksApp')
         $scope.updateId = id;
     };
 
-    $scope.deleteEmployee = function() {
+    $scope.deleteUpdate = function() {
         $http({
             method: 'DELETE',
             url: $rootScope.serverEndpoint + 'update',

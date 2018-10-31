@@ -209,7 +209,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="registerEmployee()">Guardar</button>
+                        <button type="button" class="btn btn-primary" ng-click="registerEmployee()" ng-disabled="variables.isSubmitting">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -252,7 +252,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn2">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="newUpdate()">Guardar</button>
+                        <button type="button" class="btn btn-primary" ng-click="newUpdate()" ng-disabled="variables.isSubmitting">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -273,7 +273,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn3">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="deleteEmployee()">Eliminar</button>
+                        <button type="button" class="btn btn-primary" ng-click="deleteEmployee()" ng-disabled="variables.isSubmitting">Eliminar</button>
                     </div>
                 </div>
             </div>
@@ -281,4 +281,22 @@
         <!-- END DELETE EMPLOYEE -->
     </div>
     <!-- END PAGE CONTAINER-->
+    <div class="alert alert-danger" role="alert" ng-if="variables.showEmployeeError">
+        No se pudo registrar el empleado, pruebe más tarde
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showUpdateError">
+        No se pudo crear la novedad, pruebe más tarde
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showDeleteError">
+        No se pudo eliminar el usuario, pruebe más tarde
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showEmployeeSuccess">
+        Empleado registrado correctamente
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showUpdateSuccess">
+        Novedad creada correctamente
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showDeleteSuccess">
+        Empleado eliminado correctamente
+    </div>
 </div>
