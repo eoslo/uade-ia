@@ -93,7 +93,74 @@ curl -X PUT http://localhost:3000/client -H 'Content-Type: application/json' -D 
 
 ---
 ### ABM empleados
+ * Obtener los empleados de un cliente
+ 
+ ```
+curl -X GET http://localhost:3000/client/:clientId/employees
+```
+response
+```
+[
+    {
+        "address": "Casa Esclavo1",
+        "birth_date": "11 de Noviembre",
+        "dni": "38745192",
+        "payroll_type": "monthly",
+        "gross_salary": 75,
+        "salary_per_hour": null,
+        "estimated_hours": null,
+        "deductions": 17,
+        "creation_date": "31/10/2018 09:07:45",
+        "status": "inactive",
+        "_id": "5bd99d1377a9412434bbd2f2",
+        "updates": [],
+        "salaries": [],
+        "name": "Esclavo1",
+        "__v": 0
+    },
+    {
+        "address": "Casa Esclavo2",
+        "birth_date": "24 de Abril",
+        "dni": "40726522",
+        "payroll_type": "per_hour",
+        "gross_salary": null,
+        "salary_per_hour": 0.2,
+        "estimated_hours": 380,
+        "deductions": 17,
+        "creation_date": "31/10/2018 09:07:45",
+        "status": "active",
+        "_id": "5bd99d4977a9412434bbd2f3",
+        "updates": [
+            {
+                "update": "worked_hours",
+                "mount": 400,
+                "creation_date": "31/10/2018 09:07:45",
+                "status": "inactive",
+                "_id": "5bd99e8877a9412434bbd2f4"
+            }
+        ],
+        "salaries": [
+            {
+                "gross_income": 80,
+                "net_income": 80,
+                "pay_date": "31/10/2018",
+                "creation_date": "31/10/2018 09:07:45",
+                "status": "pending",
+                "description": [
+                    {
+                        "_id": "5bd99f2277a9412434bbd2f7",
+                        "description": "400 horas trabajadas.",
+                        "mount": 80
+                    }
+                ],
+                "_id": "5bd99f2277a9412434bbd2f6"
+            }
+	]   
+	"name": "Esclavo2"
+   }
+```
 
+ 
 
 
 ---
@@ -128,6 +195,11 @@ response
         "employee_name": "Esclavo3"
     }
 ]
+```
+
+* Crear una novedad
+```
+curl -X POST http://localhost:3000/update -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
 ```
 
 ---
