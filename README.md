@@ -82,7 +82,7 @@ Response
 
 * Delete client
 ```
-curl -X DELETE http://localhost:3000/client -H 'Content-Type: application/json' -D '{"id":"{user_id}"}'
+curl -X DELETE http://localhost:3000/client -H 'Content-Type: application/json' -D '{"id":"5bd99cb677a9412434bbd2f1"}'
 ```
 
 * Update client
@@ -98,7 +98,37 @@ curl -X PUT http://localhost:3000/client -H 'Content-Type: application/json' -D 
 
 ---
 ### Carga de novedades
-
+* Obtener las novedades de un cliente
+```
+curl -X GET http://localhost:3000/client/:clientId/updates
+```
+response
+```
+[
+    {
+        "update": {
+            "update": "worked_hours",
+            "mount": 400,
+            "creation_date": "31/10/2018 09:07:45",
+            "status": "inactive",
+            "_id": "5bd99e8877a9412434bbd2f4"
+        },
+        "employee_id": "5bd99d4977a9412434bbd2f3",
+        "employee_name": "Esclavo2"
+    },
+    {
+        "update": {
+            "update": "salary_change",
+            "mount": 1000,
+            "creation_date": "31/10/2018 09:07:45",
+            "status": "inactive",
+            "_id": "5bd9a4f777a9412434bbd33d"
+        },
+        "employee_id": "5bd9a1dc77a9412434bbd309",
+        "employee_name": "Esclavo3"
+    }
+]
+```
 
 ---
 ### Liquidacion de sueldo
