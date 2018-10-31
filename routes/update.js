@@ -16,6 +16,18 @@ router.post('/', function(req, res, next) {
     })
 });
 
+router.post('/:cuit/:dni', function(req, res, next) {
+    updateController.createUpdateWithCuit(req, function (err, update) {
+        if(err){
+            res.status(500);
+            res.send({error:'Hubo un error al crear la novedad'});
+            return;
+        }
+        res.status(201);
+        res.send(update);
+    })
+});
+
 router.delete('/', function(req, res, next) {
     updateController.deleteUpdate(req, function (err, employee) {
         if(err){

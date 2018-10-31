@@ -90,4 +90,17 @@ router.post('/auth', function(req, res, next) {
     });
 });
 
+router.post('/:cuit', function(req, res, next) {
+    clientController.getClientIdByCuit(req, function (err, clientId) {
+        if(err){
+            res.status(500);
+            res.send({error:err})
+            return;
+        }
+        if(clientId){
+            res.send(clientId);
+        }
+    });
+});
+
 module.exports = router;
