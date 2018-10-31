@@ -244,7 +244,9 @@ curl -X POST http://localhost:3000/update -H 'Content-Type: application/json' -D
 ---
 ### Liquidacion de sueldo
 
-
+```
+curl -X GET http://localhost:3000/payroll/:clientId
+```
 
 ---
 ### Facturacion de servicios
