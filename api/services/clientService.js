@@ -4,7 +4,7 @@ var dateUtil = new DateUtil();
 
 class ClientService {
 
-    createClient(username, password, name, person_type, address, cuit, iva, gross_income, pay_date, done){
+    createClient(username, password, name, person_type, address, cuit, iva, gross_income, pay_date, cbu, done){
         Client.findOne({'username': username}, function (err, client) {
             if(err){
                 return done(err);
@@ -22,6 +22,7 @@ class ClientService {
             newClient.iva = iva;
             newClient.gross_income = gross_income;
             newClient.pay_date = pay_date;
+            newClient.cbu = cbu;
             newClient.save(function (err, result) {
                 if(err){
                     return done(err);
@@ -31,7 +32,7 @@ class ClientService {
         })
     }
 
-    updateClient(id, name, address, iva, gross_income, pay_date, callback){
+    updateClient(id, name, address, iva, gross_income, pay_date, cbu, callback){
         Client.findById(id, function (err, client){
             if (err) {
                 return callback(err);
@@ -42,6 +43,7 @@ class ClientService {
                     client.iva = iva;
                     client.gross_income = gross_income;
                     client.pay_date = pay_date;
+                    client.cbu = cbu;
                     client.save(function (err) {
                         if (err) {
                             return callback(err);

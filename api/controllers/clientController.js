@@ -4,7 +4,7 @@ var clientService = new ClientService();
 class clientController {
 
     updateClient(req, callback){
-       return clientService.updateClient(req.body.id, req.body.name, req.body.address, req.body.iva, req.body.gross_income, req.body.pay_date, function (err, client) {
+       return clientService.updateClient(req.body.id, req.body.name, req.body.address, req.body.iva, req.body.gross_income, req.body.pay_date, req.body.cbu, function (err, client) {
            if (err) {
                console.error(err);
                return callback(err);
@@ -84,7 +84,7 @@ class clientController {
     }
 
     getClientIdByCuit(req, callback){
-        return clientService.getClientIdByCuit(req.body.cuit, function (err, clientId) {
+        return clientService.getClientIdByCuit(req.params.cuit, function (err, clientId) {
             if (err) {
                 console.error(err);
                 return callback(err, clientId);

@@ -17,6 +17,10 @@ var clientSchema = new Schema({
         type: String,
         required: 'Kindly enter the name of the client'
     },
+    cbu: {
+        type: String,
+        required: 'Kindly enter the cbu of the client'
+    },
     person_type: {
         type: [{
             type: String,

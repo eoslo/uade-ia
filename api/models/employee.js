@@ -22,6 +22,10 @@ var employeeSchema = new Schema({
         type: String,
         default: "NONE"
     },
+    cbu: {
+        type: String,
+        required: 'Kindly enter the name of the client'
+    },
     payroll_type: {
         type: String,
         default: "monthly",
