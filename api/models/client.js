@@ -17,10 +17,14 @@ var clientSchema = new Schema({
         type: String,
         required: 'Kindly enter the name of the client'
     },
+    cbu: {
+        type: String,
+        required: 'Kindly enter the cbu of the client'
+    },
     person_type: {
         type: [{
             type: String,
-            enum: ['physical', 'legal entity']
+            enum: ['physical', 'legal_entity']
         }],
         default: ['physical']
     },

@@ -4,7 +4,8 @@ var clientService = new ClientService();
 class clientController {
 
     updateClient(req, callback){
-       return clientService.updateClient(req.body.id, req.body.name, req.body.address, req.body.iva, req.body.gross_income, req.body.pay_date, function (err, client) {
+       return clientService.updateClient(req.body.id, req.body.name, req.body.address, req.body.iva, req.body.gross_income,
+           req.body.pay_date, req.body.cbu, req.body.password, function (err, client) {
            if (err) {
                console.error(err);
                return callback(err);
@@ -71,6 +72,20 @@ class clientController {
 
     getClientId(req, callback){
         return clientService.getClientId(req.body.username, req.body.password, function (err, clientId) {
+            if (err) {
+                console.error(err);
+                return callback(err, clientId);
+            }
+            if(!clientId){
+                console.error(clientId);
+                return callback("No existe dicho usuario")
+            }
+            return callback(err, clientId);
+        });
+    }
+
+    getClientIdByCuit(req, callback){
+        return clientService.getClientIdByCuit(req.params.cuit, function (err, clientId) {
             if (err) {
                 console.error(err);
                 return callback(err, clientId);

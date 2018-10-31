@@ -8,13 +8,13 @@
         </div>
         <div class="menu-sidebar2__content js-scrollbar1">
             <div class="account2">
-                <h4 class="name">{{user.name}}</h4>
+                <h4 class="name fade-text">{{user.name}}</h4>
                 <a href="/logout">Cerrar sesión</a>
             </div>
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <span class="active">
+                        <span class="active fade-background white-text">
                             <i class="fa fa-users"></i>Empleados
                         </span>
                     </li>
@@ -89,7 +89,7 @@
                         <div class="col-xl-12">
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
-                                <h3 class="title-3 m-b-30"><i class="zmdi zmdi-account-box-o"></i>Empleados</h3>
+                                <h3 class="title-3 m-b-30"><i class="zmdi zmdi-accounts"></i>Empleados</h3>
                                 <div class="table-responsive table-data">
                                     <table class="table" ng-if="employees.length != 0">
                                         <thead>
@@ -156,7 +156,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Agregar Empleado</h5>
+                        <h5 class="modal-title" id="largeModalLabel">Formulario de Empleado</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -165,7 +165,7 @@
                         <form>
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre del empleado...">
+                                <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>Dirección</label>
@@ -177,7 +177,11 @@
                             </div>
                             <div class="form-group">
                                 <label>DNI</label>
-                                <input ng-model="form.dni" class="au-input au-input--full" type="text" name="dni" placeholder="DNI del empleado...">
+                                <input ng-model="form.dni" class="au-input au-input--full" type="text" name="dni" placeholder="DNI del empleado..." required>
+                            </div>
+                            <div class="form-group">
+                                <label>Clave Bancaria Uniforme (CBU)</label>
+                                <input ng-model="form.cbu" class="au-input au-input--full" type="text" name="cbu" placeholder="CBU del empleado..." required>
                             </div>
                             <div class="form-group">
                                 <label>Tipo de Pago</label>
@@ -196,19 +200,19 @@
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'monthly'">
                                 <label>Salario Mensual</label>
-                                <input ng-model="form.gross_salary" class="au-input au-input--full" type="number" name="gross_salary" placeholder="Salario Mensual del empleado..." ng-disabled="form.employee_id">
+                                <input ng-model="form.gross_salary" ng-required="form.payroll_type == 'monthly'" class="au-input au-input--full" type="number" name="gross_salary" placeholder="Salario Mensual del empleado..." ng-disabled="form.employee_id">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'monthly'">
                                 <label>Deducciones</label>
-                                <input ng-model="form.deductions" class="au-input au-input--full" type="number" name="deductions" placeholder="Jubilación, PAMI y Obra Social (17% por defecto)">
+                                <input ng-model="form.deductions" ng-required="form.payroll_type == 'monthly'" class="au-input au-input--full" type="number" name="deductions" placeholder="Jubilación, PAMI y Obra Social (17% por defecto)">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Salario Por Hora</label>
-                                <input ng-model="form.salary_per_hour" class="au-input au-input--full" type="number" name="salary_per_hour" placeholder="Salario Por Hora del empleado..." ng-disabled="form.employee_id">
+                                <input ng-model="form.salary_per_hour" ng-required="form.payroll_type == 'per_hour'" class="au-input au-input--full" type="number" name="salary_per_hour" placeholder="Salario Por Hora del empleado..." ng-disabled="form.employee_id">
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Horas Estimadas</label>
-                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas mensuales del empleado...">
+                                <input ng-model="form.estimated_hours" ng-required="form.payroll_type == 'per_hour'" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas mensuales del empleado...">
                             </div>
                         </form>
                     </div>

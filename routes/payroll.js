@@ -7,7 +7,7 @@ router.post('/', function(req, res, next) {
     payrollController.generatePayroll(function (err) {
         if(err){
             res.status(500);
-            res.send({error:'Hubo un error al crear el empleado'});
+            res.send(err);
             return;
         }
         res.status(200);
@@ -15,4 +15,15 @@ router.post('/', function(req, res, next) {
     })
 });
 
+router.post('/:id', function(req, res, next) {
+    payrollController.generateOnePayroll(req, function (err) {
+        if(err){
+            res.status(500);
+            res.send(err);
+            return;
+        }
+        res.status(200);
+        res.send("done");
+    })
+});
 module.exports = router;

@@ -1,11 +1,11 @@
 <div class="page-wrapper" ng-controller="RegisterController">
     <div class="page-content--bge5">
-        <div class="container login">
+        <div class="container login fullfading">
             <div class="login-wrap">
                 <div class="login-content">
                     <div class="login-logo">
                         <a href="#">
-                            <h1>¡Sueldos Ya!</h1>
+                            <h1 class="titlefading">¡Sueldos Ya!</h1>
                         </a>
                     </div>
                     <div class="login-form">
@@ -21,6 +21,10 @@
                             <div class="form-group">
                                 <label>Nombre</label>
                                 <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Clave Bancaria Uniforme (CBU)</label>
+                                <input ng-model="form.cbu" class="au-input au-input--full" type="text" name="name" placeholder="CBU" required>
                             </div>
                             <div class="form-group">
                                 <label>Entidad legal</label>
@@ -65,12 +69,12 @@
                                     <option value="5">5° día del mes siguiente</option>
                                 </select>
                             </div>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" ng-disabled="variables.isSubmitting">register</button>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" ng-disabled="variables.isSubmitting">registrar</button>
                         </form>
                         <div class="register-link">
                             <p>
                                 ¿Ya tiene una cuenta?
-                                <a href="/login">Log In</a>
+                                <a href="/login">Accede</a>
                             </p>
                         </div>
                     </div>
