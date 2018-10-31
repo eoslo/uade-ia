@@ -12,7 +12,7 @@ class EmployeeService {
             if(!employee){
                 return callback("No existe dicho empleado.");
             }
-            return callback(err, employee);
+            return callback(err, {employee_id:employee.id});
         })
     }
 
