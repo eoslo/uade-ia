@@ -26,7 +26,7 @@ https://sueldosya.herokuapp.com
 
 * Obtener el client id de tu usuario
 ```
-curl -X POST https://sueldosya.herokuapp.com/client/auth -H 'Content-Type: application/json' -D '{"username":"lautarin","password":"1337"}'
+curl -X POST https://sueldosya.herokuapp.com/client/auth -H 'Content-Type: application/json' -d '{"username":"lautarin","password":"1337"}'
 ```
 
 ó tambien con este request 
@@ -89,13 +89,13 @@ Response
 
 * Delete client
 ```
-curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"id":"5bd99cb677a9412434bbd2f1"}'
+curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1"}'
 ```
 
 * Update client
 
 ```
-curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"
+curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"
 es":[], "cbu":123123123}'
 ```
 
@@ -195,7 +195,7 @@ si el payroll es monthly entonces se debe cargar gross_salary (salario bruto) en
 * Modificar empleado
 
 ```
-curl -X PUT https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -D {BODY}
+curl -X PUT https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -d {BODY}
 ```
 
 body
@@ -252,11 +252,11 @@ response
 
 * Crear una novedad
 ```
-curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
+curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: application/json' -d '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
 ```
 
 ```
-curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150"}'
+curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -d '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150"}'
 ```
 ---
 ### Liquidacion de sueldo
