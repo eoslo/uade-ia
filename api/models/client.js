@@ -20,7 +20,7 @@ var clientSchema = new Schema({
     person_type: {
         type: [{
             type: String,
-            enum: ['physical', 'legal entity']
+            enum: ['physical', 'legal_entity']
         }],
         default: ['physical']
     },
