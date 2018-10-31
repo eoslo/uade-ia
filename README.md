@@ -29,6 +29,13 @@ https://sueldosya.herokuapp.com
 curl -X POST https://sueldosya.herokuapp.com/client/auth -H 'Content-Type: application/json' -D '{"username":"lautarin","password":"1337"}'
 ```
 
+o 
+
+```
+curl -X GET https://sueldosya.herokuapp.com/client/:cuitNumber -H 'Content-Type: application/json'
+```
+
+
 response 
 ```
 {
@@ -178,6 +185,7 @@ body
     "estimated_hours": null,
     "deductions": 17,
     "name": "Esclavo1"
+    "client_id":"5bd9c52a4e28672e50bc9efd"
 }
 ```
 
