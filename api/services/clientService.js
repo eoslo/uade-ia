@@ -135,6 +135,20 @@ class ClientService {
         })
     }
 
+    getClientIdByCuit(cuit, done){
+        Client.findOne({'cuit': cuit}, function (err, client) {
+            if(err){
+                return done(err);
+            }
+            if(client){
+                return done(null, {_id:client.id, name:client.name});
+            }
+            else if(!client){
+                return done("Cliente no existe.");
+            }
+        })
+    }
+
     getClient(id, done) {
         Client.findById(id, function (err, client) {
             if (err) {

@@ -83,6 +83,20 @@ class clientController {
         });
     }
 
+    getClientIdByCuit(req, callback){
+        return clientService.getClientIdByCuit(req.body.cuit, function (err, clientId) {
+            if (err) {
+                console.error(err);
+                return callback(err, clientId);
+            }
+            if(!clientId){
+                console.error(clientId);
+                return callback("No existe dicho usuario")
+            }
+            return callback(err, clientId);
+        });
+    }
+
     getClient(req, callback) {
         return clientService.getClient(req.params.id, function (err, client) {
             if (err) {
