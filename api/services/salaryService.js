@@ -22,6 +22,7 @@ class SalaryService {
                                 if(employee.payroll_type === 'monthly'){
                                     salary.net_income = employee.gross_salary;
                                     salary.gross_income = employee.gross_salary;
+                                    salary.description.push({description:`Sueldo basico`, mount:salary.gross_income});
                                 }
                                 if(employee.updates.length){
                                     employee.updates.forEach(function (update) {
@@ -50,13 +51,10 @@ class SalaryService {
                                         }
                                     })
                                 }
-                                else if(employee.payroll_type === 'monthly'){
-                                    salary.description.push({description:`Sueldo basico`, mount:salary.gross_income});
-                                }
                                 else if(employee.payroll_type === 'per_hour'){
                                     if(employee.salaries.length>0){
                                         employee.salaries[employee.salaries.length-1].description.forEach(function (description) {
-                                            salary.description.push({description:`De ultima liquidacion ${description.description.toLowerCase()}`, mount:description.mount});
+                                            salary.description.push({description:`De ultima liquidacion ${description.description.toLowerCase().replace(/de ultima liquidacion /g, '')}`, mount:description.mount});
                                         });
                                         salary.net_income = employee.salaries[employee.salaries.length-1].mount;
                                     }
