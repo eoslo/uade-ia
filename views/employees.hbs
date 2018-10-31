@@ -122,10 +122,10 @@
                                                     <span ng-if="employee.status == 'inactive'" class="state inactive">Inactivo</span>
                                                 </td>
                                                 <td ng-if="employee.status == 'active'">
-                                                    <button class="action-icon" data-toggle="modal" data-target="#largeModal" ng-click="getEmployee(employee._id)">
+                                                    <button class="action-icon" title="Editar empleado" data-toggle="modal" data-target="#largeModal" ng-click="getEmployee(employee._id)">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button class="action-icon" data-toggle="modal" data-target="#smallModal" ng-click="getEmployee(employee._id)">
+                                                    <button class="action-icon" title="Eliminar empleado" data-toggle="modal" data-target="#smallModal" ng-click="getEmployee(employee._id)">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                     <button class="action-icon" title="Agregar novedad" data-toggle="modal" data-target="#largeModal2" ng-click="getEmployee(employee._id)">
@@ -203,13 +203,13 @@
                             </div>
                             <div class="form-group" ng-show="form.payroll_type == 'per_hour'">
                                 <label>Horas Estimadas</label>
-                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas diarias del empleado...">
+                                <input ng-model="form.estimated_hours" class="au-input au-input--full" type="number" name="estimated_hours" placeholder="Horas estimadas mensuales del empleado...">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="registerEmployee()">Guardar</button>
+                        <button type="button" class="btn btn-primary" ng-click="registerEmployee()" ng-disabled="variables.isSubmitting">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -217,7 +217,7 @@
         <!-- END EMPLOYEE REGISTER -->
 
 
-        <!-- UPDATE REGISTER -->
+        <!-- UPDATE EMPLOYEE -->
         <div class="modal fade" id="largeModal2" tabindex="-2" role="dialog" aria-labelledby="largeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -246,20 +246,20 @@
                                 <label ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus'">Monto</label>
                                 <label ng-if="updateForm.update == 'absense_days' || updateForm.update == 'vacation_days'">Días</label>
                                 <label ng-if="updateForm.update == 'worked_hours'">Horas</label>
-                                <input ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor bono, cantidad días o cantidad horas">
+                                <input ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus' || updateForm.update == 'absense_days' || updateForm.update == 'vacation_days' || updateForm.update == 'worked_hours'" ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor...">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn2">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="newUpdate()">Guardar</button>
+                        <button type="button" class="btn btn-primary" ng-click="newUpdate()" ng-disabled="variables.isSubmitting">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END UPDATE REGISTER -->
+        <!-- END UPDATE EMPLOYEE -->
 
-        <!-- UPDATE REGISTER -->
+        <!-- DELETE EMPLOYEE -->
         <div class="modal fade" id="smallModal" tabindex="-2" role="dialog" aria-labelledby="smallModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-sm" role="document">
@@ -273,12 +273,30 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn3">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="deleteEmployee()">Eliminar</button>
+                        <button type="button" class="btn btn-primary" ng-click="deleteEmployee()" ng-disabled="variables.isSubmitting">Eliminar</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END UPDATE REGISTER -->
+        <!-- END DELETE EMPLOYEE -->
     </div>
     <!-- END PAGE CONTAINER-->
+    <div class="alert alert-danger" role="alert" ng-if="variables.showEmployeeError">
+        No se pudo registrar el empleado, pruebe más tarde
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showUpdateError">
+        No se pudo crear la novedad, pruebe más tarde
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showDeleteError">
+        No se pudo eliminar el usuario, pruebe más tarde
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showEmployeeSuccess">
+        Empleado registrado correctamente
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showUpdateSuccess">
+        Novedad creada correctamente
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showDeleteSuccess">
+        Empleado eliminado correctamente
+    </div>
 </div>
