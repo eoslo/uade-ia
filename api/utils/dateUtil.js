@@ -41,6 +41,7 @@ class dateUtil{
         }
         return this.formattedDateArgentinaWithOutHourMinutes(paying_day)
     }
+
 }
 
 module.exports=dateUtil;
