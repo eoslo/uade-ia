@@ -147,7 +147,7 @@
                                                 </td>
                                                 <td>
                                                     <span ng-if="bill.status == 'payment_pending'" class="state pending">Pendiente</span>
-                                                    <span ng-if="bill.status == 'payment_closed'" class="state pending">Pagado</span>
+                                                    <span ng-if="bill.status == 'payment_closed'" class="state active">Cerrado</span>
                                                 </td>
                                                 <td>
                                                     <button class="action-icon" title="Pagar factura" data-toggle="modal" data-target="#smallModal" ng-click="setBillId(bill._id)">
@@ -167,5 +167,31 @@
             </div>
             <!-- END PAGE CONTAINER-->
         </section>
+        <!-- DELETE UPDATE -->
+        <div class="modal fade" id="smallModal" tabindex="-2" role="dialog" aria-labelledby="smallModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">No se puede vovler para atrás si nos pagas ...</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="payBill()" ng-disabled="variables.isSubmitting">Pagar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END DELETE UPDATE -->
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showPaymentError">
+        No se pudo pagar la facturas, pruebe más tarde
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showPaymentSuccess">
+        Factura pagada correctamente
     </div>
 </div>
