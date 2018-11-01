@@ -4,16 +4,16 @@ class transferSchedulerService {
 
     sendScheduledTransfers(sourceCbu, destinationCbu, description, amount, payDate, callback) {
         let data = JSON.stringify({
-            source_cbu: sourceCbu,
-            destination_cbu: destinationCbu,
-            description: description,
-            amount: amount,
-            pay_date: payDate,
+            origen: sourceCbu,
+            destino: destinationCbu,
+            descripcion: description,
+            monto: amount,
+            fecha: payDate
         });
 
         let options = {
             hostname: 'http://192.168.215.34',
-            port: 9000,
+            port: 8080,
             path: '/api/transferencia',
             method: 'POST',
             headers: {
