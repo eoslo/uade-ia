@@ -110,7 +110,7 @@ class SalaryService {
             }
             else{
                 transferSchedulerService.sendScheduledTransfers(client.cbu, employee.cbu, "Sueldo",
-                    response.salary.net_income, response.salary.pay_date, function (err, response) {
+                    response.salary.net_income, response.salary.pay_date, function (err, r) {
                         if(err){
                             console.error({error:err, employee:employee.dni});
                         }
