@@ -244,7 +244,7 @@
                         <form>
                             <div class="form-group">
                                 <label>Tipo de novedad</label>
-                                <select ng-model="updateForm.update" name="select" id="select" class="form-control">
+                                <select ng-model="updateForm.update" name="select" id="select" class="form-control" required>
                                     <option value="">Seleccione un tipo de novedad</option>
                                     <option value="salary_change" ng-if="form.payroll_type == 'monthly'">Cambio de Sueldo</option>
                                     <option value="per_hour_change" ng-if="form.payroll_type == 'per_hour'">Cambio de valor por hora</option>
@@ -258,7 +258,7 @@
                                 <label ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus'">Monto</label>
                                 <label ng-if="updateForm.update == 'absense_days' || updateForm.update == 'vacation_days'">Días</label>
                                 <label ng-if="updateForm.update == 'worked_hours'">Horas</label>
-                                <input ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus' || updateForm.update == 'absense_days' || updateForm.update == 'vacation_days' || updateForm.update == 'worked_hours'" ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor...">
+                                <input ng-if="updateForm.update == 'salary_change' || updateForm.update == 'per_hour_change' || updateForm.update == 'bonus' || updateForm.update == 'absense_days' || updateForm.update == 'vacation_days' || updateForm.update == 'worked_hours'" ng-model="updateForm.mount" class="au-input au-input--full" type="number" name="mount" placeholder="Valor..." required>
                             </div>
                         </form>
                     </div>

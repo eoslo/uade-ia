@@ -188,4 +188,10 @@
         </div>
         <!-- END DELETE UPDATE -->
     </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showPaymentError">
+        No se pudo pagar la facturas, pruebe más tarde
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showPaymentSuccess">
+        Factura pagada correctamente
+    </div>
 </div>

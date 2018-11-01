@@ -34,7 +34,7 @@ angular.module('PaychecksApp')
         .then(function(response) {
             getClientEmployees();
             $scope.variables.isSubmitting = false;
-            angular.element('#close-modal-btn3').trigger('click');
+            angular.element('#close-modal-btn').trigger('click');
             $scope.variables.showDeleteSuccess = true;
             $timeout( function(){
                 $scope.variables.showDeleteSuccess = false;
