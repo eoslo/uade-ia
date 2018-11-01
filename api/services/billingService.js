@@ -1,7 +1,7 @@
 var Billing = require('../models/billing');
 var DateUtil = require('../utils/dateUtil')
 var Client = require('../models/client');
-var TransferSchedulerService = require('../api/services/transferSchedulerService');
+var TransferSchedulerService = require('./transferSchedulerService');
 var transferSchedulerService = new TransferSchedulerService()
 var cbu = 1234567890
 
