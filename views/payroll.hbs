@@ -89,7 +89,7 @@
                                 <h3 class="title-3 m-b-30 white-text">
                                     <i class="zmdi zmdi-money-box"></i>Liquidaciones</h3>
                                 <div class="table-data">
-                                    <table class="table">
+                                    <table class="table" ng-if="payrolls.length != 0">
                                         <thead class="white-text">
                                             <tr>
                                                 <td class="white-text">Empleado</td>
@@ -129,6 +129,7 @@
                                             </td>
                                         </tr>
                                         </tbody>
+                                        <h3 class="title-3 m-b-30 white-text" ng-if="payrolls.length == 0">No tiene liquidaciones registradas.</h3>
                                     </table>
                                 </div>
                             </div>
