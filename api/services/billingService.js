@@ -79,18 +79,29 @@ class BillingService {
     }
 
     getBill(id, done) {
-        Client.findById(id, function (err, client) {
+        Client.findById(id).populate('billings').exec(function (err, client) {
             if (err) {
                 return done(err);
             }
             if (!client || client.status != "active") {
                 return done(`active client with id ${id} not found`,{})
-            }
-
-            Client.findById(id).populate('billings').exec(function (err,client) {
-                var bills = client.billings
+            } else {
+                var bills = client.billings;
                 return done(null, bills);
-            })
+            }
+         });
+    }
+
+    getBillById(id, done){
+        Billing.findById(id, function (err, bill){
+            if(err){
+                return done(err);
+            }
+            if(!bill || bill.status == "payment_closed"){
+                return done(`Sorry, we couldn't find a bill with tid numer ${id} in our database`,{});
+            } else {
+                return done(err, bill);
+            }
         })
     }
 
