@@ -4,7 +4,7 @@ var dateUtil = new DateUtil()
 class transferSchedulerService {
 
     sendScheduledTransfers(sourceCbu, destinationCbu, description, amount, payDate, callback) {
-        var date = payDate ? dateUtil.formattedDateYearMonthDay(payDate) : null
+        var date = payDate ? dateUtil.formattedDateYearMonthDay(payDate) : null;
         let data = JSON.stringify({
             origen: sourceCbu,
             destino: destinationCbu,
