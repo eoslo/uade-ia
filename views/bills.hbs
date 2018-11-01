@@ -145,7 +145,8 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span ng-if="bill.status == 'payment pending'" class="state pending">Pendiente</span>
+                                                    <span ng-if="bill.status == 'payment_pending'" class="state pending">Pendiente</span>
+                                                    <span ng-if="bill.status == 'payment_closed'" class="state active">Cerrado</span>
                                                 </td>
                                             </tr>
                                         </tbody>
