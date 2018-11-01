@@ -9,11 +9,6 @@ angular.module('PaychecksApp')
         showDeleteSuccess: false,
         showDeleteError: false
     };
-    $scope.form = {
-        update: null,
-        mount: null,
-        employee_name: null,
-    };
 
     $scope.getUserId = function(userId) {
         $scope.userId = userId;
@@ -36,23 +31,23 @@ angular.module('PaychecksApp')
                 'Content-type': 'application/json;charset=utf-8'
             }
         })
-            .then(function(response) {
-                getClientEmployees();
-                $scope.variables.isSubmitting = false;
-                angular.element('#close-modal-btn3').trigger('click');
-                $scope.variables.showDeleteSuccess = true;
-                $timeout( function(){
-                    $scope.variables.showDeleteSuccess = false;
-                }, 3000 );
-            })
-            .catch(function(error) {
-                $scope.variables.isSubmitting = false;
-                $scope.variables.showDeleteError = true;
-                $timeout( function(){
-                    $scope.variables.showDeleteError = false;
-                }, 3000 );
-                console.log(error);
-            });
+        .then(function(response) {
+            getClientEmployees();
+            $scope.variables.isSubmitting = false;
+            angular.element('#close-modal-btn3').trigger('click');
+            $scope.variables.showDeleteSuccess = true;
+            $timeout( function(){
+                $scope.variables.showDeleteSuccess = false;
+            }, 3000 );
+        })
+        .catch(function(error) {
+            $scope.variables.isSubmitting = false;
+            $scope.variables.showDeleteError = true;
+            $timeout( function(){
+                $scope.variables.showDeleteError = false;
+            }, 3000 );
+            console.log(error);
+        });
     };
 
     function getClientUpdates() {

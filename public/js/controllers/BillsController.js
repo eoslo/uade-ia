@@ -2,8 +2,14 @@
 
 angular.module('PaychecksApp')
 
-.controller('BillsController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
+.controller('BillsController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http, ) {
     $scope.bills = [];
+    $scope.bill_id = null;
+    $scope.variables ={
+        isSubmitting: false,
+        showPaymentSuccess: false,
+        showPaymentError: false
+    };
 
     $scope.getUserId = function(userId) {
         $scope.userId = userId;
