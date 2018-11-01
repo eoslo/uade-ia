@@ -112,6 +112,17 @@ class SalaryService {
                 transferSchedulerService.sendScheduledTransfers(client.cbu, employee.cbu, "Pago por prestacion de servicios (?)",
                     response.salary.net_income, response.salary.pay_date, function (err, response) {
                         employee.salaries.push(response.salary);
+                        employee.update({ $push :{salaries:response.salary}, updates:response.updates }, function (err, raw) {
+                            if(err){
+                                console.error({error:err, employee:employee.dni});
+                            }
+                            else{
+                                transferSchedulerService.sendScheduledTransfers(client.cbu, employee.cbu, "Pago por prestacion de servicios (?)",
+                                    response.salary.net_income, response.salary.pay_date, function (err, response) {
+                                        employee.salaries.push(response.salary);
+                                    });
+                            }
+                        });
                     });
             }
         });
