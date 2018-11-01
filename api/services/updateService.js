@@ -41,7 +41,7 @@ class UpdateService {
         var update = new Update();
         update.update = updateText;
         update.mount = mount;
-        if(employee){
+        if(employee && employee.status === 'active'){
             let salary_per_hour = employee.salary_per_hour;
             let gross_salary = employee.gross_salary;
             if(updateText === 'salary_change'){
