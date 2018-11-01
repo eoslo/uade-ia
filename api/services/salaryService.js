@@ -115,7 +115,7 @@ class SalaryService {
                             console.error({error:err, employee:employee.dni});
                         }
                         employee.update({'salaries.id': response.salary.id}, {'$set': {
-                                'items.$.status': 'payment_sent'
+                                'salaries.$.status': 'payment_sent'
                             }} , function (err, raw) {
                             if(err){
                                 console.error({error:err,employee:employee.dni ,salary:response.salary.id});
