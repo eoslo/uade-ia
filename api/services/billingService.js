@@ -12,8 +12,7 @@ class BillingService {
         this.nextMonth.setMonth(this.nextMonth.getMonth() + 1)
     }
 
-    createBill(id, current, finish, done){
-        console.log("c")
+    createBill(id, done){
         var self = this
         Client.findById(id, function (err, client) {
             if (err) {
@@ -23,7 +22,6 @@ class BillingService {
                 return done(`active client with id ${id} not found`,{})
             }
 
-            console.log("d")
             Client.findById(id).populate('billings').exec(function (err,client){
                 var bills = client.billings
                 Billing.count({}, function( err, count){
@@ -54,10 +52,10 @@ class BillingService {
                             { _id: id },
                             { $push: { billings: bill._id } }, function (err, client) {
                                 bills.push(bill)
-                                if(current===finish){
-                                    return done(null, bills);
+                                if(err){
+                                    return done(err);
                                 }
-                                return;
+                                return done(null, bill);
                             });
                     })
                 })
@@ -69,9 +67,11 @@ class BillingService {
         console.log("starting job")
         let self = this;
         Client.find({}, function(err, clients) {
-            clients.forEach(function(client, index) {
-                self.createBill(client.id, index, clients.length-1, function (err, bills) {
-                    return;
+            clients.forEach(function(client) {
+                self.createBill(client.id, function (err, bill) {
+                    if(err){
+                        console.error(err);
+                    }
                 })
             });
         });
