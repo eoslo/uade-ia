@@ -2,7 +2,7 @@
 
 angular.module('PaychecksApp')
 
-.controller('ProfileController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
+.controller('ProfileController', ['$scope', '$rootScope', '$http', '$window', '$timeout', function ($scope, $rootScope, $http, $window, $timeout) {
     $scope.form = {
         id: null,
         password: null,
