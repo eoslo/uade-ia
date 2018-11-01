@@ -28,6 +28,17 @@ router.get('/:clientId', function(req, res, next) {
     })
 });
 
+router.get('/billId/:billId', function(req, res, next) {
+    billingController.getBillById(req, function(err, bill) {
+        if(err){
+            res.status(500);
+            res.send({error:err})
+        }
+        res.status(200);
+        req.send(bill);
+    })
+});
+
 router.post('/:clientId', function(req, res, next) {
     billingController.createBill(req, function (err, bill) {
         if(err){
@@ -39,14 +50,14 @@ router.post('/:clientId', function(req, res, next) {
     })
 });
 
-router.post('/:clientId/billing', function(req, res, next) {
-    transferSchedulerController.sendScheduledTransfers(req, function (err, bill) {
+
+router.post('/pay-bill', function(req, res, next) {
+    billingController.payBill(req, function (err) {
         if(err){
             res.status(500);
             res.send({error:err})
         }
         res.status(200);
-        res.send(bill);
     })
 });
 

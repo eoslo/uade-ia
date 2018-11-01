@@ -12,9 +12,9 @@ class transferSchedulerService {
         });
 
         let options = {
-            hostname: 'ip_banco',
+            hostname: 'http://192.168.215.34',
             port: 9000,
-            path: '/api/transferencias/programar',
+            path: '/api/transferencia',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
