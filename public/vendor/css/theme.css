@@ -317,9 +317,14 @@ section {
     background: #f7f7f7;
 }
 
-.page-content--bge5 {
+.page-content--bge4 {
     background: #e5e5e5;
     height: 100vh;
+}
+
+.page-content--bge5 {
+    background: #e5e5e5;
+    height: 190vh;
 }
 
 .login-wrap {
@@ -2345,6 +2350,14 @@ section {
     left: 300px;
 }
 
+.background-picture {
+    background: url("https://i.ytimg.com/vi/GLSwpGVRXzM/maxresdefault.jpg") no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .fade-background{
     background-color: #8F01ED;
 }
@@ -2362,7 +2375,8 @@ section {
 }
 
 .fullfading {
-    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    height: 100%;
+    background: linear-gradient(-75deg, rgba(0, 255, 187, 0.6), rgba(143, 1, 237, 0.6), rgba(255, 0, 225, 0.6), rgba(255, 0, 63, 0.6), rgba(239, 110, 59, 0.6));
     background-size: 1600% 1600%;
     -webkit-animation: Gradient 30s ease infinite;
     -moz-animation: Gradient 30s ease infinite;
@@ -4076,6 +4090,14 @@ section {
 .user-data__footer {
     padding: 29px 0;
     text-align: center;
+}
+
+.gray-text {
+    color: #808080 !important;
+}
+
+.selector-adapt {
+    font-size: 14px !important;
 }
 
 .white-text {
