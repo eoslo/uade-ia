@@ -32,6 +32,16 @@ class billingController {
             return callback("error in client id format, should have 24 characters",{})
         }
     }
+
+    getBillById(req, callback) {
+        return billingService.getBillById(req.params.billId, function(err, bill){
+            if(err){
+                console.error(err);
+                return callback(err);
+            }
+            return callback(err, bill);
+        })
+    }
 }
 
 module.exports = billingController;
