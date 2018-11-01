@@ -2,7 +2,7 @@
 
 angular.module('PaychecksApp')
 
-.controller('EmployeesController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
+.controller('EmployeesController', ['$scope', '$rootScope', '$http', '$window', '$timeout', function ($scope, $rootScope, $http, $window, $timeout) {
     $scope.employees = [];
     $scope.variables = {
         isSubmitting: false,
