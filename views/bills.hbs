@@ -147,7 +147,7 @@
                                                 </td>
                                                 <td>
                                                     <span ng-if="bill.status == 'payment_pending'" class="state pending">Pendiente</span>
-                                                    <span ng-if="bill.status == 'payment_closed'" class="state pending">Pagado</span>
+                                                    <span ng-if="bill.status == 'payment_closed'" class="state active">Cerrado</span>
                                                 </td>
                                                 <td>
                                                     <button class="action-icon" title="Pagar factura" data-toggle="modal" data-target="#smallModal" ng-click="setBillId(bill._id)">
