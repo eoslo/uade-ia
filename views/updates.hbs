@@ -54,7 +54,7 @@
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
                                 <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">Usted está aquí:</span>
+                                    <span class="au-breadcrumb-span">Usted se encuentra aquí:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
                                         <li class="list-inline-item">Novedades</li>
                                     </ul>
@@ -156,7 +156,7 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Esta seguro que desea eliminar la novedad</h5>
+                        <h5 class="modal-title" id="largeModalLabel">¿Está seguro que desea eliminar esta novedad?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -164,7 +164,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="deleteUpdate()" ng-disabled="variables.isSubmitting">Eliminar</button>
+                        <button type="button" class="btn btn-danger" ng-click="deleteUpdate()" ng-disabled="variables.isSubmitting">Eliminar</button>
                     </div>
                 </div>
             </div>
