@@ -255,7 +255,25 @@ curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: applicatio
 ```
 
 ```
-curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -d '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150"}'
+curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -d 
+'{
+   "update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days",
+   "mount":"150"
+}'
+
+Que tipos acepta cada empleado?
+   Usuario de tipo "monthly":
+      >salary_change:
+         Cambia el salario mensual.
+      >absense_days:
+          Dias que falto y se le restan del sueldo.
+      >vacation_days:
+          Dias que se fue de vacaciones, no se le restan.
+   Usuario de tipo "per_hour":
+      >worked_hours:
+         Horas que trabajo. Se puede hacer mas de una al mes.
+      >per_hour_change:
+         Cambia el valor por hora que cobra el empleado.
 ```
 ---
 ### Liquidacion de sueldo
