@@ -85,24 +85,24 @@
                         <div class="col-xl-12">
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
-                                <h3 class="title-3 m-b-30">
+                                <h3 class="title-3 m-b-30 white-text">
                                     <i class="zmdi zmdi-tv-list"></i>Facturas</h3>
-                                <div class="table-responsive table-data">
+                                <div class="table-data">
                                     <table class="table" ng-if="bills.length != 0">
-                                        <thead>
+                                        <thead class="white-text">
                                         <tr>
-                                            <td>N° Factura</td>
-                                            <td>Fecha Vencimiento</td>
-                                            <td>Costo base</td>
-                                            <td>Cant. empleados</td>
-                                            <td>Costo por empleado</td>
-                                            <td>Total bruto</td>
-                                            <td>IVA</td>
-                                            <td>Total</td>
-                                            <td>Estado</td>
+                                            <td class="white-text">N° Factura</td>
+                                            <td class="white-text">Fecha Vencimiento</td>
+                                            <td class="white-text">Costo base</td>
+                                            <td class="white-text">Cant. empleados</td>
+                                            <td class="white-text">Costo por empleado</td>
+                                            <td class="white-text">Total bruto</td>
+                                            <td class="white-text">IVA</td>
+                                            <td class="white-text">Total</td>
+                                            <td class="white-text">Estado</td>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody  class="white-background">
                                             <tr ng-repeat="bill in bills">
                                                 <td>
                                                     <div class="table-data__info">
@@ -145,7 +145,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span ng-if="bill.status == 'pending'" class="state pending">Pendiente</span>
+                                                    <span ng-if="bill.status == 'payment pending'" class="state pending">Pendiente</span>
                                                 </td>
                                             </tr>
                                         </tbody>

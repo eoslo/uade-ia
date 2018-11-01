@@ -27,11 +27,13 @@ class transferSchedulerService {
 
             res.on('data', (data) => {
                 console.log('[+] Response Data: ' + data);
+                return callback(null, data);
             })
         });
 
         req.on('error', (err) => {
             console.error(err);
+            return callback(err);
         });
 
         req.write(data);

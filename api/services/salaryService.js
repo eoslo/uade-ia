@@ -2,6 +2,8 @@ var Client = require('../models/client');
 var Salary = require('../models/salary');
 var DateUtil = require('../utils/dateUtil')
 var dateUtil = new DateUtil();
+var TransferSchedulerService = require('../services/transferSchedulerService');
+var transferSchedulerService = new TransferSchedulerService();
 
 class SalaryService {
 
@@ -94,21 +96,32 @@ class SalaryService {
                     else{
                         salary.gross_income = salary.net_income;
                     }
-                    self.updateEmployee(employee, {salary: salary, updates:employee.updates});
+                    self.updateEmployee(employee, {salary: salary, updates:employee.updates}, client);
                 }
             });
         }
         return ;
     }
 
-    updateEmployee(employee, response){
+    updateEmployee(employee, response, client){
         employee.update({ $push :{salaries:response.salary}, updates:response.updates }, function (err, raw) {
             if(err){
                 console.error({error:err, employee:employee.dni});
-                errors.push({error:err, employee:employee.dni});
             }
             else{
-                employee.salaries.push(response.salary);
+                transferSchedulerService.sendScheduledTransfers(client.cbu, employee.cbu, "Sueldo",
+                    response.salary.net_income, response.salary.pay_date, function (err, response) {
+                        if(err){
+                            console.error({error:err, employee:employee.dni});
+                        }
+                        employee.update({'salaries.id': response.salary.id}, {'$set': {
+                                'items.$.status': 'payment_sent'
+                            }} , function (err, raw) {
+                            if(err){
+                                console.error({error:err,employee:employee.dni ,salary:response.salary.id});
+                            }
+                        });
+                    });
             }
         });
     }

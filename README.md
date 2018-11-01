@@ -17,7 +17,7 @@ https://sueldosya.herokuapp.com
 
 ---
 ### ABM clientes
-* Crear usuario<br>
+* Crear cliente<br>
 <b>recurso /login</b><br>
     desde el frontend seleccionar la opcion registrarse <br>
     <img src="images/registrate.png" width="300" height="300"  style="float: left;"/><br>
@@ -26,17 +26,16 @@ https://sueldosya.herokuapp.com
 
 * Obtener el client id de tu usuario
 ```
-curl -X POST https://sueldosya.herokuapp.com/client/auth -H 'Content-Type: application/json' -D '{"username":"lautarin","password":"1337"}'
+curl -X POST https://sueldosya.herokuapp.com/client/auth -H 'Content-Type: application/json' -d '{"username":"lautarin","password":"1337"}'
 ```
 
-o 
+ó tambien con este request 
 
 ```
 curl -X GET https://sueldosya.herokuapp.com/client/:cuitNumber -H 'Content-Type: application/json'
 ```
 
-
-response 
+ambos devuleven este response
 ```
 {
     "_id": "5bd99cb677a9412434bbd2f1",
@@ -90,13 +89,14 @@ Response
 
 * Delete client
 ```
-curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"id":"5bd99cb677a9412434bbd2f1"}'
+curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1"}'
 ```
 
 * Update client
 
 ```
-curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -D '{"name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"employees":[]}'
+curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"
+es":[], "cbu":123123123}'
 ```
 
 ---
@@ -170,7 +170,7 @@ response
 
 * Crear empleado
 ```
-curl -X POST https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -D {BODY}
+curl -X POST https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -d {BODY}
 ```
 
 body 
@@ -179,26 +179,30 @@ body
     "address": "Casa Esclavo1",
     "birth_date": "11 de Noviembre",
     "dni": "38745192",
-    "payroll_type": "monthly"|"per hour",
+    "payroll_type": "monthly"|"per_hour",
     "gross_salary": 75,
     "salary_per_hour": null,
     "estimated_hours": null,
     "deductions": 17,
     "name": "Esclavo1"
     "client_id":"5bd9c52a4e28672e50bc9efd"
+    "cbu":123456123
 }
 ```
+
+si el payroll es monthly entonces se debe cargar gross_salary (salario bruto) en cambio si el payroll type es per_hour se debe cargar el salary_per_hour
 
 * Modificar empleado
 
 ```
-curl -X PUT https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -D {BODY}
+curl -X PUT https://sueldosya.herokuapp.com/employee -H 'Content-Type: application/json' -d {BODY}
 ```
 
 body
 
 ```
 {
+    "employee_id":"5bd99d1377a9412434bbd2f2"
     "address": "Casa Esclavo1",
     "birth_date": "11 de Noviembre",
     "dni": "38745192",
@@ -207,7 +211,8 @@ body
     "salary_per_hour": null,
     "estimated_hours": null,
     "deductions": 17,
-    "name": "Esclavo1"
+    "name": "Esclavo1",
+    "cbu":123456123 
 }
 ```
 
@@ -247,11 +252,11 @@ response
 
 * Crear una novedad
 ```
-curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
+curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: application/json' -d '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150","employeeId":"5bd9a1dc77a9412434bbd309"}'
 ```
 
 ```
-curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -D '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150"}'
+curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -d '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150"}'
 ```
 ---
 ### Liquidacion de sueldo
