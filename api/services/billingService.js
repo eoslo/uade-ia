@@ -1,6 +1,9 @@
 var Billing = require('../models/billing');
 var DateUtil = require('../utils/dateUtil')
 var Client = require('../models/client');
+var TransferSchedulerService = require('../api/services/transferSchedulerService');
+var transferSchedulerService = new TransferSchedulerService()
+var cbu = 1234567890
 
 class BillingService {
 
@@ -10,6 +13,8 @@ class BillingService {
         this.dateUtil = new DateUtil();
         this.nextMonth =  new Date()
         this.nextMonth.setMonth(this.nextMonth.getMonth() + 1)
+
+
     }
 
     createBill(id, done){
@@ -18,7 +23,7 @@ class BillingService {
             if (err) {
                 return done(err);
             }
-            if (!client || client.status != "active") {
+            if (!client || client.status !== "active") {
                 return done(`active client with id ${id} not found`,{})
             }
 
@@ -97,7 +102,7 @@ class BillingService {
             if(err){
                 return done(err);
             }
-            if(!bill || bill.status == "payment_closed"){
+            if(!bill || bill.status === "payment_closed"){
                 return done(`Sorry, we couldn't find a bill with tid numer ${id} in our database`,{});
             } else {
                 return done(err, bill);
@@ -106,7 +111,30 @@ class BillingService {
     }
 
     payBill(clientId, billId, done) {
-        return undefined;
+        this.getBillById(billId, function (err, bill) {
+            if (err) {
+                return done(err)
+            }
+
+            Client.findById(clientId, function (err, client) {
+                if (err) {
+                    return done(err);
+                }
+
+                transferSchedulerService.sendScheduledTransfers(client.cbu,cbu, "SueldosYa!", bill.total_amount, null ,function (err) {
+                    if (err) {
+                        return done(err)
+                    }
+                    bill.status = "payment_closed"
+                    bill.save(function(err) {
+                        if (err){
+                            return done(err);
+                        }
+                    })
+                    return null
+                })
+            })
+        })
     }
 }
 
