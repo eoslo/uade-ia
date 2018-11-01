@@ -131,7 +131,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="table-data__info">
-                                                        <button class="action-icon" data-toggle="modal" data-target="#largeModal" ng-click="getUpdate(item.update._id)" title="Eliminar novedad">
+                                                        <button class="action-icon" data-toggle="modal" data-target="#smallModal" ng-click="getUpdate(item.update._id)" title="Eliminar novedad">
                                                             <i class="fa fa-trash"></i>
                                                         </button>
                                                     </div>
@@ -139,7 +139,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <h3 class="title-3 m-b-30" ng-if="updates.length == 0">No tiene novedades registradas.</h3>
+                                    <h3 class="title-3 m-b-30 white-text" ng-if="updates.length == 0">No tiene novedades registradas.</h3>
                                 </div>
                             </div>
                             <!-- END USER DATA-->
@@ -156,7 +156,7 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Esta seguro que desea eliminar el empleado <span ng-bind="form.name"></span></h5>
+                        <h5 class="modal-title" id="largeModalLabel">Esta seguro que desea eliminar la novedad</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -164,7 +164,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="deleteUpdate()">Eliminar</button>
+                        <button type="button" class="btn btn-primary" ng-click="deleteUpdate()" ng-disabled="variables.isSubmitting">Eliminar</button>
                     </div>
                 </div>
             </div>
