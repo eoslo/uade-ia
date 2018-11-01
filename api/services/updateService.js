@@ -41,7 +41,7 @@ class UpdateService {
         var update = new Update();
         update.update = updateText;
         update.mount = mount;
-        if(employee){
+        if(employee && employee.status === 'active'){
             let salary_per_hour = employee.salary_per_hour;
             let gross_salary = employee.gross_salary;
             if(updateText === 'salary_change'){
@@ -65,22 +65,23 @@ class UpdateService {
     }
 
     deleteUpdate(id, callback){
-        Update.findById(id, function (err, update){
-            if (err){
-                return callback(err);
-            } else {
-                if (update && update.status === 'active'){
-                    update.status = 'inactive';
-                    update.save(function (err){
-                        if (err){
-                            return callback(err);
-                        }
-                        return callback(err, update);
-                    });
+        Employee.find({updates: {$elemMatch: {id:id}}}, function (err, employee){
+            employee.updates.forEach(function (err, update) {
+                if (err){
+                    return callback(err);
+                } else if (update && update.status === 'active' && update.id === id){
+                        update.status = 'inactive';
+                        update.save(function (err){
+                            if (err){
+                                return callback(err);
+                            }
+                            return callback(err, update);
+                        });
                 } else {
-                    return callback("La novedad que esta intentando actualizar ya esta inactiva.");
+                    return callback("La novedad que esta intentando actualizar ya esta inactiva o no se encuentra.");
                 }
-            }
+            });
+
         })
     }
 }
