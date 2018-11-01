@@ -28,7 +28,6 @@ class BillingService {
             }
 
             Client.findById(id).populate('billings').exec(function (err,client){
-                var bills = client.billings
                 Billing.count({}, function( err, count){
                     var employees_amount = client.employees.length
                     var iva = client.iva
@@ -56,7 +55,6 @@ class BillingService {
                         Client.findOneAndUpdate(
                             { _id: id },
                             { $push: { billings: bill._id } }, function (err, client) {
-                                bills.push(bill)
                                 if(err){
                                     return done(err);
                                 }
