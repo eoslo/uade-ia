@@ -1,14 +1,16 @@
 var http = require('http');
-
+var DateUtil = require('../utils/dateUtil');
+var dateUtil = new DateUtil()
 class transferSchedulerService {
 
     sendScheduledTransfers(sourceCbu, destinationCbu, description, amount, payDate, callback) {
+        var date = payDate ? dateUtil.formattedDateYearMonthDay(payDate) : null
         let data = JSON.stringify({
             origen: sourceCbu,
             destino: destinationCbu,
             descripcion: description,
             monto: amount,
-            fecha: payDate
+            fecha: date
         });
 
         let options = {

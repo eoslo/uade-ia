@@ -42,6 +42,14 @@ class dateUtil{
         return this.formattedDateArgentinaWithOutHourMinutes(paying_day)
     }
 
+    formattedDateYearMonthDay(d) {
+        let day = d.substr(0, 2);
+        let month = d.substr(3, 2);
+        let year = d.substr(6, 4);
+
+        return `${year}-${month}-${day}`;
+    }
+
 }
 
 module.exports=dateUtil;
