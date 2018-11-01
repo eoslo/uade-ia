@@ -2,8 +2,13 @@
 
 angular.module('PaychecksApp')
 
-.controller('UpdatesController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
+.controller('UpdatesController', ['$scope', '$rootScope', '$http', '$window', '$timeout', function ($scope, $rootScope, $http, $window, $timeout) {
     $scope.updates = [];
+    $scope.variables ={
+        isSubmitting: false,
+        showDeleteSuccess: false,
+        showDeleteError: false
+    };
     $scope.form = {
         update: null,
         mount: null,
@@ -20,21 +25,34 @@ angular.module('PaychecksApp')
     };
 
     $scope.deleteUpdate = function() {
+        $scope.variables.isSubmitting = true;
         $http({
             method: 'DELETE',
             url: $rootScope.serverEndpoint + 'update',
-            data: { id: $scope.updateId },
+            data: {
+                "employee_id": $scope.updateId
+            },
             headers: {
                 'Content-type': 'application/json;charset=utf-8'
             }
         })
-        .then(function(response) {
-            getClientUpdates();
-            angular.element('#close-modal-btn').trigger('click');
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+            .then(function(response) {
+                getClientEmployees();
+                $scope.variables.isSubmitting = false;
+                angular.element('#close-modal-btn3').trigger('click');
+                $scope.variables.showDeleteSuccess = true;
+                $timeout( function(){
+                    $scope.variables.showDeleteSuccess = false;
+                }, 3000 );
+            })
+            .catch(function(error) {
+                $scope.variables.isSubmitting = false;
+                $scope.variables.showDeleteError = true;
+                $timeout( function(){
+                    $scope.variables.showDeleteError = false;
+                }, 3000 );
+                console.log(error);
+            });
     };
 
     function getClientUpdates() {

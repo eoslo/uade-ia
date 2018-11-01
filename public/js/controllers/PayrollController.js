@@ -6,6 +6,7 @@ angular.module('PaychecksApp')
     $scope.payrolls = [];
     $scope.totalToPay = null;
     $scope.pay_date = null;
+    $scope.bill_id = null;
 
     $scope.getUserId = function(userId) {
         $scope.userId = userId;

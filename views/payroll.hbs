@@ -86,25 +86,20 @@
                         <div class="col-xl-12">
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
-                                <h3 class="title-3 m-b-30 clearfix">
-                                    <i class="zmdi zmdi-money-box"></i>Liquidaciones
-                                    <span ng-bind="pay_date" style="float: right"></span>
-                                    <span style="float: right; margin-right: 5px;">Fecha de pago: </span>
-                                    <span ng-bind="totalToPay" style="float: right; margin-right: 5px;"></span>
-                                    <span style="float: right; margin-right: 5px;">Total a depositar: </span>
-                                </h3>
-                                <div class="table-responsive table-data">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <td>Empleado</td>
-                                            <td>Tipo de Sueldo</td>
-                                            <td>Total bruto</td>
-                                            <td>Total</td>
-                                            <td>Estado</td>
-                                        </tr>
+                                <h3 class="title-3 m-b-30 white-text">
+                                    <i class="zmdi zmdi-money-box"></i>Liquidaciones</h3>
+                                <div class="table-data">
+                                    <table class="table" ng-if="payrolls.length != 0">
+                                        <thead class="white-text">
+                                            <tr>
+                                                <td class="white-text">Empleado</td>
+                                                <td class="white-text">Tipo de Sueldo</td>
+                                                <td class="white-text">Total bruto</td>
+                                                <td class="white-text">Total</td>
+                                                <td class="white-text">Estado</td>
+                                            </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="white-background">
                                         <tr ng-repeat="payroll in payrolls">
                                             <td>
                                                 <div class="table-data__info">
@@ -135,6 +130,7 @@
                                             </td>
                                         </tr>
                                         </tbody>
+                                        <h3 class="title-3 m-b-30 white-text" ng-if="payrolls.length == 0">No tiene liquidaciones registradas.</h3>
                                     </table>
                                 </div>
                             </div>

@@ -50,7 +50,7 @@ var BillingSchema = new Schema({
     },
     status: {
         type: String,
-        default: "payment pending"
+        default: "payment_pending" //after payment status is "payment_closed"
     }
 });
 

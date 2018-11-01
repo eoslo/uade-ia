@@ -85,11 +85,11 @@
                         <div class="col-xl-12">
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
-                                <h3 class="title-3 m-b-30">
+                                <h3 class="title-3 m-b-30 white-text">
                                     <i class="zmdi zmdi-tv-list"></i>Facturas</h3>
-                                <div class="table-responsive table-data">
+                                <div class="table-data">
                                     <table class="table" ng-if="bills.length != 0">
-                                        <thead>
+                                        <thead class="white-text">
                                         <tr>
                                             <td>N° Factura</td>
                                             <td>Fecha Vencimiento</td>
@@ -103,7 +103,7 @@
                                             <td>Acciones</td>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody  class="white-background">
                                             <tr ng-repeat="bill in bills">
                                                 <td>
                                                     <div class="table-data__info">
@@ -150,14 +150,14 @@
                                                     <span ng-if="bill.status == 'payment_closed'" class="state pending">Pagado</span>
                                                 </td>
                                                 <td>
-                                                    <button class="action-icon" title="Pagar factura" data-toggle="modal" data-target="#smallModal" ng-click="payBill(bill._id)">
+                                                    <button class="action-icon" title="Pagar factura" data-toggle="modal" data-target="#smallModal" ng-click="setBillId(bill._id)">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <h3 class="title-3 m-b-30" ng-if="updates.length == 0">No tiene novedades registradas.</h3>
+                                    <h3 class="title-3 m-b-30 white-text" ng-if="bills.length == 0">No tiene facturas registradas.</h3>
                                 </div>
                             </div>
                             <!-- END USER DATA-->

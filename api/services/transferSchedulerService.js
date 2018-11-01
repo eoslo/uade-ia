@@ -12,9 +12,9 @@ class transferSchedulerService {
         });
 
         let options = {
-            hostname: 'ip_banco',
+            hostname: 'http://192.168.215.34',
             port: 9000,
-            path: '/api/transferencias/programar',
+            path: '/api/transferencia',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,11 +27,13 @@ class transferSchedulerService {
 
             res.on('data', (data) => {
                 console.log('[+] Response Data: ' + data);
+                return callback(null, data);
             })
         });
 
         req.on('error', (err) => {
             console.error(err);
+            return callback(err);
         });
 
         req.write(data);

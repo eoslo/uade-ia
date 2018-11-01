@@ -81,10 +81,6 @@ p {
     margin: 0;
 }
 
-.table-responsive {
-    padding-right: 1px;
-}
-
 .card {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -380,6 +376,7 @@ section {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .social-login-content {
@@ -475,6 +472,34 @@ section {
 .au-btn-icon i {
     vertical-align: baseline;
     margin-right: 5px;
+}
+
+.au-btn--fading {
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.au-btn--fading:hover {
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.au-btn--fading:active {
+    background: linear-gradient(-75deg, #008461, #520089, #910080, #9b0026, #8c3f21);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .au-btn--blue {
@@ -2336,21 +2361,23 @@ section {
 }
 
 .fullfading {
-    background: linear-gradient(-75deg, #00d8ff, #8F01ED, #EE7752, #E73C7E, #db2a20);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
 }
 
 .titlefading {
-    background: linear-gradient(-75deg, #00d8ff, #8F01ED, #EE7752, #E73C7E, #db2a20);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.4);
 }
 
 @-webkit-keyframes Gradient {
@@ -4012,9 +4039,16 @@ section {
 
 .user-data {
     border: 1px solid #e5e5e5;
-    background: #fff;
     padding-top: 44px;
     margin: 44px 0;
+    background: linear-gradient(to left, #00d8ff, #8F01ED, #8F01ED);
+    background-size: 150% 150%;
+    -webkit-animation: Gradient 7s ease infinite;
+    -moz-animation: Gradient 7s ease infinite;
+    animation: Gradient 7s ease infinite;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .user-data .title-3 {
@@ -4032,8 +4066,12 @@ section {
     text-align: center;
 }
 
-.white-text{
+.white-text {
     color: white !important;
+}
+
+.white-background {
+    background-color: white !important;
 }
 
 .map-data {
@@ -4417,8 +4455,13 @@ section {
     vertical-align: middle;
 }
 
+.auto-width
+{
+    width: auto !important;
+}
+
 .table-data {
-    height: 472px;
+    height: auto;
     overflow-y: auto;
 }
 
@@ -6066,6 +6109,10 @@ section {
 /*                   TRUMPS                            */
 /*-----------------------------------------------------*/
 /*Padding, margin*/
+.p-40 {
+    padding: 0 40px;
+}
+
 .p-b-0 {
     padding-bottom: 0px;
 }

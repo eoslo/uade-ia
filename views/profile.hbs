@@ -8,7 +8,11 @@
         </div>
         <div class="menu-sidebar2__content js-scrollbar1">
             <div class="account2">
+<<<<<<< HEAD
                 <h4 class="name fade-text" ng-bind="form.name"></h4>
+=======
+                <h4 class="name fade-text" ng-bind="form.name"> </h4>
+>>>>>>> f72474226df9e508b861dda931a73b1a03a35455
                 <a href="/logout">Cerrar sesión</a>
             </div>
             <nav class="navbar-sidebar2">
@@ -57,7 +61,7 @@
                                 <div class="au-breadcrumb-left">
                                     <span class="au-breadcrumb-span">Usted está aquí:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item">Datos de la cuenta</li>
+                                        <li class="list-inline-item">Cuenta</li>
                                     </ul>
                                 </div>
                                 <button class="au-btn au-btn-icon au-btn--red" type="button" data-toggle="modal"
@@ -85,15 +89,19 @@
 
         <section>
             <div class="section__content section__content--p30">
-                <div class="container-fluid ">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-12">
                             <!-- USER DATA-->
                             <div class="user-data m-b-40">
-                                <h3 class="title-3 m-b-30">
+                                <h3 class="title-3 m-b-30 white-text">
                                     <i class="zmdi zmdi-account"></i>Datos de la cuenta
                                 </h3>
-                                <form ng-submit="updateClient()" style="padding: 0 40px">
+                                <form ng-submit="updateClient()" class="white-background p-40 p-b-10">
+                                    <div class="form-group p-t-10">
+                                        <label>Contraseña</label>
+                                        <input ng-model="form.password" class="au-input au-input--full" type="password" name="password" placeholder="Contraseña" required>
+                                    </div>
                                     <div class="form-group">
                                         <label>Nombre</label>
                                         <input ng-model="form.name" class="au-input au-input--full" type="text" name="name" placeholder="Nombre" required>

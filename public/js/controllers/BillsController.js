@@ -10,6 +10,10 @@ angular.module('PaychecksApp')
         getClientBills();
     };
 
+    $scope.setBillId = function(id) {
+        $scope.bill_id = id;
+    };
+
     function getClientBills() {
         $http({
             method: 'GET',
