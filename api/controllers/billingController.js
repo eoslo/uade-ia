@@ -32,6 +32,27 @@ class billingController {
             return callback("error in client id format, should have 24 characters",{})
         }
     }
+
+    payBill(req, callback) {
+        var clientId = req.params.clientId
+        var billId = req.params.billId
+
+        if (!clientId || !billId){
+            console.log("clientId and billId are required in body")
+            return callback("clientId and billId are required in body")
+        }
+        if (clientId.length != 24 || billId.length != 24){
+            console.log("clientId and billId must have 24 characters")
+            return callback("clientId and billId must have 24 characters")
+        }
+        return billingService.payBill(clientId,billId, function (err){
+            if (err){
+                console.log(err)
+                return callback(err)
+            }
+        })
+    }
+
 }
 
 module.exports = billingController;

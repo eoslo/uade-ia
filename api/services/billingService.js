@@ -93,6 +93,10 @@ class BillingService {
             })
         })
     }
+
+    payBill(clientId, billId, done) {
+        return undefined;
+    }
 }
 
 module.exports = BillingService;

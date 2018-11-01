@@ -50,4 +50,14 @@ router.post('/:clientId/billing', function(req, res, next) {
     })
 });
 
+router.post('/pay-bill', function(req, res, next) {
+    billingController.payBill(req, function (err) {
+        if(err){
+            res.status(500);
+            res.send({error:err})
+        }
+        res.status(200);
+    })
+});
+
 module.exports = router;
