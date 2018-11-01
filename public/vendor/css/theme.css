@@ -376,6 +376,7 @@ section {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .social-login-content {
@@ -471,6 +472,34 @@ section {
 .au-btn-icon i {
     vertical-align: baseline;
     margin-right: 5px;
+}
+
+.au-btn--fading {
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.au-btn--fading:hover {
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.au-btn--fading:active {
+    background: linear-gradient(-75deg, #008461, #520089, #910080, #9b0026, #8c3f21);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .au-btn--blue {
@@ -2332,21 +2361,23 @@ section {
 }
 
 .fullfading {
-    background: linear-gradient(-75deg, #00d8ff, #8F01ED, #EE7752, #E73C7E, #db2a20);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
 }
 
 .titlefading {
-    background: linear-gradient(-75deg, #00d8ff, #8F01ED, #EE7752, #E73C7E, #db2a20);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.4);
 }
 
 @-webkit-keyframes Gradient {
@@ -4035,11 +4066,11 @@ section {
     text-align: center;
 }
 
-.white-text{
+.white-text {
     color: white !important;
 }
 
-.white-background{
+.white-background {
     background-color: white !important;
 }
 
