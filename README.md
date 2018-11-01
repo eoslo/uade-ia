@@ -95,8 +95,7 @@ curl -X DELETE https://sueldosya.herokuapp.com/client -H 'Content-Type: applicat
 * Update client
 
 ```
-curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal entity","cuit":123123123,"iva":21,"gross_income":1000,"
-es":[], "cbu":123123123}'
+curl -X PUT https://sueldosya.herokuapp.com/client -H 'Content-Type: application/json' -d '{"id":"5bd99cb677a9412434bbd2f1","name":"nombre","person_type":"physical|legal_entity","cuit":123123123,"iva":21,"gross_income":1000, "cbu":123123123}'
 ```
 
 ---
@@ -256,7 +255,25 @@ curl -X POST https://sueldosya.herokuapp.com/update -H 'Content-Type: applicatio
 ```
 
 ```
-curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -d '{"update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days","mount":"150"}'
+curl -X POST https://sueldosya.herokuapp.com/update/clientCUIT/employeeDNI -H 'Content-Type: application/json' -d 
+'{
+   "update":"salary_change|per_hour_change|worked_hours|absense_days|bonus|vacation_days",
+   "mount":"150"
+}'
+
+Que tipos acepta cada empleado?
+   Usuario de tipo "monthly":
+      >salary_change:
+         Cambia el salario mensual.
+      >absense_days:
+          Dias que falto y se le restan del sueldo.
+      >vacation_days:
+          Dias que se fue de vacaciones, no se le restan.
+   Usuario de tipo "per_hour":
+      >worked_hours:
+         Horas que trabajo. Se puede hacer mas de una al mes.
+      >per_hour_change:
+         Cambia el valor por hora que cobra el empleado.
 ```
 ---
 ### Liquidacion de sueldo
