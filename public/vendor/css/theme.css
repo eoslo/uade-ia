@@ -2369,6 +2369,17 @@ section {
     animation: Gradient 30s ease infinite;
 }
 
+.textfading {
+    background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
+    background-size: 1600% 1600%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
 .titlefading {
     background: linear-gradient(-75deg, #00ffbb, #8F01ED, #ff00e1, #ff003f, #ef6e3b);
     background-size: 1600% 1600%;

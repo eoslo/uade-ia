@@ -171,4 +171,10 @@
         </div>
         <!-- END DELETE UPDATE -->
     </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showDeleteError">
+        No se pudo eliminar la novedad, pruebe más tarde
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showDeleteSuccess">
+        novedad eliminada correctamente
+    </div>
 </div>

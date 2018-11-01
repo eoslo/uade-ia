@@ -91,15 +91,13 @@
                                     <table class="table" ng-if="bills.length != 0">
                                         <thead class="white-text">
                                         <tr>
-                                            <td class="white-text">N° Factura</td>
-                                            <td class="white-text">Fecha Vencimiento</td>
-                                            <td class="white-text">Costo base</td>
-                                            <td class="white-text">Cant. empleados</td>
-                                            <td class="white-text">Costo por empleado</td>
-                                            <td class="white-text">Total bruto</td>
-                                            <td class="white-text">IVA</td>
-                                            <td class="white-text">Total</td>
-                                            <td class="white-text">Estado</td>
+                                            <td>N° Factura</td>
+                                            <td>Fecha Vencimiento</td>
+                                            <td>Total bruto</td>
+                                            <td>IVA</td>
+                                            <td>Total</td>
+                                            <td>Estado</td>
+                                            <td>Acciones</td>
                                         </tr>
                                         </thead>
                                         <tbody  class="white-background">
@@ -112,21 +110,6 @@
                                                 <td>
                                                     <div class="table-data__info">
                                                         <span ng-bind="bill.expiration_date"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-bind="bill.base_cost"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-bind="bill.employees_amount"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-bind="bill.cost_per_employee"></span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -148,6 +131,11 @@
                                                     <span ng-if="bill.status == 'payment_pending'" class="state pending">Pendiente</span>
                                                     <span ng-if="bill.status == 'payment_closed'" class="state active">Cerrado</span>
                                                 </td>
+                                                <td>
+                                                    <button class="action-icon" title="Pagar factura" data-toggle="modal" data-target="#smallModal" ng-click="setBillId(bill._id)">
+                                                        <i class="fa fa-check-circle-o"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -161,5 +149,31 @@
             </div>
             <!-- END PAGE CONTAINER-->
         </section>
+        <!-- DELETE UPDATE -->
+        <div class="modal fade" id="smallModal" tabindex="-2" role="dialog" aria-labelledby="smallModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">No se puede vovler para atrás si nos pagas ...</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="payBill()" ng-disabled="variables.isSubmitting">Pagar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END DELETE UPDATE -->
+    </div>
+    <div class="alert alert-danger" role="alert" ng-if="variables.showPaymentError">
+        No se pudo pagar la facturas, pruebe más tarde
+    </div>
+    <div class="alert alert-success" role="alert" ng-if="variables.showPaymentSuccess">
+        Factura pagada correctamente
     </div>
 </div>
