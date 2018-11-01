@@ -93,9 +93,6 @@
                                         <tr>
                                             <td>N° Factura</td>
                                             <td>Fecha Vencimiento</td>
-                                            <td>Costo base</td>
-                                            <td>Cant. empleados</td>
-                                            <td>Costo por empleado</td>
                                             <td>Total bruto</td>
                                             <td>IVA</td>
                                             <td>Total</td>
@@ -113,21 +110,6 @@
                                                 <td>
                                                     <div class="table-data__info">
                                                         <span ng-bind="bill.expiration_date"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-bind="bill.base_cost"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-bind="bill.employees_amount"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <span ng-bind="bill.cost_per_employee"></span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -151,7 +133,7 @@
                                                 </td>
                                                 <td>
                                                     <button class="action-icon" title="Pagar factura" data-toggle="modal" data-target="#smallModal" ng-click="setBillId(bill._id)">
-                                                        <i class="fa fa-edit"></i>
+                                                        <i class="fa fa-check-circle-o"></i>
                                                     </button>
                                                 </td>
                                             </tr>
