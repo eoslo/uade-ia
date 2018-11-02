@@ -2,7 +2,7 @@
 
 angular.module('PaychecksApp')
 
-.controller('BillsController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http, ) {
+.controller('BillsController', ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
     $scope.bills = [];
     $scope.bill_id = null;
     $scope.variables ={
@@ -29,7 +29,7 @@ angular.module('PaychecksApp')
 
         $http({
             method: 'POST',
-            url: $rootScope.serverEndpoint + '/billing/pay-bill',
+            url: $rootScope.serverEndpoint + 'billing/pay-bill',
             data: data
         })
         .then(function(response) {
