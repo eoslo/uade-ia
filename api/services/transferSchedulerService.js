@@ -4,7 +4,7 @@ var dateUtil = new DateUtil()
 class transferSchedulerService {
 
     sendScheduledTransfers(sourceCbu, destinationCbu, description, amount, payDate, callback) {
-        var date = payDate ? dateUtil.formattedDateYearMonthDay(payDate) : null
+        var date = payDate ? dateUtil.formattedDateYearMonthDay(payDate) : null;
         let data = JSON.stringify({
             origen: sourceCbu,
             destino: destinationCbu,
@@ -14,7 +14,7 @@ class transferSchedulerService {
         });
 
         let options = {
-            hostname: 'http://192.168.215.34',
+            hostname: '192.168.43.201',
             port: 8080,
             path: '/api/transferencia',
             method: 'POST',

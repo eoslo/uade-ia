@@ -110,17 +110,19 @@ class SalaryService {
             }
             else{
                 transferSchedulerService.sendScheduledTransfers(client.cbu, employee.cbu, "Sueldo",
-                    response.salary.net_income, response.salary.pay_date, function (err, response) {
+                    response.salary.net_income, response.salary.pay_date, function (err, r) {
                         if(err){
                             console.error({error:err, employee:employee.dni});
                         }
-                        employee.update({'salaries.id': response.salary.id}, {'$set': {
-                                'salaries.$.status': 'payment_sent'
-                            }} , function (err, raw) {
-                            if(err){
-                                console.error({error:err,employee:employee.dni ,salary:response.salary.id});
-                            }
-                        });
+                        else{
+                            response.salary.status = 'payment_sent';
+                            employee.salaries.push(response.salary);
+                            employee.update({salaries:employee.salaries}, function (err, raw) {
+                                if(err){
+                                    console.error({error:err,employee:employee.dni ,salary:response.salary.id});
+                                }
+                            });
+                        }
                     });
             }
         });

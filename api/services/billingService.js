@@ -129,7 +129,7 @@ class BillingService {
                             return done(err);
                         }
                     })
-                    return null
+                    return done();
                 })
             })
         })

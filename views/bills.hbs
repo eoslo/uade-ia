@@ -2,8 +2,8 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar2">
         <div class="logo">
-            <a href="#">
-                <h2 style="color: white">¡Sueldos Ya!</h2>
+            <a href="/employees">
+                <h2><span>¡</span><span>S</span><span>U</span><span>E</span><span>L</span><span>D</span><span>O</span><span>S</span> <span>Y</span><span>A</span><span>!</span></h2>
             </a>
         </div>
         <div class="menu-sidebar2__content js-scrollbar1">
@@ -54,7 +54,7 @@
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
                                 <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">Usted está aquí:</span>
+                                    <span class="au-breadcrumb-span">Usted se encuentra aquí:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
                                         <li class="list-inline-item">Facturas</li>
                                     </ul>
@@ -91,13 +91,13 @@
                                     <table class="table" ng-if="bills.length != 0">
                                         <thead class="white-text">
                                         <tr>
-                                            <td>N° Factura</td>
-                                            <td>Fecha Vencimiento</td>
-                                            <td>Total bruto</td>
-                                            <td>IVA</td>
-                                            <td>Total</td>
-                                            <td>Estado</td>
-                                            <td>Acciones</td>
+                                            <td class="white-text">N° Factura</td>
+                                            <td class="white-text">Fecha Vencimiento</td>
+                                            <td class="white-text">Total bruto</td>
+                                            <td class="white-text">IVA</td>
+                                            <td class="white-text">Total</td>
+                                            <td class="white-text">Estado</td>
+                                            <td class="white-text">Acciones</td>
                                         </tr>
                                         </thead>
                                         <tbody  class="white-background">
@@ -133,7 +133,7 @@
                                                 </td>
                                                 <td>
                                                     <button class="action-icon" title="Pagar factura" data-toggle="modal" data-target="#smallModal" ng-click="setBillId(bill._id)">
-                                                        <i class="fa fa-check-circle-o"></i>
+                                                        <i class="fa fa-dollar"></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -155,7 +155,7 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">No se puede vovler para atrás si nos pagas ...</h5>
+                        <h5 class="modal-title" id="largeModalLabel">¿Está seguro que desea pagar esta factura?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

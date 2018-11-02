@@ -2,8 +2,8 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar2">
         <div class="logo">
-            <a href="#">
-                <h2 class="white-text">¡Sueldos Ya!</h2>
+            <a href="/employees">
+                <h2><span>¡</span><span>S</span><span>U</span><span>E</span><span>L</span><span>D</span><span>O</span><span>S</span> <span>Y</span><span>A</span><span>!</span></h2>
             </a>
         </div>
         <div class="menu-sidebar2__content js-scrollbar1">
@@ -54,7 +54,7 @@
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
                                 <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">Usted está aquí:</span>
+                                    <span class="au-breadcrumb-span">Usted se encuentra aquí:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
                                         <li class="list-inline-item">Empleados</li>
                                     </ul>
@@ -76,6 +76,8 @@
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="header-wrap2">
+                        <div class="loader">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -244,7 +246,7 @@
                         <form>
                             <div class="form-group">
                                 <label>Tipo de novedad</label>
-                                <select ng-model="updateForm.update" name="select" id="select" class="form-control" required>
+                                <select ng-model="updateForm.update" name="select" id="select" class="form-control gray-text selector-adapt" style="height: 44px;" required>
                                     <option value="">Seleccione un tipo de novedad</option>
                                     <option value="salary_change" ng-if="form.payroll_type == 'monthly'">Cambio de Sueldo</option>
                                     <option value="per_hour_change" ng-if="form.payroll_type == 'per_hour'">Cambio de valor por hora</option>
@@ -277,7 +279,7 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Esta seguro que desea eliminar el empleado <span ng-bind="form.name"></span></h5>
+                        <h5 class="modal-title" id="largeModalLabel">¿Está seguro que desea eliminar al empleado conocido como "<span ng-bind="form.name"></span>"?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -285,7 +287,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal-btn3">Cancelar</button>
-                        <button type="button" class="btn btn-primary" ng-click="deleteEmployee()" ng-disabled="variables.isSubmitting">Eliminar</button>
+                        <button type="button" class="btn btn-danger" ng-click="deleteEmployee()" ng-disabled="variables.isSubmitting">Eliminar</button>
                     </div>
                 </div>
             </div>

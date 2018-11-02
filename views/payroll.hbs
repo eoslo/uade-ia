@@ -2,8 +2,8 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar2">
         <div class="logo">
-            <a href="#">
-                <h2 style="color: white">¡Sueldos Ya!</h2>
+            <a href="/employees">
+                <h2><span>¡</span><span>S</span><span>U</span><span>E</span><span>L</span><span>D</span><span>O</span><span>S</span> <span>Y</span><span>A</span><span>!</span></h2>
             </a>
         </div>
         <div class="menu-sidebar2__content js-scrollbar1">
@@ -55,7 +55,7 @@
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
                                 <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">Usted está aquí:</span>
+                                    <span class="au-breadcrumb-span">Usted se encuentra aquí:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
                                         <li class="list-inline-item">Liquidaciones</li>
                                     </ul>
@@ -88,10 +88,6 @@
                             <div class="user-data m-b-40">
                                 <h3 class="title-3 m-b-30 white-text clearfix">
                                     <i class="zmdi zmdi-money-box"></i>Liquidaciones
-                                    <span style="flaot: right;">Total liquidado: </span>
-                                    <span style="flaot: right;" ng-bind="totalToPay"></span>
-                                    <span style="flaot: right;">Fecha de pago: </span>
-                                    <span style="flaot: right;" ng-bind="pay_date"></span>
                                 </h3>
                                 <div class="table-data">
                                     <table class="table" ng-if="payrolls.length != 0">
@@ -101,6 +97,7 @@
                                                 <td class="white-text">Tipo de Sueldo</td>
                                                 <td class="white-text">Total bruto</td>
                                                 <td class="white-text">Total</td>
+                                                <td class="white-text">Fecha de Pago</td>
                                                 <td class="white-text">Estado</td>
                                             </tr>
                                         </thead>
@@ -125,6 +122,11 @@
                                             <td>
                                                 <div class="table-data__info">
                                                     <span ng-bind="payroll.salary.net_income"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="table-data__info">
+                                                    <span ng-bind="payroll.salary.pay_date"></span>
                                                 </div>
                                             </td>
                                             <td>
