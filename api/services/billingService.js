@@ -3,7 +3,7 @@ var DateUtil = require('../utils/dateUtil')
 var Client = require('../models/client');
 var TransferSchedulerService = require('./transferSchedulerService');
 var transferSchedulerService = new TransferSchedulerService()
-var cbu = 1234567890
+var cbu = 1000000000
 
 class BillingService {
 
