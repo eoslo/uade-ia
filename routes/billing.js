@@ -39,7 +39,7 @@ router.get('/billId/:billId', function(req, res, next) {
     })
 });
 
-router.post('/:clientId', function(req, res, next) {
+router.post('/client/:clientId', function(req, res, next) {
     billingController.createBill(req, function (err, bill) {
         if(err){
             res.status(500);
@@ -58,6 +58,7 @@ router.post('/pay-bill', function(req, res, next) {
             res.send({error:err})
         }
         res.status(200);
+        res.send();
     })
 });
 
