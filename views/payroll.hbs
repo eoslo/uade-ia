@@ -88,6 +88,10 @@
                             <div class="user-data m-b-40">
                                 <h3 class="title-3 m-b-30 white-text clearfix">
                                     <i class="zmdi zmdi-money-box"></i>Liquidaciones
+                                    <span style="float: right" ng-bind="pay_date"></span>
+                                    <span style="float: right">Fecha de pago: </span>
+                                    <span style="float: right" ng-bind="totalToPay"></span>
+                                    <span style="float: right">Total Liquidado: </span>
                                 </h3>
                                 <div class="table-data">
                                     <table class="table" ng-if="payrolls.length != 0">
