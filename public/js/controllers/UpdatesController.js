@@ -25,7 +25,7 @@ angular.module('PaychecksApp')
             method: 'DELETE',
             url: $rootScope.serverEndpoint + 'update',
             data: {
-                "employee_id": $scope.updateId
+                "id": $scope.updateId
             },
             headers: {
                 'Content-type': 'application/json;charset=utf-8'

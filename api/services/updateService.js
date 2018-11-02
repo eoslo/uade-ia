@@ -66,10 +66,11 @@ class UpdateService {
 
     deleteUpdate(id, callback){
         Employee.find({updates: {$elemMatch: {id:id}}}, function (err, employee){
-            employee.updates.forEach(function (err, update) {
-                if (err){
-                    return callback(err);
-                } else if (update && update.status === 'active' && update.id === id){
+            if(employee && employee.updates && employee.updates.length){
+                employee.updates.forEach(function (err, update) {
+                    if (err){
+                        return callback(err);
+                    } else if (update && update.status === 'active' && update.id === id){
                         update.status = 'inactive';
                         update.save(function (err){
                             if (err){
@@ -77,11 +78,14 @@ class UpdateService {
                             }
                             return callback(err, update);
                         });
-                } else {
-                    return callback("La novedad que esta intentando actualizar ya esta inactiva o no se encuentra.");
-                }
-            });
-
+                    } else {
+                        return callback("La novedad que esta intentando actualizar ya esta inactiva o no se encuentra.");
+                    }
+                });
+            }
+            else{
+                return callback('No se encontro la novedad!');
+            }
         })
     }
 }
