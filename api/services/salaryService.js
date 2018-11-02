@@ -109,12 +109,12 @@ class SalaryService {
                 console.error({error:err, employee:employee.dni});
             }
             else{
-                // transferSchedulerService.sendScheduledTransfers(client.cbu, employee.cbu, "Sueldo",
-                //     response.salary.net_income, response.salary.pay_date, function (err, r) {
-                //         if(err){
-                //             console.error({error:err, employee:employee.dni});
-                //         }
-                //         else{
+                transferSchedulerService.sendScheduledTransfers(client.cbu, employee.cbu, "Sueldo",
+                    response.salary.net_income, response.salary.pay_date, function (err, r) {
+                        if(err){
+                            console.error({error:err, employee:employee.dni});
+                        }
+                        else{
                             response.salary.status = 'payment_sent';
                             employee.salaries.push(response.salary);
                             employee.update({salaries:employee.salaries}, function (err, raw) {
@@ -122,8 +122,8 @@ class SalaryService {
                                     console.error({error:err,employee:employee.dni ,salary:response.salary.id});
                                 }
                             });
-                        // }
-                    // });
+                        }
+                    });
             }
         });
     }
