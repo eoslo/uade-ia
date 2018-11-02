@@ -60,7 +60,7 @@ class UpdateService {
             })
         }
         else{
-            return callback("Empleado no existente.")
+            return callback(null, {});
         }
     }
 
